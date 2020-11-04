@@ -3,22 +3,17 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>http://onestoppinballshop.nl/products/</loc>
+    <loc>http://onestoppinballshop.nl/products/greenred/</loc>
     <lastmod>2019-10-17T11:22:16+06:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="http://onestoppinballshop.nl/en/products/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="nl"
-                href="http://onestoppinballshop.nl/products/"
-                />
   </url>
   
   <url>
     <loc>http://onestoppinballshop.nl/products/greenwhite/</loc>
+    <lastmod>2019-10-17T11:22:16+06:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://onestoppinballshop.nl/products/greenblack/</loc>
     <lastmod>2019-10-17T11:22:16+06:00</lastmod>
   </url>
   
@@ -53,6 +48,21 @@
   </url>
   
   <url>
+    <loc>http://onestoppinballshop.nl/products/</loc>
+    <lastmod>2019-10-17T11:22:16+06:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://onestoppinballshop.nl/en/products/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="nl"
+                href="http://onestoppinballshop.nl/products/"
+                />
+  </url>
+  
+  <url>
     <loc>http://onestoppinballshop.nl/</loc>
     <lastmod>2019-10-17T11:22:16+06:00</lastmod>
     <xhtml:link
@@ -80,6 +90,11 @@
                 hreflang="nl"
                 href="http://onestoppinballshop.nl/blog/"
                 />
+  </url>
+  
+  <url>
+    <loc>http://onestoppinballshop.nl/products/redgreen/</loc>
+    <lastmod>2019-10-17T11:22:16+06:00</lastmod>
   </url>
   
   <url>
@@ -139,21 +154,6 @@
   
   <url>
     <loc>http://onestoppinballshop.nl/products/blackgreen/</loc>
-    <lastmod>2019-10-17T11:22:16+06:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://onestoppinballshop.nl/products/greenblack/</loc>
-    <lastmod>2019-10-17T11:22:16+06:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://onestoppinballshop.nl/products/greenred/</loc>
-    <lastmod>2019-10-17T11:22:16+06:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://onestoppinballshop.nl/products/redgreen/</loc>
     <lastmod>2019-10-17T11:22:16+06:00</lastmod>
   </url>
   

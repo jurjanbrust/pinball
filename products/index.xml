@@ -1,19 +1,46 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Flipper sleutelhangers on One Stop Pinball Shop</title>
+    <title>Kleurstellingen on One Stop Pinball Shop</title>
     <link>http://onestoppinballshop.nl/products/</link>
-    <description>Recent content in Flipper sleutelhangers on One Stop Pinball Shop</description>
+    <description>Recent content in Kleurstellingen on One Stop Pinball Shop</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>nl-nl</language>
     <copyright>One Stop Pinball Shop</copyright>
     <lastBuildDate>Thu, 17 Oct 2019 11:22:16 +0600</lastBuildDate><atom:link href="http://onestoppinballshop.nl/products/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Groen Wit</title>
+      <title>Groen rood</title>
+      <link>http://onestoppinballshop.nl/products/greenred/</link>
+      <pubDate>Thu, 17 Oct 2019 11:22:16 +0600</pubDate>
+      
+      <guid>http://onestoppinballshop.nl/products/greenred/</guid>
+      <description>Deze flipper heeft een rode rubber en een witte flipperkleur</description>
+    </item>
+    
+    <item>
+      <title>Groen wit</title>
       <link>http://onestoppinballshop.nl/products/greenwhite/</link>
       <pubDate>Thu, 17 Oct 2019 11:22:16 +0600</pubDate>
       
       <guid>http://onestoppinballshop.nl/products/greenwhite/</guid>
+      <description>Deze flipper heeft een rode rubber en een witte flipperkleur</description>
+    </item>
+    
+    <item>
+      <title>Groen zwart</title>
+      <link>http://onestoppinballshop.nl/products/greenblack/</link>
+      <pubDate>Thu, 17 Oct 2019 11:22:16 +0600</pubDate>
+      
+      <guid>http://onestoppinballshop.nl/products/greenblack/</guid>
+      <description>Deze flipper heeft een rode rubber en een witte flipperkleur</description>
+    </item>
+    
+    <item>
+      <title>Rood groen</title>
+      <link>http://onestoppinballshop.nl/products/redgreen/</link>
+      <pubDate>Thu, 17 Oct 2019 11:22:16 +0600</pubDate>
+      
+      <guid>http://onestoppinballshop.nl/products/redgreen/</guid>
       <description>Deze flipper heeft een rode rubber en een witte flipperkleur</description>
     </item>
     
@@ -68,33 +95,6 @@
       <pubDate>Thu, 17 Oct 2019 11:22:16 +0600</pubDate>
       
       <guid>http://onestoppinballshop.nl/products/blackgreen/</guid>
-      <description>Deze flipper heeft een rode rubber en een witte flipperkleur</description>
-    </item>
-    
-    <item>
-      <title>Zwart groen</title>
-      <link>http://onestoppinballshop.nl/products/greenblack/</link>
-      <pubDate>Thu, 17 Oct 2019 11:22:16 +0600</pubDate>
-      
-      <guid>http://onestoppinballshop.nl/products/greenblack/</guid>
-      <description>Deze flipper heeft een rode rubber en een witte flipperkleur</description>
-    </item>
-    
-    <item>
-      <title>Zwart groen</title>
-      <link>http://onestoppinballshop.nl/products/greenred/</link>
-      <pubDate>Thu, 17 Oct 2019 11:22:16 +0600</pubDate>
-      
-      <guid>http://onestoppinballshop.nl/products/greenred/</guid>
-      <description>Deze flipper heeft een rode rubber en een witte flipperkleur</description>
-    </item>
-    
-    <item>
-      <title>Zwart groen</title>
-      <link>http://onestoppinballshop.nl/products/redgreen/</link>
-      <pubDate>Thu, 17 Oct 2019 11:22:16 +0600</pubDate>
-      
-      <guid>http://onestoppinballshop.nl/products/redgreen/</guid>
       <description>Deze flipper heeft een rode rubber en een witte flipperkleur</description>
     </item>
     
