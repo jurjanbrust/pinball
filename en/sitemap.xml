@@ -316,20 +316,6 @@
   </url>
   
   <url>
-    <loc>https://onestoppinballshop.com/tags/</loc>
-    <xhtml:link
-                rel="alternate"
-                hreflang="nl"
-                href="https://onestoppinballshop.com/nl/tags/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://onestoppinballshop.com/tags/"
-                />
-  </url>
-  
-  <url>
     <loc>https://onestoppinballshop.com/privacy-policy/</loc>
     <xhtml:link
                 rel="alternate"
@@ -340,6 +326,20 @@
                 rel="alternate"
                 hreflang="en"
                 href="https://onestoppinballshop.com/privacy-policy/"
+                />
+  </url>
+  
+  <url>
+    <loc>https://onestoppinballshop.com/tags/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="nl"
+                href="https://onestoppinballshop.com/nl/tags/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://onestoppinballshop.com/tags/"
                 />
   </url>
   

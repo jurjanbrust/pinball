@@ -288,6 +288,20 @@
   </url>
   
   <url>
+    <loc>https://onestoppinballshop.com/nl/terms-conditions/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://onestoppinballshop.com/terms-conditions/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="nl"
+                href="https://onestoppinballshop.com/nl/terms-conditions/"
+                />
+  </url>
+  
+  <url>
     <loc>https://onestoppinballshop.com/nl/categories/</loc>
     <xhtml:link
                 rel="alternate"
@@ -316,20 +330,6 @@
   </url>
   
   <url>
-    <loc>https://onestoppinballshop.com/nl/tags/</loc>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://onestoppinballshop.com/tags/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="nl"
-                href="https://onestoppinballshop.com/nl/tags/"
-                />
-  </url>
-  
-  <url>
     <loc>https://onestoppinballshop.com/nl/privacy-policy/</loc>
     <xhtml:link
                 rel="alternate"
@@ -344,16 +344,16 @@
   </url>
   
   <url>
-    <loc>https://onestoppinballshop.com/nl/terms-conditions/</loc>
+    <loc>https://onestoppinballshop.com/nl/tags/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://onestoppinballshop.com/terms-conditions/"
+                href="https://onestoppinballshop.com/tags/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="nl"
-                href="https://onestoppinballshop.com/nl/terms-conditions/"
+                href="https://onestoppinballshop.com/nl/tags/"
                 />
   </url>
   
