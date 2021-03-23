@@ -416,14 +416,14 @@
         {
           Object.freeze(emptyObject);
         }
-        function Component5(props, context, updater) {
+        function Component6(props, context, updater) {
           this.props = props;
           this.context = context;
           this.refs = emptyObject;
           this.updater = updater || ReactNoopUpdateQueue;
         }
-        Component5.prototype.isReactComponent = {};
-        Component5.prototype.setState = function(partialState, callback) {
+        Component6.prototype.isReactComponent = {};
+        Component6.prototype.setState = function(partialState, callback) {
           if (!(typeof partialState === "object" || typeof partialState === "function" || partialState == null)) {
             {
               throw Error("setState(...): takes an object of state variables to update or a function which returns an object of state variables.");
@@ -431,7 +431,7 @@
           }
           this.updater.enqueueSetState(this, partialState, callback, "setState");
         };
-        Component5.prototype.forceUpdate = function(callback) {
+        Component6.prototype.forceUpdate = function(callback) {
           this.updater.enqueueForceUpdate(this, callback, "forceUpdate");
         };
         {
@@ -440,7 +440,7 @@
             replaceState: ["replaceState", "Refactor your code to use setState instead (see https://github.com/facebook/react/issues/3236)."]
           };
           var defineDeprecationWarning = function(methodName, info) {
-            Object.defineProperty(Component5.prototype, methodName, {
+            Object.defineProperty(Component6.prototype, methodName, {
               get: function() {
                 warn("%s(...) is deprecated in plain JavaScript React classes. %s", info[0], info[1]);
                 return void 0;
@@ -455,7 +455,7 @@
         }
         function ComponentDummy() {
         }
-        ComponentDummy.prototype = Component5.prototype;
+        ComponentDummy.prototype = Component6.prototype;
         function PureComponent(props, context, updater) {
           this.props = props;
           this.context = context;
@@ -464,7 +464,7 @@
         }
         var pureComponentPrototype = PureComponent.prototype = new ComponentDummy();
         pureComponentPrototype.constructor = PureComponent;
-        _assign(pureComponentPrototype, Component5.prototype);
+        _assign(pureComponentPrototype, Component6.prototype);
         pureComponentPrototype.isPureReactComponent = true;
         function createRef() {
           var refObject = {
@@ -1350,7 +1350,7 @@
           only: onlyChild
         };
         exports.Children = Children;
-        exports.Component = Component5;
+        exports.Component = Component6;
         exports.Fragment = REACT_FRAGMENT_TYPE;
         exports.Profiler = REACT_PROFILER_TYPE;
         exports.PureComponent = PureComponent;
@@ -9528,9 +9528,9 @@
         var contextStackCursor = createCursor(emptyContextObject);
         var didPerformWorkStackCursor = createCursor(false);
         var previousContext = emptyContextObject;
-        function getUnmaskedContext(workInProgress2, Component5, didPushOwnContextIfProvider) {
+        function getUnmaskedContext(workInProgress2, Component6, didPushOwnContextIfProvider) {
           {
-            if (didPushOwnContextIfProvider && isContextProvider(Component5)) {
+            if (didPushOwnContextIfProvider && isContextProvider(Component6)) {
               return previousContext;
             }
             return contextStackCursor.current;
@@ -9678,8 +9678,8 @@
                 case HostRoot:
                   return node.stateNode.context;
                 case ClassComponent: {
-                  var Component5 = node.type;
-                  if (isContextProvider(Component5)) {
+                  var Component6 = node.type;
+                  if (isContextProvider(Component6)) {
                     return node.stateNode.__reactInternalMemoizedMergedChildContext;
                   }
                   break;
@@ -10341,10 +10341,10 @@
           }
           return false;
         }
-        function resolveDefaultProps(Component5, baseProps) {
-          if (Component5 && Component5.defaultProps) {
+        function resolveDefaultProps(Component6, baseProps) {
+          if (Component6 && Component6.defaultProps) {
             var props = _assign({}, baseProps);
-            var defaultProps = Component5.defaultProps;
+            var defaultProps = Component6.defaultProps;
             for (var propName in defaultProps) {
               if (props[propName] === void 0) {
                 props[propName] = defaultProps[propName];
@@ -12089,10 +12089,10 @@
                   }
                 }
                 case FunctionComponent: {
-                  var Component5 = returnFiber.type;
+                  var Component6 = returnFiber.type;
                   {
                     {
-                      throw Error((Component5.displayName || Component5.name || "Component") + "(...): Nothing was returned from render. This usually means a return statement is missing. Or, to render nothing, return null.");
+                      throw Error((Component6.displayName || Component6.name || "Component") + "(...): Nothing was returned from render. This usually means a return statement is missing. Or, to render nothing, return null.");
                     }
                   }
                 }
@@ -12370,7 +12370,7 @@
           }
           return true;
         }
-        function renderWithHooks(current2, workInProgress2, Component5, props, secondArg, nextRenderExpirationTime) {
+        function renderWithHooks(current2, workInProgress2, Component6, props, secondArg, nextRenderExpirationTime) {
           renderExpirationTime = nextRenderExpirationTime;
           currentlyRenderingFiber$1 = workInProgress2;
           {
@@ -12390,7 +12390,7 @@
               ReactCurrentDispatcher.current = HooksDispatcherOnMountInDEV;
             }
           }
-          var children = Component5(props, secondArg);
+          var children = Component6(props, secondArg);
           if (workInProgress2.expirationTime === renderExpirationTime) {
             var numberOfReRenders = 0;
             do {
@@ -12411,7 +12411,7 @@
                 hookTypesUpdateIndexDev = -1;
               }
               ReactCurrentDispatcher.current = HooksDispatcherOnRerenderInDEV;
-              children = Component5(props, secondArg);
+              children = Component6(props, secondArg);
             } while (workInProgress2.expirationTime === renderExpirationTime);
           }
           ReactCurrentDispatcher.current = ContextOnlyDispatcher;
@@ -13968,16 +13968,16 @@
           workInProgress2.child = reconcileChildFibers(workInProgress2, current2.child, null, renderExpirationTime2);
           workInProgress2.child = reconcileChildFibers(workInProgress2, null, nextChildren, renderExpirationTime2);
         }
-        function updateForwardRef(current2, workInProgress2, Component5, nextProps, renderExpirationTime2) {
+        function updateForwardRef(current2, workInProgress2, Component6, nextProps, renderExpirationTime2) {
           {
             if (workInProgress2.type !== workInProgress2.elementType) {
-              var innerPropTypes = Component5.propTypes;
+              var innerPropTypes = Component6.propTypes;
               if (innerPropTypes) {
-                checkPropTypes(innerPropTypes, nextProps, "prop", getComponentName(Component5), getCurrentFiberStackInDev);
+                checkPropTypes(innerPropTypes, nextProps, "prop", getComponentName(Component6), getCurrentFiberStackInDev);
               }
             }
           }
-          var render2 = Component5.render;
+          var render2 = Component6.render;
           var ref = workInProgress2.ref;
           var nextChildren;
           prepareToReadContext(workInProgress2, renderExpirationTime2);
@@ -14000,10 +14000,10 @@
           reconcileChildren(current2, workInProgress2, nextChildren, renderExpirationTime2);
           return workInProgress2.child;
         }
-        function updateMemoComponent(current2, workInProgress2, Component5, nextProps, updateExpirationTime, renderExpirationTime2) {
+        function updateMemoComponent(current2, workInProgress2, Component6, nextProps, updateExpirationTime, renderExpirationTime2) {
           if (current2 === null) {
-            var type = Component5.type;
-            if (isSimpleFunctionComponent(type) && Component5.compare === null && Component5.defaultProps === void 0) {
+            var type = Component6.type;
+            if (isSimpleFunctionComponent(type) && Component6.compare === null && Component6.defaultProps === void 0) {
               var resolvedType = type;
               {
                 resolvedType = resolveFunctionForHotReloading(type);
@@ -14021,14 +14021,14 @@
                 checkPropTypes(innerPropTypes, nextProps, "prop", getComponentName(type), getCurrentFiberStackInDev);
               }
             }
-            var child = createFiberFromTypeAndProps(Component5.type, null, nextProps, null, workInProgress2.mode, renderExpirationTime2);
+            var child = createFiberFromTypeAndProps(Component6.type, null, nextProps, null, workInProgress2.mode, renderExpirationTime2);
             child.ref = workInProgress2.ref;
             child.return = workInProgress2;
             workInProgress2.child = child;
             return child;
           }
           {
-            var _type = Component5.type;
+            var _type = Component6.type;
             var _innerPropTypes = _type.propTypes;
             if (_innerPropTypes) {
               checkPropTypes(_innerPropTypes, nextProps, "prop", getComponentName(_type), getCurrentFiberStackInDev);
@@ -14037,7 +14037,7 @@
           var currentChild = current2.child;
           if (updateExpirationTime < renderExpirationTime2) {
             var prevProps = currentChild.memoizedProps;
-            var compare = Component5.compare;
+            var compare = Component6.compare;
             compare = compare !== null ? compare : shallowEqual;
             if (compare(prevProps, nextProps) && current2.ref === workInProgress2.ref) {
               return bailoutOnAlreadyFinishedWork(current2, workInProgress2, renderExpirationTime2);
@@ -14050,7 +14050,7 @@
           workInProgress2.child = newChild;
           return newChild;
         }
-        function updateSimpleMemoComponent(current2, workInProgress2, Component5, nextProps, updateExpirationTime, renderExpirationTime2) {
+        function updateSimpleMemoComponent(current2, workInProgress2, Component6, nextProps, updateExpirationTime, renderExpirationTime2) {
           {
             if (workInProgress2.type !== workInProgress2.elementType) {
               var outerMemoType = workInProgress2.elementType;
@@ -14073,7 +14073,7 @@
               }
             }
           }
-          return updateFunctionComponent(current2, workInProgress2, Component5, nextProps, renderExpirationTime2);
+          return updateFunctionComponent(current2, workInProgress2, Component6, nextProps, renderExpirationTime2);
         }
         function updateFragment(current2, workInProgress2, renderExpirationTime2) {
           var nextChildren = workInProgress2.pendingProps;
@@ -14100,18 +14100,18 @@
             workInProgress2.effectTag |= Ref;
           }
         }
-        function updateFunctionComponent(current2, workInProgress2, Component5, nextProps, renderExpirationTime2) {
+        function updateFunctionComponent(current2, workInProgress2, Component6, nextProps, renderExpirationTime2) {
           {
             if (workInProgress2.type !== workInProgress2.elementType) {
-              var innerPropTypes = Component5.propTypes;
+              var innerPropTypes = Component6.propTypes;
               if (innerPropTypes) {
-                checkPropTypes(innerPropTypes, nextProps, "prop", getComponentName(Component5), getCurrentFiberStackInDev);
+                checkPropTypes(innerPropTypes, nextProps, "prop", getComponentName(Component6), getCurrentFiberStackInDev);
               }
             }
           }
           var context;
           {
-            var unmaskedContext = getUnmaskedContext(workInProgress2, Component5, true);
+            var unmaskedContext = getUnmaskedContext(workInProgress2, Component6, true);
             context = getMaskedContext(workInProgress2, unmaskedContext);
           }
           var nextChildren;
@@ -14119,10 +14119,10 @@
           {
             ReactCurrentOwner$1.current = workInProgress2;
             setIsRendering(true);
-            nextChildren = renderWithHooks(current2, workInProgress2, Component5, nextProps, context, renderExpirationTime2);
+            nextChildren = renderWithHooks(current2, workInProgress2, Component6, nextProps, context, renderExpirationTime2);
             if (workInProgress2.mode & StrictMode) {
               if (workInProgress2.memoizedState !== null) {
-                nextChildren = renderWithHooks(current2, workInProgress2, Component5, nextProps, context, renderExpirationTime2);
+                nextChildren = renderWithHooks(current2, workInProgress2, Component6, nextProps, context, renderExpirationTime2);
               }
             }
             setIsRendering(false);
@@ -14135,17 +14135,17 @@
           reconcileChildren(current2, workInProgress2, nextChildren, renderExpirationTime2);
           return workInProgress2.child;
         }
-        function updateClassComponent(current2, workInProgress2, Component5, nextProps, renderExpirationTime2) {
+        function updateClassComponent(current2, workInProgress2, Component6, nextProps, renderExpirationTime2) {
           {
             if (workInProgress2.type !== workInProgress2.elementType) {
-              var innerPropTypes = Component5.propTypes;
+              var innerPropTypes = Component6.propTypes;
               if (innerPropTypes) {
-                checkPropTypes(innerPropTypes, nextProps, "prop", getComponentName(Component5), getCurrentFiberStackInDev);
+                checkPropTypes(innerPropTypes, nextProps, "prop", getComponentName(Component6), getCurrentFiberStackInDev);
               }
             }
           }
           var hasContext;
-          if (isContextProvider(Component5)) {
+          if (isContextProvider(Component6)) {
             hasContext = true;
             pushContextProvider(workInProgress2);
           } else {
@@ -14160,15 +14160,15 @@
               workInProgress2.alternate = null;
               workInProgress2.effectTag |= Placement;
             }
-            constructClassInstance(workInProgress2, Component5, nextProps);
-            mountClassInstance(workInProgress2, Component5, nextProps, renderExpirationTime2);
+            constructClassInstance(workInProgress2, Component6, nextProps);
+            mountClassInstance(workInProgress2, Component6, nextProps, renderExpirationTime2);
             shouldUpdate = true;
           } else if (current2 === null) {
-            shouldUpdate = resumeMountClassInstance(workInProgress2, Component5, nextProps, renderExpirationTime2);
+            shouldUpdate = resumeMountClassInstance(workInProgress2, Component6, nextProps, renderExpirationTime2);
           } else {
-            shouldUpdate = updateClassInstance(current2, workInProgress2, Component5, nextProps, renderExpirationTime2);
+            shouldUpdate = updateClassInstance(current2, workInProgress2, Component6, nextProps, renderExpirationTime2);
           }
-          var nextUnitOfWork = finishClassComponent(current2, workInProgress2, Component5, shouldUpdate, hasContext, renderExpirationTime2);
+          var nextUnitOfWork = finishClassComponent(current2, workInProgress2, Component6, shouldUpdate, hasContext, renderExpirationTime2);
           {
             var inst = workInProgress2.stateNode;
             if (inst.props !== nextProps) {
@@ -14180,19 +14180,19 @@
           }
           return nextUnitOfWork;
         }
-        function finishClassComponent(current2, workInProgress2, Component5, shouldUpdate, hasContext, renderExpirationTime2) {
+        function finishClassComponent(current2, workInProgress2, Component6, shouldUpdate, hasContext, renderExpirationTime2) {
           markRef(current2, workInProgress2);
           var didCaptureError = (workInProgress2.effectTag & DidCapture) !== NoEffect;
           if (!shouldUpdate && !didCaptureError) {
             if (hasContext) {
-              invalidateContextProvider(workInProgress2, Component5, false);
+              invalidateContextProvider(workInProgress2, Component6, false);
             }
             return bailoutOnAlreadyFinishedWork(current2, workInProgress2, renderExpirationTime2);
           }
           var instance = workInProgress2.stateNode;
           ReactCurrentOwner$1.current = workInProgress2;
           var nextChildren;
-          if (didCaptureError && typeof Component5.getDerivedStateFromError !== "function") {
+          if (didCaptureError && typeof Component6.getDerivedStateFromError !== "function") {
             nextChildren = null;
             {
               stopProfilerTimerIfRunning();
@@ -14215,7 +14215,7 @@
           }
           workInProgress2.memoizedState = instance.state;
           if (hasContext) {
-            invalidateContextProvider(workInProgress2, Component5, true);
+            invalidateContextProvider(workInProgress2, Component6, true);
           }
           return workInProgress2.child;
         }
@@ -14302,61 +14302,61 @@
           }
           var props = workInProgress2.pendingProps;
           cancelWorkTimer(workInProgress2);
-          var Component5 = readLazyComponentType(elementType);
-          workInProgress2.type = Component5;
-          var resolvedTag = workInProgress2.tag = resolveLazyComponentTag(Component5);
+          var Component6 = readLazyComponentType(elementType);
+          workInProgress2.type = Component6;
+          var resolvedTag = workInProgress2.tag = resolveLazyComponentTag(Component6);
           startWorkTimer(workInProgress2);
-          var resolvedProps = resolveDefaultProps(Component5, props);
+          var resolvedProps = resolveDefaultProps(Component6, props);
           var child;
           switch (resolvedTag) {
             case FunctionComponent: {
               {
-                validateFunctionComponentInDev(workInProgress2, Component5);
-                workInProgress2.type = Component5 = resolveFunctionForHotReloading(Component5);
+                validateFunctionComponentInDev(workInProgress2, Component6);
+                workInProgress2.type = Component6 = resolveFunctionForHotReloading(Component6);
               }
-              child = updateFunctionComponent(null, workInProgress2, Component5, resolvedProps, renderExpirationTime2);
+              child = updateFunctionComponent(null, workInProgress2, Component6, resolvedProps, renderExpirationTime2);
               return child;
             }
             case ClassComponent: {
               {
-                workInProgress2.type = Component5 = resolveClassForHotReloading(Component5);
+                workInProgress2.type = Component6 = resolveClassForHotReloading(Component6);
               }
-              child = updateClassComponent(null, workInProgress2, Component5, resolvedProps, renderExpirationTime2);
+              child = updateClassComponent(null, workInProgress2, Component6, resolvedProps, renderExpirationTime2);
               return child;
             }
             case ForwardRef: {
               {
-                workInProgress2.type = Component5 = resolveForwardRefForHotReloading(Component5);
+                workInProgress2.type = Component6 = resolveForwardRefForHotReloading(Component6);
               }
-              child = updateForwardRef(null, workInProgress2, Component5, resolvedProps, renderExpirationTime2);
+              child = updateForwardRef(null, workInProgress2, Component6, resolvedProps, renderExpirationTime2);
               return child;
             }
             case MemoComponent: {
               {
                 if (workInProgress2.type !== workInProgress2.elementType) {
-                  var outerPropTypes = Component5.propTypes;
+                  var outerPropTypes = Component6.propTypes;
                   if (outerPropTypes) {
-                    checkPropTypes(outerPropTypes, resolvedProps, "prop", getComponentName(Component5), getCurrentFiberStackInDev);
+                    checkPropTypes(outerPropTypes, resolvedProps, "prop", getComponentName(Component6), getCurrentFiberStackInDev);
                   }
                 }
               }
-              child = updateMemoComponent(null, workInProgress2, Component5, resolveDefaultProps(Component5.type, resolvedProps), updateExpirationTime, renderExpirationTime2);
+              child = updateMemoComponent(null, workInProgress2, Component6, resolveDefaultProps(Component6.type, resolvedProps), updateExpirationTime, renderExpirationTime2);
               return child;
             }
           }
           var hint = "";
           {
-            if (Component5 !== null && typeof Component5 === "object" && Component5.$$typeof === REACT_LAZY_TYPE) {
+            if (Component6 !== null && typeof Component6 === "object" && Component6.$$typeof === REACT_LAZY_TYPE) {
               hint = " Did you wrap a component in React.lazy() more than once?";
             }
           }
           {
             {
-              throw Error("Element type is invalid. Received a promise that resolves to: " + Component5 + ". Lazy element type must resolve to a class or function." + hint);
+              throw Error("Element type is invalid. Received a promise that resolves to: " + Component6 + ". Lazy element type must resolve to a class or function." + hint);
             }
           }
         }
-        function mountIncompleteClassComponent(_current, workInProgress2, Component5, nextProps, renderExpirationTime2) {
+        function mountIncompleteClassComponent(_current, workInProgress2, Component6, nextProps, renderExpirationTime2) {
           if (_current !== null) {
             _current.alternate = null;
             workInProgress2.alternate = null;
@@ -14364,18 +14364,18 @@
           }
           workInProgress2.tag = ClassComponent;
           var hasContext;
-          if (isContextProvider(Component5)) {
+          if (isContextProvider(Component6)) {
             hasContext = true;
             pushContextProvider(workInProgress2);
           } else {
             hasContext = false;
           }
           prepareToReadContext(workInProgress2, renderExpirationTime2);
-          constructClassInstance(workInProgress2, Component5, nextProps);
-          mountClassInstance(workInProgress2, Component5, nextProps, renderExpirationTime2);
-          return finishClassComponent(null, workInProgress2, Component5, true, hasContext, renderExpirationTime2);
+          constructClassInstance(workInProgress2, Component6, nextProps);
+          mountClassInstance(workInProgress2, Component6, nextProps, renderExpirationTime2);
+          return finishClassComponent(null, workInProgress2, Component6, true, hasContext, renderExpirationTime2);
         }
-        function mountIndeterminateComponent(_current, workInProgress2, Component5, renderExpirationTime2) {
+        function mountIndeterminateComponent(_current, workInProgress2, Component6, renderExpirationTime2) {
           if (_current !== null) {
             _current.alternate = null;
             workInProgress2.alternate = null;
@@ -14384,14 +14384,14 @@
           var props = workInProgress2.pendingProps;
           var context;
           {
-            var unmaskedContext = getUnmaskedContext(workInProgress2, Component5, false);
+            var unmaskedContext = getUnmaskedContext(workInProgress2, Component6, false);
             context = getMaskedContext(workInProgress2, unmaskedContext);
           }
           prepareToReadContext(workInProgress2, renderExpirationTime2);
           var value;
           {
-            if (Component5.prototype && typeof Component5.prototype.render === "function") {
-              var componentName = getComponentName(Component5) || "Unknown";
+            if (Component6.prototype && typeof Component6.prototype.render === "function") {
+              var componentName = getComponentName(Component6) || "Unknown";
               if (!didWarnAboutBadClass[componentName]) {
                 error("The <%s /> component appears to have a render method, but doesn't extend React.Component. This is likely to cause errors. Change %s to extend React.Component instead.", componentName, componentName);
                 didWarnAboutBadClass[componentName] = true;
@@ -14402,13 +14402,13 @@
             }
             setIsRendering(true);
             ReactCurrentOwner$1.current = workInProgress2;
-            value = renderWithHooks(null, workInProgress2, Component5, props, context, renderExpirationTime2);
+            value = renderWithHooks(null, workInProgress2, Component6, props, context, renderExpirationTime2);
             setIsRendering(false);
           }
           workInProgress2.effectTag |= PerformedWork;
           if (typeof value === "object" && value !== null && typeof value.render === "function" && value.$$typeof === void 0) {
             {
-              var _componentName = getComponentName(Component5) || "Unknown";
+              var _componentName = getComponentName(Component6) || "Unknown";
               if (!didWarnAboutModulePatternComponent[_componentName]) {
                 error("The <%s /> component appears to be a function component that returns a class instance. Change %s to a class that extends React.Component instead. If you can't use a class try assigning the prototype on the function as a workaround. `%s.prototype = React.Component.prototype`. Don't use an arrow function since it cannot be called with `new` by React.", _componentName, _componentName, _componentName);
                 didWarnAboutModulePatternComponent[_componentName] = true;
@@ -14418,7 +14418,7 @@
             workInProgress2.memoizedState = null;
             workInProgress2.updateQueue = null;
             var hasContext = false;
-            if (isContextProvider(Component5)) {
+            if (isContextProvider(Component6)) {
               hasContext = true;
               pushContextProvider(workInProgress2);
             } else {
@@ -14426,34 +14426,34 @@
             }
             workInProgress2.memoizedState = value.state !== null && value.state !== void 0 ? value.state : null;
             initializeUpdateQueue(workInProgress2);
-            var getDerivedStateFromProps = Component5.getDerivedStateFromProps;
+            var getDerivedStateFromProps = Component6.getDerivedStateFromProps;
             if (typeof getDerivedStateFromProps === "function") {
-              applyDerivedStateFromProps(workInProgress2, Component5, getDerivedStateFromProps, props);
+              applyDerivedStateFromProps(workInProgress2, Component6, getDerivedStateFromProps, props);
             }
             adoptClassInstance(workInProgress2, value);
-            mountClassInstance(workInProgress2, Component5, props, renderExpirationTime2);
-            return finishClassComponent(null, workInProgress2, Component5, true, hasContext, renderExpirationTime2);
+            mountClassInstance(workInProgress2, Component6, props, renderExpirationTime2);
+            return finishClassComponent(null, workInProgress2, Component6, true, hasContext, renderExpirationTime2);
           } else {
             workInProgress2.tag = FunctionComponent;
             {
               if (workInProgress2.mode & StrictMode) {
                 if (workInProgress2.memoizedState !== null) {
-                  value = renderWithHooks(null, workInProgress2, Component5, props, context, renderExpirationTime2);
+                  value = renderWithHooks(null, workInProgress2, Component6, props, context, renderExpirationTime2);
                 }
               }
             }
             reconcileChildren(null, workInProgress2, value, renderExpirationTime2);
             {
-              validateFunctionComponentInDev(workInProgress2, Component5);
+              validateFunctionComponentInDev(workInProgress2, Component6);
             }
             return workInProgress2.child;
           }
         }
-        function validateFunctionComponentInDev(workInProgress2, Component5) {
+        function validateFunctionComponentInDev(workInProgress2, Component6) {
           {
-            if (Component5) {
-              if (Component5.childContextTypes) {
-                error("%s(...): childContextTypes cannot be defined on a function component.", Component5.displayName || Component5.name || "Component");
+            if (Component6) {
+              if (Component6.childContextTypes) {
+                error("%s(...): childContextTypes cannot be defined on a function component.", Component6.displayName || Component6.name || "Component");
               }
             }
             if (workInProgress2.ref !== null) {
@@ -14472,15 +14472,15 @@
                 error("Function components cannot be given refs. Attempts to access this ref will fail. Did you mean to use React.forwardRef()?%s", info);
               }
             }
-            if (typeof Component5.getDerivedStateFromProps === "function") {
-              var _componentName2 = getComponentName(Component5) || "Unknown";
+            if (typeof Component6.getDerivedStateFromProps === "function") {
+              var _componentName2 = getComponentName(Component6) || "Unknown";
               if (!didWarnAboutGetDerivedStateOnFunctionComponent[_componentName2]) {
                 error("%s: Function components do not support getDerivedStateFromProps.", _componentName2);
                 didWarnAboutGetDerivedStateOnFunctionComponent[_componentName2] = true;
               }
             }
-            if (typeof Component5.contextType === "object" && Component5.contextType !== null) {
-              var _componentName3 = getComponentName(Component5) || "Unknown";
+            if (typeof Component6.contextType === "object" && Component6.contextType !== null) {
+              var _componentName3 = getComponentName(Component6) || "Unknown";
               if (!didWarnAboutContextTypeOnFunctionComponent[_componentName3]) {
                 error("%s: Function components do not support contextType.", _componentName3);
                 didWarnAboutContextTypeOnFunctionComponent[_componentName3] = true;
@@ -15026,8 +15026,8 @@
                   }
                   break;
                 case ClassComponent: {
-                  var Component5 = workInProgress2.type;
-                  if (isContextProvider(Component5)) {
+                  var Component6 = workInProgress2.type;
+                  if (isContextProvider(Component6)) {
                     pushContextProvider(workInProgress2);
                   }
                   break;
@@ -15291,8 +15291,8 @@
             case MemoComponent:
               return null;
             case ClassComponent: {
-              var Component5 = workInProgress2.type;
-              if (isContextProvider(Component5)) {
+              var Component6 = workInProgress2.type;
+              if (isContextProvider(Component6)) {
                 popContext(workInProgress2);
               }
               return null;
@@ -15553,8 +15553,8 @@
         function unwindWork(workInProgress2, renderExpirationTime2) {
           switch (workInProgress2.tag) {
             case ClassComponent: {
-              var Component5 = workInProgress2.type;
-              if (isContextProvider(Component5)) {
+              var Component6 = workInProgress2.type;
+              if (isContextProvider(Component6)) {
                 popContext(workInProgress2);
               }
               var effectTag = workInProgress2.effectTag;
@@ -18357,18 +18357,18 @@ For more info, visit https://fb.me/react-mock-scheduler`);
         var createFiber = function(tag, pendingProps, key, mode) {
           return new FiberNode(tag, pendingProps, key, mode);
         };
-        function shouldConstruct(Component5) {
-          var prototype = Component5.prototype;
+        function shouldConstruct(Component6) {
+          var prototype = Component6.prototype;
           return !!(prototype && prototype.isReactComponent);
         }
         function isSimpleFunctionComponent(type) {
           return typeof type === "function" && !shouldConstruct(type) && type.defaultProps === void 0;
         }
-        function resolveLazyComponentTag(Component5) {
-          if (typeof Component5 === "function") {
-            return shouldConstruct(Component5) ? ClassComponent : FunctionComponent;
-          } else if (Component5 !== void 0 && Component5 !== null) {
-            var $$typeof = Component5.$$typeof;
+        function resolveLazyComponentTag(Component6) {
+          if (typeof Component6 === "function") {
+            return shouldConstruct(Component6) ? ClassComponent : FunctionComponent;
+          } else if (Component6 !== void 0 && Component6 !== null) {
+            var $$typeof = Component6.$$typeof;
             if ($$typeof === REACT_FORWARD_REF_TYPE) {
               return ForwardRef;
             }
@@ -18800,9 +18800,9 @@ For more info, visit https://fb.me/react-mock-scheduler`);
           var fiber = get(parentComponent);
           var parentContext = findCurrentUnmaskedContext(fiber);
           if (fiber.tag === ClassComponent) {
-            var Component5 = fiber.type;
-            if (isContextProvider(Component5)) {
-              return processChildContext(fiber, Component5, parentContext);
+            var Component6 = fiber.type;
+            if (isContextProvider(Component6)) {
+              return processChildContext(fiber, Component6, parentContext);
             }
           }
           return parentContext;
@@ -19393,37 +19393,33 @@ For more info, visit https://fb.me/react-mock-scheduler`);
   var import_react = __toModule(require_react());
   var Header = () => {
     return /* @__PURE__ */ import_react.default.createElement("header", {
-      class: "snipcart-cart-header"
+      className: "snipcart-cart-header"
     }, /* @__PURE__ */ import_react.default.createElement("button", {
-      class: "snipcart-cart-header__close-button snipcart-modal__close"
+      className: "snipcart-cart-header__close-button snipcart-modal__close"
     }, /* @__PURE__ */ import_react.default.createElement("svg", {
       viewBox: "0 0 64 64",
       fill: "none",
       xmlns: "http://www.w3.org/2000/svg",
-      alt: "",
-      title: "",
-      class: "snipcart-modal__close-icon snipcart__icon--blue-light snipcart__icon"
+      className: "snipcart-modal__close-icon snipcart__icon--blue-light snipcart__icon"
     }, /* @__PURE__ */ import_react.default.createElement("path", {
       d: "M12.636 30.158H58v3.423H12.372l9.148 9.055L19.132 45 6 32l13.132-13 2.388 2.364-8.884 8.794z",
       fill: "#313749"
     })), /* @__PURE__ */ import_react.default.createElement("span", {
-      class: "snipcart-modal__close-title snipcart__font--std"
+      className: "snipcart-modal__close-title snipcart__font--std"
     }, " Continue shopping ")), /* @__PURE__ */ import_react.default.createElement("div", null, /* @__PURE__ */ import_react.default.createElement("h3", {
-      class: "snipcart-cart-header__title snipcart__font--black snipcart__font--secondary"
+      className: "snipcart-cart-header__title snipcart__font--black snipcart__font--secondary"
     }, " Cart summary ")), /* @__PURE__ */ import_react.default.createElement("div", {
-      class: "snipcart-cart-header__options"
+      className: "snipcart-cart-header__options"
     }, /* @__PURE__ */ import_react.default.createElement("button", {
-      class: "snipcart-cart-header__option snipcart-cart-header__count snipcart__font--secondary snipcart__font--bold"
+      className: "snipcart-cart-header__option snipcart-cart-header__count snipcart__font--secondary snipcart__font--bold"
     }, /* @__PURE__ */ import_react.default.createElement("svg", {
       viewBox: "0 0 64 64",
       fill: "none",
       xmlns: "http://www.w3.org/2000/svg",
-      alt: "",
-      title: "",
-      class: "snipcart-cart-header__icon snipcart__icon--blue-dark snipcart__icon"
+      className: "snipcart-cart-header__icon snipcart__icon--blue-dark snipcart__icon"
     }, /* @__PURE__ */ import_react.default.createElement("path", {
-      "fill-rule": "evenodd",
-      "clip-rule": "evenodd",
+      fillRule: "evenodd",
+      clipRule: "evenodd",
       d: "M51.714 20.47L55 60H9l3.286-39.53h9.857v-6.588C22.143 8.424 26.556 4 32 4c5.444 0 9.857 4.424 9.857 9.882v6.589h9.857zM25.43 13.883v16.47h-3.286v-6.587h-6.834l-2.737 32.94h38.856l-2.737-32.94h-6.834v6.588h-3.286v-16.47c0-3.634-2.947-6.589-6.571-6.589-3.624 0-6.571 2.955-6.571 6.588zm3.285 9.883V20.47h6.572v3.294h-6.572z",
       fill: "#313749"
     })), " 3 ")));
@@ -19438,44 +19434,61 @@ For more info, visit https://fb.me/react-mock-scheduler`);
 
   // ns-hugo:/github/workspace/assets/cart/product-quantity.jsx
   var import_react2 = __toModule(require_react());
-  var Quantity = () => {
-    return /* @__PURE__ */ import_react2.default.createElement("div", {
-      class: "snipcart-item-quantity snipcart-item-line__quantity"
-    }, /* @__PURE__ */ import_react2.default.createElement("label", {
-      class: "snipcart-item-quantity__label snipcart__font--tiny"
-    }, "Quantity", " "), /* @__PURE__ */ import_react2.default.createElement("div", {
-      class: "snipcart-item-quantity__quantity-price-container"
-    }, /* @__PURE__ */ import_react2.default.createElement("div", {
-      class: "snipcart-item-quantity__quantity snipcart__font--std"
-    }, /* @__PURE__ */ import_react2.default.createElement("button", {
-      class: "snipcart__button--icon snipcart__button--no-border snipcart-item-quantity__button"
-    }, /* @__PURE__ */ import_react2.default.createElement("svg", {
-      viewBox: "0 0 64 64",
-      fill: "none",
-      xmlns: "http://www.w3.org/2000/svg",
-      alt: "Decrement quantity",
-      title: "Decrement quantity",
-      class: "snipcart__icon"
-    }, /* @__PURE__ */ import_react2.default.createElement("path", {
-      d: "M48 31H16v2.462h32V31z",
-      fill: "#313749"
-    }))), /* @__PURE__ */ import_react2.default.createElement("span", {
-      class: "snipcart__font--secondary snipcart__font--regular"
-    }, "3"), /* @__PURE__ */ import_react2.default.createElement("button", {
-      class: "snipcart__button--icon snipcart__button--no-border snipcart-item-quantity__button"
-    }, /* @__PURE__ */ import_react2.default.createElement("svg", {
-      viewBox: "0 0 64 64",
-      fill: "none",
-      xmlns: "http://www.w3.org/2000/svg",
-      alt: "Increment quantity",
-      title: "Increment quantity",
-      class: "snipcart__icon"
-    }, /* @__PURE__ */ import_react2.default.createElement("path", {
-      d: "M33.23 30.77H48v2.46H33.23V48h-2.46V33.23H16v-2.46h14.77V16h2.46v14.77z",
-      fill: "#313749"
-    })))), /* @__PURE__ */ import_react2.default.createElement("div", {
-      class: "snipcart-item-quantity__total-price snipcart__font--bold snipcart__font--secondary"
-    }, "\u20AC29.85", " ")));
+  var Quantity = class extends import_react2.Component {
+    constructor(props) {
+      super(props);
+      this.state = {
+        quantity: 4,
+        value: 1
+      };
+    }
+    decrease() {
+      this.setState({quantity: this.state.quantity - 1});
+    }
+    increase() {
+      this.setState({quantity: this.state.quantity + 1});
+    }
+    render() {
+      return /* @__PURE__ */ import_react2.default.createElement("div", {
+        className: "snipcart-item-quantity snipcart-item-line__quantity"
+      }, /* @__PURE__ */ import_react2.default.createElement("label", {
+        className: "snipcart-item-quantity__label snipcart__font--tiny"
+      }, "Quantity"), /* @__PURE__ */ import_react2.default.createElement("div", {
+        className: "snipcart-item-quantity__quantity-price-container"
+      }, /* @__PURE__ */ import_react2.default.createElement("div", {
+        className: "snipcart-item-quantity__quantity snipcart__font--std"
+      }, /* @__PURE__ */ import_react2.default.createElement("button", {
+        className: "snipcart__button--icon snipcart__button--no-border snipcart-item-quantity__button",
+        onClick: this.decrease
+      }, /* @__PURE__ */ import_react2.default.createElement("svg", {
+        viewBox: "0 0 64 64",
+        fill: "none",
+        xmlns: "http://www.w3.org/2000/svg",
+        alt: "Decrement quantity",
+        title: "Decrement quantity",
+        className: "snipcart__icon"
+      }, /* @__PURE__ */ import_react2.default.createElement("path", {
+        d: "M48 31H16v2.462h32V31z",
+        fill: "#313749"
+      }))), /* @__PURE__ */ import_react2.default.createElement("span", {
+        className: "snipcart__font--secondary snipcart__font--regular"
+      }, this.state.quantity), /* @__PURE__ */ import_react2.default.createElement("button", {
+        className: "snipcart__button--icon snipcart__button--no-border snipcart-item-quantity__button",
+        onClick: this.increase
+      }, /* @__PURE__ */ import_react2.default.createElement("svg", {
+        viewBox: "0 0 64 64",
+        fill: "none",
+        xmlns: "http://www.w3.org/2000/svg",
+        alt: "Increment quantity",
+        title: "Increment quantity",
+        className: "snipcart__icon"
+      }, /* @__PURE__ */ import_react2.default.createElement("path", {
+        d: "M33.23 30.77H48v2.46H33.23V48h-2.46V33.23H16v-2.46h14.77V16h2.46v14.77z",
+        fill: "#313749"
+      })))), /* @__PURE__ */ import_react2.default.createElement("div", {
+        className: "snipcart-item-quantity__total-price snipcart__font--bold snipcart__font--secondary"
+      }, "\u20AC29.85")));
+    }
   };
   var product_quantity_default = Quantity;
 
@@ -19483,43 +19496,43 @@ For more info, visit https://fb.me/react-mock-scheduler`);
   var import_react3 = __toModule(require_react());
   var Properties = () => {
     return /* @__PURE__ */ import_react3.default.createElement("div", null, /* @__PURE__ */ import_react3.default.createElement("div", {
-      class: "snipcart-item-custom-fields"
+      className: "snipcart-item-custom-fields"
     }, /* @__PURE__ */ import_react3.default.createElement("div", {
-      class: "snipcart-item-custom-fields__field snipcart-dropdown-custom-field--standard snipcart-item-custom-fields--dropdown"
+      className: "snipcart-item-custom-fields__field snipcart-dropdown-custom-field--standard snipcart-item-custom-fields--dropdown"
     }, /* @__PURE__ */ import_react3.default.createElement("label", {
-      for: "Optionally choose a different text color",
-      class: "snipcart-form__label snipcart__font--tiny snipcart-custom-field-wrapper__label"
+      htmlFor: "Optionally choose a different text color",
+      className: "snipcart-form__label snipcart__font--tiny snipcart-custom-field-wrapper__label"
     }, "Optionally choose a different text color"), /* @__PURE__ */ import_react3.default.createElement("div", {
-      class: "snipcart-custom-field-wrapper__input snipcart__font--secondary snipcart__font--std"
+      className: "snipcart-custom-field-wrapper__input snipcart__font--secondary snipcart__font--std"
     }, /* @__PURE__ */ import_react3.default.createElement("select", {
       name: "Optionally choose a different text color",
-      class: "snipcart-dropdown-custom-field snipcart-form__select snipcart__font--secondary snipcart__font--regular"
+      className: "snipcart-dropdown-custom-field snipcart-form__select snipcart__font--secondary snipcart__font--regular"
     }, /* @__PURE__ */ import_react3.default.createElement("option", {
       value: "Default: Black"
-    }, " ", "Default: Black"), /* @__PURE__ */ import_react3.default.createElement("option", {
+    }, "Default: Black"), /* @__PURE__ */ import_react3.default.createElement("option", {
       value: "White"
     }, " White "), /* @__PURE__ */ import_react3.default.createElement("option", {
       value: "Green"
     }, " Green "), /* @__PURE__ */ import_react3.default.createElement("option", {
       value: "Red"
     }, " Red ")))), /* @__PURE__ */ import_react3.default.createElement("div", {
-      class: "snipcart-item-custom-fields__field snipcart-item-custom-fields--textbox"
+      className: "snipcart-item-custom-fields__field snipcart-item-custom-fields--textbox"
     }, /* @__PURE__ */ import_react3.default.createElement("label", {
-      for: "Your pinball initials (3 characters)",
-      class: "snipcart-form__label snipcart__font--tiny snipcart-custom-field-wrapper__label"
-    }, "Your pinball initials (3 characters)", " ", /* @__PURE__ */ import_react3.default.createElement("span", {
-      class: "required__asterisk"
+      htmlFor: "Your pinball initials (3 characters)",
+      className: "snipcart-form__label snipcart__font--tiny snipcart-custom-field-wrapper__label"
+    }, "Your pinball initials (3 characters)", /* @__PURE__ */ import_react3.default.createElement("span", {
+      className: "required__asterisk"
     }, "*")), /* @__PURE__ */ import_react3.default.createElement("div", {
-      class: "snipcart-custom-field-wrapper__input snipcart__font--secondary snipcart__font--std"
+      className: "snipcart-custom-field-wrapper__input snipcart__font--secondary snipcart__font--std"
     }, /* @__PURE__ */ import_react3.default.createElement("div", {
-      class: "snipcart-input",
+      className: "snipcart-input",
       required: "required"
     }, /* @__PURE__ */ import_react3.default.createElement("input", {
       id: "Your pinball initials (3 characters)",
       name: "Your pinball initials (3 characters)",
       type: "text",
       required: "required",
-      class: "snipcart-input__input snipcart__font--secondary snipcart__font--bold",
+      className: "snipcart-input__input snipcart__font--secondary snipcart__font--bold",
       placeholder: ""
     }))))));
   };
@@ -19529,19 +19542,19 @@ For more info, visit https://fb.me/react-mock-scheduler`);
   var import_react4 = __toModule(require_react());
   var Actions = () => {
     return /* @__PURE__ */ import_react4.default.createElement("div", {
-      class: "snipcart-item-line__actions"
+      className: "snipcart-item-line__actions"
     }, /* @__PURE__ */ import_react4.default.createElement("button", {
-      class: "snipcart__button--icon"
+      className: "snipcart__button--icon"
     }, /* @__PURE__ */ import_react4.default.createElement("svg", {
       viewBox: "0 0 64 64",
       fill: "none",
       xmlns: "http://www.w3.org/2000/svg",
       alt: "Remove item",
       title: "Remove item",
-      class: "snipcart__icon--red snipcart__icon"
+      className: "snipcart__icon--red snipcart__icon"
     }, /* @__PURE__ */ import_react4.default.createElement("path", {
-      "fill-rule": "evenodd",
-      "clip-rule": "evenodd",
+      fillRule: "evenodd",
+      cli: "evenodd",
       d: "M22 4v6.47H12v3.236h40V10.47H42V4H22zm3.333 6.47V7.235H38.67v3.235H25.333zm20.001 9.707h3.333V59H15.334V20.177h3.333v35.588h26.667V20.177zm-15 29.116V23.412h3.334v25.881h-3.334z",
       fill: "#313749"
     }))));
@@ -19551,29 +19564,28 @@ For more info, visit https://fb.me/react-mock-scheduler`);
   // ns-hugo:/github/workspace/assets/cart/product.jsx
   var Product = () => {
     return /* @__PURE__ */ import_react5.default.createElement("li", {
-      class: "snipcart-item-line",
-      errors: "function () { [native code] }"
+      className: "snipcart-item-line"
     }, /* @__PURE__ */ import_react5.default.createElement("div", {
-      class: "snipcart-item-line__container"
+      className: "snipcart-item-line__container"
     }, /* @__PURE__ */ import_react5.default.createElement("figure", {
-      class: "snipcart-item-line__media"
+      className: "snipcart-item-line__media"
     }, /* @__PURE__ */ import_react5.default.createElement("img", {
       src: "http://localhost:1313/images/renders/BW1.png",
-      class: "snipcart-item-line__image"
+      className: "snipcart-item-line__image"
     })), /* @__PURE__ */ import_react5.default.createElement("div", {
-      class: "snipcart-item-line__product"
+      className: "snipcart-item-line__product"
     }, /* @__PURE__ */ import_react5.default.createElement("div", {
-      class: "snipcart-item-line__header"
+      className: "snipcart-item-line__header"
     }, /* @__PURE__ */ import_react5.default.createElement("h2", {
-      class: "snipcart-item-line__title snipcart__font--xlarge snipcart__font--secondary snipcart__font--black"
-    }, "Black and White", " "), /* @__PURE__ */ import_react5.default.createElement(product_actions_default, null)), /* @__PURE__ */ import_react5.default.createElement("div", {
-      class: "snipcart-item-line__content"
+      className: "snipcart-item-line__title snipcart__font--xlarge snipcart__font--secondary snipcart__font--black"
+    }, "Black and White"), /* @__PURE__ */ import_react5.default.createElement(product_actions_default, null)), /* @__PURE__ */ import_react5.default.createElement("div", {
+      className: "snipcart-item-line__content"
     }, /* @__PURE__ */ import_react5.default.createElement("div", {
-      class: "snipcart-item-line__body"
+      className: "snipcart-item-line__body"
     }, /* @__PURE__ */ import_react5.default.createElement("div", {
-      class: "snipcart-item-line__info"
+      className: "snipcart-item-line__info"
     }), /* @__PURE__ */ import_react5.default.createElement("div", {
-      class: "snipcart-item-line__variants"
+      className: "snipcart-item-line__variants"
     }, /* @__PURE__ */ import_react5.default.createElement(product_properties_default, null), /* @__PURE__ */ import_react5.default.createElement(product_quantity_default, null)))))));
   };
   var product_default = Product;
@@ -19582,74 +19594,74 @@ For more info, visit https://fb.me/react-mock-scheduler`);
   var import_react6 = __toModule(require_react());
   var Footer = () => {
     return /* @__PURE__ */ import_react6.default.createElement("div", {
-      class: "snipcart-cart__footer"
+      className: "snipcart-cart__footer"
     }, /* @__PURE__ */ import_react6.default.createElement("div", {
-      class: "snipcart-cart__footer-col cart__footer-discount-box snipcart-cart__actions"
+      className: "snipcart-cart__footer-col cart__footer-discount-box snipcart-cart__actions"
     }, /* @__PURE__ */ import_react6.default.createElement("div", {
-      class: "snipcart-discount-box snipcart__font--secondary snipcart-cart__discount-box"
+      className: "snipcart-discount-box snipcart__font--secondary snipcart-cart__discount-box"
     }, /* @__PURE__ */ import_react6.default.createElement("button", {
-      class: "snipcart-discount-box__button snipcart__font--bold"
+      className: "snipcart-discount-box__button snipcart__font--bold"
     }, " Promo code?"))), /* @__PURE__ */ import_react6.default.createElement("div", {
-      class: "snipcart-cart__footer-col"
+      className: "snipcart-cart__footer-col"
     }, /* @__PURE__ */ import_react6.default.createElement("div", {
-      class: "snipcart-cart-summary-fees snipcart-cart-summary-fees--reverse"
+      className: "snipcart-cart-summary-fees snipcart-cart-summary-fees--reverse"
     }, /* @__PURE__ */ import_react6.default.createElement("div", {
-      class: "snipcart-cart-summary-fees__notice snipcart__font--regular"
+      className: "snipcart-cart-summary-fees__notice snipcart__font--regular"
     }, " Shipping and taxes will be calculated at checkout. "), /* @__PURE__ */ import_react6.default.createElement("div", {
-      class: "snipcart-cart-summary-fees"
+      className: "snipcart-cart-summary-fees"
     }, /* @__PURE__ */ import_react6.default.createElement("div", {
-      class: "snipcart-cart-summary-fees__item snipcart-cart-summary-fees__total snipcart__font--bold snipcart__font--secondary"
+      className: "snipcart-cart-summary-fees__item snipcart-cart-summary-fees__total snipcart__font--bold snipcart__font--secondary"
     }, /* @__PURE__ */ import_react6.default.createElement("span", {
-      class: "snipcart-cart-summary-fees__title snipcart-cart-summary-fees__title--highlight snipcart__font--large"
+      className: "snipcart-cart-summary-fees__title snipcart-cart-summary-fees__title--highlight snipcart__font--large"
     }, "Total"), /* @__PURE__ */ import_react6.default.createElement("span", {
-      class: "snipcart-cart-summary-fees__amount snipcart-cart-summary-fees__amount--highlight snipcart__font--large"
+      className: "snipcart-cart-summary-fees__amount snipcart-cart-summary-fees__amount--highlight snipcart__font--large"
     }, "\u20AC29.85")))), /* @__PURE__ */ import_react6.default.createElement("footer", null, /* @__PURE__ */ import_react6.default.createElement("button", {
       type: "button",
-      class: "snipcart-cart-button snipcart__font--bold snipcart__font--secondary snipcart-cart__checkout-button snipcart-cart-button--highlight snipcart__font--large"
+      className: "snipcart-cart-button snipcart__font--bold snipcart__font--secondary snipcart-cart__checkout-button snipcart-cart-button--highlight snipcart__font--large"
     }, /* @__PURE__ */ import_react6.default.createElement("span", {
-      class: "snipcart-cart-button__icon"
+      className: "snipcart-cart-button__icon"
     }), " Checkout ", /* @__PURE__ */ import_react6.default.createElement("svg", {
       viewBox: "0 0 64 64",
       fill: "none",
       xmlns: "http://www.w3.org/2000/svg",
       alt: "",
       title: "",
-      class: "snipcart-cart-button__icon snipcart-cart-button__icon--right snipcart__icon"
+      className: "snipcart-cart-button__icon snipcart-cart-button__icon--right snipcart__icon"
     }, /* @__PURE__ */ import_react6.default.createElement("path", {
       d: "M51.364 30.158H6v3.423h45.628l-9.148 9.055L44.868 45 58 32 44.868 19l-2.388 2.364 8.884 8.794z",
       fill: "#313749"
     })))), /* @__PURE__ */ import_react6.default.createElement("div", {
-      class: "snipcart-cart__featured-payment-methods-container"
+      className: "snipcart-cart__featured-payment-methods-container"
     }, /* @__PURE__ */ import_react6.default.createElement("div", {
-      class: "snipcart-featured-payment-methods"
+      className: "snipcart-featured-payment-methods"
     }, /* @__PURE__ */ import_react6.default.createElement("h3", {
-      class: "snipcart__font--secondary snipcart__font--bold  snipcart-featured-payment-methods__title"
+      className: "snipcart__font--secondary snipcart__font--bold  snipcart-featured-payment-methods__title"
     }, /* @__PURE__ */ import_react6.default.createElement("a", {
       href: "https://snipcart.com/security?utm_source=cart_referral&utm_medium=powered_by&utm_campaign=powered_by_ref&utm_term=onestoppinballshop.com",
       target: "_blank",
       rel: "nofollow noopener",
-      class: "snipcart-featured-payment-methods__link"
+      className: "snipcart-featured-payment-methods__link"
     }, /* @__PURE__ */ import_react6.default.createElement("svg", {
       viewBox: "0 0 64 64",
       fill: "none",
       xmlns: "http://www.w3.org/2000/svg",
       alt: "",
       title: "",
-      class: "snipcart-featured-payment-methods__title-icon snipcart__icon"
+      className: "snipcart-featured-payment-methods__title-icon snipcart__icon"
     }, /* @__PURE__ */ import_react6.default.createElement("path", {
       d: "M16.615 23.765v-4.942C16.615 10.637 23.28 4 31.5 4c8.22 0 14.885 6.637 14.885 14.823v4.942H53V60H10V23.765h6.615zm0 3.294h-3.307v29.647h36.384V27.059H16.615zm13.231 9.882h3.308v9.883h-3.308V36.94zm-9.923-13.176h23.154v-4.942c0-6.367-5.183-11.529-11.577-11.529s-11.577 5.162-11.577 11.53v4.94z",
       fill: "#313749"
     })), " Secured by OneStopPinballShop ")), /* @__PURE__ */ import_react6.default.createElement("ul", {
-      class: "snipcart-featured-payment-methods__list"
+      className: "snipcart-featured-payment-methods__list"
     }, /* @__PURE__ */ import_react6.default.createElement("li", {
-      class: "snipcart-featured-payment-methods__list-item"
+      className: "snipcart-featured-payment-methods__list-item"
     }, /* @__PURE__ */ import_react6.default.createElement("svg", {
       viewBox: "0 0 174 56",
       fill: "none",
       xmlns: "http://www.w3.org/2000/svg",
       alt: "Visa",
       title: "Visa",
-      class: "snipcart__icon--brand snipcart__icon"
+      className: "snipcart__icon--brand snipcart__icon"
     }, /* @__PURE__ */ import_react6.default.createElement("path", {
       d: "M74.98 55.192H60.965L69.73.982h14.016l-8.766 54.21zM125.793 2.308C123.028 1.21 118.643 0 113.221 0c-13.842 0-23.59 7.381-23.65 17.934-.114 7.786 6.98 12.111 12.285 14.707 5.423 2.653 7.267 4.385 7.267 6.75-.056 3.63-4.382 5.305-8.418 5.305-5.596 0-8.595-.863-13.151-2.884l-1.846-.866-1.962 12.169c3.288 1.498 9.345 2.827 15.633 2.885 14.707 0 24.282-7.267 24.396-18.513.056-6.171-3.69-10.9-11.766-14.764-4.902-2.48-7.905-4.152-7.905-6.69.058-2.307 2.54-4.67 8.074-4.67 4.557-.116 7.905.98 10.441 2.075l1.268.576 1.906-11.706zM144.423 35.988c1.154-3.114 5.596-15.168 5.596-15.168-.058.116 1.152-3.171 1.844-5.19l.98 4.672s2.654 12.976 3.23 15.686h-11.65zM161.725.983h-10.842c-3.344 0-5.884.98-7.326 4.498l-20.821 49.71h14.708l2.942-8.131h17.996a2177.47 2177.47 0 011.673 8.132h12.978L161.725.982zM49.257.983L35.529 37.949l-1.5-7.497C31.491 21.8 23.532 12.401 14.65 7.729l12.574 47.406h14.822L64.078.983H49.256z",
       fill: "#00579F"
@@ -19657,14 +19669,14 @@ For more info, visit https://fb.me/react-mock-scheduler`);
       d: "M22.782.983H.232L0 2.078C17.592 6.577 29.242 17.42 34.03 30.454L29.126 5.54c-.807-3.463-3.288-4.443-6.345-4.557z",
       fill: "#FAA61A"
     }))), /* @__PURE__ */ import_react6.default.createElement("li", {
-      class: "snipcart-featured-payment-methods__list-item"
+      className: "snipcart-featured-payment-methods__list-item"
     }, /* @__PURE__ */ import_react6.default.createElement("svg", {
       viewBox: "0 0 104 64",
       fill: "none",
       xmlns: "http://www.w3.org/2000/svg",
       alt: "Mastercard",
       title: "Mastercard",
-      class: "snipcart__icon--brand snipcart__icon"
+      className: "snipcart__icon--brand snipcart__icon"
     }, /* @__PURE__ */ import_react6.default.createElement("path", {
       d: "M67.173 6.842H36.37v50.31h30.803V6.842z",
       fill: "#FF5F00"
@@ -19681,11 +19693,11 @@ For more info, visit https://fb.me/react-mock-scheduler`);
   // ns-hugo:/github/workspace/assets/cart/content.jsx
   var Content = () => {
     return /* @__PURE__ */ import_react7.default.createElement("div", {
-      class: "snipcart-layout__content"
+      className: "snipcart-layout__content"
     }, /* @__PURE__ */ import_react7.default.createElement("section", {
-      class: "snipcart-cart__content"
+      className: "snipcart-cart__content"
     }, /* @__PURE__ */ import_react7.default.createElement("ul", {
-      class: "snipcart-item-list snipcart-item-list--no-shadow"
+      className: "snipcart-item-list snipcart-item-list--no-shadow"
     }, /* @__PURE__ */ import_react7.default.createElement(product_default, null)), /* @__PURE__ */ import_react7.default.createElement(footer_default, null)));
   };
   var content_default = Content;
@@ -19696,11 +19708,11 @@ For more info, visit https://fb.me/react-mock-scheduler`);
     render() {
       return /* @__PURE__ */ import_react8.default.createElement("div", {
         id: "snipcart",
-        class: "snipcart"
+        className: "snipcart"
       }, /* @__PURE__ */ import_react8.default.createElement("div", {
-        class: "snipcart-modal__container"
+        className: "snipcart-modal__container"
       }, /* @__PURE__ */ import_react8.default.createElement("div", {
-        class: "snipcart-layout snipcart-modal"
+        className: "snipcart-layout snipcart-modal"
       }, /* @__PURE__ */ import_react8.default.createElement(header_default, null), /* @__PURE__ */ import_react8.default.createElement(content_default, null))));
     }
   };
@@ -19738,17 +19750,7 @@ For more info, visit https://fb.me/react-mock-scheduler`);
     render() {
       return /* @__PURE__ */ import_react9.default.createElement("div", {
         className: "myCart"
-      }, /* @__PURE__ */ import_react9.default.createElement(Welcome, {
-        name: "blaa",
-        avatar: "https://jurjan.info/img/jurjan.png",
-        gender: "male",
-        house: this.state.house
-      }), /* @__PURE__ */ import_react9.default.createElement(Welcome, {
-        name: "Sara3",
-        avatar: "",
-        gender: "female",
-        house: this.state.house
-      }), /* @__PURE__ */ import_react9.default.createElement(cart_default, null));
+      }, /* @__PURE__ */ import_react9.default.createElement(cart_default, null));
     }
   };
   var App_default = App;
