@@ -6,14 +6,8 @@
   var __getOwnPropNames = Object.getOwnPropertyNames;
   var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
   var __markAsModule = (target) => __defProp(target, "__esModule", {value: true});
-  var __commonJS = (callback, module) => () => {
-    if (!module) {
-      module = {exports: {}};
-      callback(module.exports, module);
-    }
-    return module.exports;
-  };
-  var __exportStar = (target, module, desc) => {
+  var __commonJS = (cb, mod) => () => (mod || cb((mod = {exports: {}}).exports, mod), mod.exports);
+  var __reExport = (target, module, desc) => {
     if (module && typeof module === "object" || typeof module === "function") {
       for (let key of __getOwnPropNames(module))
         if (!__hasOwnProp.call(target, key) && key !== "default")
@@ -22,16 +16,11 @@
     return target;
   };
   var __toModule = (module) => {
-    return __exportStar(__markAsModule(__defProp(module != null ? __create(__getProtoOf(module)) : {}, "default", module && module.__esModule && "default" in module ? {get: () => module.default, enumerable: true} : {value: module, enumerable: true})), module);
+    return __reExport(__markAsModule(__defProp(module != null ? __create(__getProtoOf(module)) : {}, "default", module && module.__esModule && "default" in module ? {get: () => module.default, enumerable: true} : {value: module, enumerable: true})), module);
   };
 
   // node_modules/object-assign/index.js
   var require_object_assign = __commonJS((exports, module) => {
-    /*
-    object-assign
-    (c) Sindre Sorhus
-    @license MIT
-    */
     "use strict";
     var getOwnPropertySymbols = Object.getOwnPropertySymbols;
     var hasOwnProperty = Object.prototype.hasOwnProperty;
@@ -165,14 +154,6 @@
 
   // node_modules/react/cjs/react.development.js
   var require_react_development = __commonJS((exports) => {
-    /** @license React v16.14.0
-     * react.development.js
-     *
-     * Copyright (c) Facebook, Inc. and its affiliates.
-     *
-     * This source code is licensed under the MIT license found in the
-     * LICENSE file in the root directory of this source tree.
-     */
     "use strict";
     if (true) {
       (function() {
@@ -1393,14 +1374,6 @@
 
   // node_modules/scheduler/cjs/scheduler.development.js
   var require_scheduler_development = __commonJS((exports) => {
-    /** @license React v0.19.1
-     * scheduler.development.js
-     *
-     * Copyright (c) Facebook, Inc. and its affiliates.
-     *
-     * This source code is licensed under the MIT license found in the
-     * LICENSE file in the root directory of this source tree.
-     */
     "use strict";
     if (true) {
       (function() {
@@ -2062,14 +2035,6 @@
 
   // node_modules/scheduler/cjs/scheduler-tracing.development.js
   var require_scheduler_tracing_development = __commonJS((exports) => {
-    /** @license React v0.19.1
-     * scheduler-tracing.development.js
-     *
-     * Copyright (c) Facebook, Inc. and its affiliates.
-     *
-     * This source code is licensed under the MIT license found in the
-     * LICENSE file in the root directory of this source tree.
-     */
     "use strict";
     if (true) {
       (function() {
@@ -2360,14 +2325,6 @@
 
   // node_modules/react-dom/cjs/react-dom.development.js
   var require_react_dom_development = __commonJS((exports) => {
-    /** @license React v16.14.0
-     * react-dom.development.js
-     *
-     * Copyright (c) Facebook, Inc. and its affiliates.
-     *
-     * This source code is licensed under the MIT license found in the
-     * LICENSE file in the root directory of this source tree.
-     */
     "use strict";
     if (true) {
       (function() {
@@ -4565,19 +4522,6 @@
           }
           return target.nodeType === TEXT_NODE ? target.parentNode : target;
         }
-        /**
-         * Checks if an event is supported in the current execution environment.
-         *
-         * NOTE: This will not work correctly for non-generic events such as `change`,
-         * `reset`, `load`, `error`, and `select`.
-         *
-         * Borrows from Modernizr.
-         *
-         * @param {string} eventNameSuffix Event name, e.g. "click".
-         * @return {boolean} True if the event is supported.
-         * @internal
-         * @license Modernizr 3.0.0pre (Custom Build) | MIT
-         */
         function isEventSupported(eventNameSuffix) {
           if (!canUseDOM) {
             return false;
@@ -19758,3 +19702,53 @@ For more info, visit https://fb.me/react-mock-scheduler`);
   // <stdin>
   import_react_dom.default.render(/* @__PURE__ */ import_react10.default.createElement(App_default, null), document.getElementById("react"));
 })();
+/*
+object-assign
+(c) Sindre Sorhus
+@license MIT
+*/
+/**
+ * Checks if an event is supported in the current execution environment.
+ *
+ * NOTE: This will not work correctly for non-generic events such as `change`,
+ * `reset`, `load`, `error`, and `select`.
+ *
+ * Borrows from Modernizr.
+ *
+ * @param {string} eventNameSuffix Event name, e.g. "click".
+ * @return {boolean} True if the event is supported.
+ * @internal
+ * @license Modernizr 3.0.0pre (Custom Build) | MIT
+ */
+/** @license React v0.19.1
+ * scheduler-tracing.development.js
+ *
+ * Copyright (c) Facebook, Inc. and its affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+/** @license React v0.19.1
+ * scheduler.development.js
+ *
+ * Copyright (c) Facebook, Inc. and its affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+/** @license React v16.14.0
+ * react-dom.development.js
+ *
+ * Copyright (c) Facebook, Inc. and its affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+/** @license React v16.14.0
+ * react.development.js
+ *
+ * Copyright (c) Facebook, Inc. and its affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
