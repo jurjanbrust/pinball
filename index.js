@@ -45,8 +45,8 @@
         for (var i = 0; i < 10; i++) {
           test2["_" + String.fromCharCode(i)] = i;
         }
-        var order2 = Object.getOwnPropertyNames(test2).map(function(n) {
-          return test2[n];
+        var order2 = Object.getOwnPropertyNames(test2).map(function(n2) {
+          return test2[n2];
         });
         if (order2.join("") !== "0123456789") {
           return false;
@@ -110,7 +110,7 @@
         }
         try {
           throw new Error(message);
-        } catch (x) {
+        } catch (x4) {
         }
       };
     }
@@ -362,7 +362,7 @@
                 return args[argIndex++];
               });
               throw new Error(message);
-            } catch (x) {
+            } catch (x4) {
             }
           }
         }
@@ -397,14 +397,14 @@
         {
           Object.freeze(emptyObject);
         }
-        function Component6(props, context, updater) {
+        function Component(props, context, updater) {
           this.props = props;
           this.context = context;
           this.refs = emptyObject;
           this.updater = updater || ReactNoopUpdateQueue;
         }
-        Component6.prototype.isReactComponent = {};
-        Component6.prototype.setState = function(partialState, callback) {
+        Component.prototype.isReactComponent = {};
+        Component.prototype.setState = function(partialState, callback) {
           if (!(typeof partialState === "object" || typeof partialState === "function" || partialState == null)) {
             {
               throw Error("setState(...): takes an object of state variables to update or a function which returns an object of state variables.");
@@ -412,7 +412,7 @@
           }
           this.updater.enqueueSetState(this, partialState, callback, "setState");
         };
-        Component6.prototype.forceUpdate = function(callback) {
+        Component.prototype.forceUpdate = function(callback) {
           this.updater.enqueueForceUpdate(this, callback, "forceUpdate");
         };
         {
@@ -421,7 +421,7 @@
             replaceState: ["replaceState", "Refactor your code to use setState instead (see https://github.com/facebook/react/issues/3236)."]
           };
           var defineDeprecationWarning = function(methodName, info) {
-            Object.defineProperty(Component6.prototype, methodName, {
+            Object.defineProperty(Component.prototype, methodName, {
               get: function() {
                 warn("%s(...) is deprecated in plain JavaScript React classes. %s", info[0], info[1]);
                 return void 0;
@@ -436,7 +436,7 @@
         }
         function ComponentDummy() {
         }
-        ComponentDummy.prototype = Component6.prototype;
+        ComponentDummy.prototype = Component.prototype;
         function PureComponent(props, context, updater) {
           this.props = props;
           this.context = context;
@@ -445,7 +445,7 @@
         }
         var pureComponentPrototype = PureComponent.prototype = new ComponentDummy();
         pureComponentPrototype.constructor = PureComponent;
-        _assign(pureComponentPrototype, Component6.prototype);
+        _assign(pureComponentPrototype, Component.prototype);
         pureComponentPrototype.isPureReactComponent = true;
         function createRef() {
           var refObject = {
@@ -566,7 +566,7 @@
           }
           return element;
         };
-        function createElement(type, config, children) {
+        function createElement3(type, config, children) {
           var propName;
           var props = {};
           var key = null;
@@ -678,7 +678,7 @@
           }
           return ReactElement(element.type, key, ref, self, source, owner, props);
         }
-        function isValidElement(object) {
+        function isValidElement2(object) {
           return typeof object === "object" && object !== null && object.$$typeof === REACT_ELEMENT_TYPE;
         }
         var SEPARATOR = ".";
@@ -832,7 +832,7 @@
               return c;
             });
           } else if (mappedChild != null) {
-            if (isValidElement(mappedChild)) {
+            if (isValidElement2(mappedChild)) {
               mappedChild = cloneAndReplaceKey(mappedChild, keyPrefix + (mappedChild.key && (!child || child.key !== mappedChild.key) ? escapeUserProvidedKey(mappedChild.key) + "/" : "") + childKey);
             }
             result.push(mappedChild);
@@ -868,7 +868,7 @@
           return result;
         }
         function onlyChild(children) {
-          if (!isValidElement(children)) {
+          if (!isValidElement2(children)) {
             {
               throw Error("React.Children.only expected to receive a single React element child.");
             }
@@ -1002,7 +1002,7 @@
           }
           return lazyType;
         }
-        function forwardRef(render) {
+        function forwardRef2(render) {
           {
             if (render != null && render.$$typeof === REACT_MEMO_TYPE) {
               error("forwardRef requires a render function but received a `memo` component. Instead of forwardRef(memo(...)), use memo(forwardRef(...)).");
@@ -1048,7 +1048,7 @@
           }
           return dispatcher;
         }
-        function useContext(Context, unstable_observedBits) {
+        function useContext2(Context, unstable_observedBits) {
           var dispatcher = resolveDispatcher();
           {
             if (unstable_observedBits !== void 0) {
@@ -1065,31 +1065,31 @@
           }
           return dispatcher.useContext(Context, unstable_observedBits);
         }
-        function useState(initialState) {
+        function useState7(initialState) {
           var dispatcher = resolveDispatcher();
           return dispatcher.useState(initialState);
         }
-        function useReducer(reducer, initialArg, init) {
+        function useReducer3(reducer, initialArg, init) {
           var dispatcher = resolveDispatcher();
           return dispatcher.useReducer(reducer, initialArg, init);
         }
-        function useRef(initialValue) {
+        function useRef3(initialValue) {
           var dispatcher = resolveDispatcher();
           return dispatcher.useRef(initialValue);
         }
-        function useEffect(create, deps) {
+        function useEffect4(create, deps) {
           var dispatcher = resolveDispatcher();
           return dispatcher.useEffect(create, deps);
         }
-        function useLayoutEffect(create, deps) {
+        function useLayoutEffect3(create, deps) {
           var dispatcher = resolveDispatcher();
           return dispatcher.useLayoutEffect(create, deps);
         }
-        function useCallback(callback, deps) {
+        function useCallback3(callback, deps) {
           var dispatcher = resolveDispatcher();
           return dispatcher.useCallback(callback, deps);
         }
-        function useMemo(create, deps) {
+        function useMemo3(create, deps) {
           var dispatcher = resolveDispatcher();
           return dispatcher.useMemo(create, deps);
         }
@@ -1168,11 +1168,11 @@
           if (Array.isArray(node)) {
             for (var i = 0; i < node.length; i++) {
               var child = node[i];
-              if (isValidElement(child)) {
+              if (isValidElement2(child)) {
                 validateExplicitKey(child, parentType);
               }
             }
-          } else if (isValidElement(node)) {
+          } else if (isValidElement2(node)) {
             if (node._store) {
               node._store.validated = true;
             }
@@ -1183,7 +1183,7 @@
                 var iterator = iteratorFn.call(node);
                 var step;
                 while (!(step = iterator.next()).done) {
-                  if (isValidElement(step.value)) {
+                  if (isValidElement2(step.value)) {
                     validateExplicitKey(step.value, parentType);
                   }
                 }
@@ -1264,7 +1264,7 @@
               error("React.createElement: type is invalid -- expected a string (for built-in components) or a class/function (for composite components) but got: %s.%s", typeString, info);
             }
           }
-          var element = createElement.apply(this, arguments);
+          var element = createElement3.apply(this, arguments);
           if (element == null) {
             return element;
           }
@@ -1323,15 +1323,15 @@
         var createElement$1 = createElementWithValidation;
         var cloneElement$1 = cloneElementWithValidation;
         var createFactory = createFactoryWithValidation;
-        var Children = {
+        var Children2 = {
           map: mapChildren,
           forEach: forEachChildren,
           count: countChildren,
           toArray,
           only: onlyChild
         };
-        exports.Children = Children;
-        exports.Component = Component6;
+        exports.Children = Children2;
+        exports.Component = Component;
         exports.Fragment = REACT_FRAGMENT_TYPE;
         exports.Profiler = REACT_PROFILER_TYPE;
         exports.PureComponent = PureComponent;
@@ -1343,20 +1343,20 @@
         exports.createElement = createElement$1;
         exports.createFactory = createFactory;
         exports.createRef = createRef;
-        exports.forwardRef = forwardRef;
-        exports.isValidElement = isValidElement;
+        exports.forwardRef = forwardRef2;
+        exports.isValidElement = isValidElement2;
         exports.lazy = lazy;
         exports.memo = memo;
-        exports.useCallback = useCallback;
-        exports.useContext = useContext;
+        exports.useCallback = useCallback3;
+        exports.useContext = useContext2;
         exports.useDebugValue = useDebugValue;
-        exports.useEffect = useEffect;
+        exports.useEffect = useEffect4;
         exports.useImperativeHandle = useImperativeHandle;
-        exports.useLayoutEffect = useLayoutEffect;
-        exports.useMemo = useMemo;
-        exports.useReducer = useReducer;
-        exports.useRef = useRef;
-        exports.useState = useState;
+        exports.useLayoutEffect = useLayoutEffect3;
+        exports.useMemo = useMemo3;
+        exports.useReducer = useReducer3;
+        exports.useRef = useRef3;
+        exports.useState = useState7;
         exports.version = ReactVersion;
       })();
     }
@@ -2329,12 +2329,12 @@
     if (true) {
       (function() {
         "use strict";
-        var React11 = require_react();
+        var React38 = require_react();
         var _assign = require_object_assign();
         var Scheduler = require_scheduler();
         var checkPropTypes = require_checkPropTypes();
         var tracing = require_tracing();
-        var ReactSharedInternals = React11.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
+        var ReactSharedInternals = React38.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
         if (!ReactSharedInternals.hasOwnProperty("ReactCurrentDispatcher")) {
           ReactSharedInternals.ReactCurrentDispatcher = {
             current: null
@@ -2383,16 +2383,16 @@
                 return args[argIndex++];
               });
               throw new Error(message);
-            } catch (x) {
+            } catch (x4) {
             }
           }
         }
-        if (!React11) {
+        if (!React38) {
           {
             throw Error("ReactDOM was loaded before React. Make sure you load the React package before loading ReactDOM.");
           }
         }
-        var invokeGuardedCallbackImpl = function(name, func, context, a, b, c, d, e, f) {
+        var invokeGuardedCallbackImpl = function(name, func, context, a, b, c, d, e, f2) {
           var funcArgs = Array.prototype.slice.call(arguments, 3);
           try {
             func.apply(context, funcArgs);
@@ -2403,7 +2403,7 @@
         {
           if (typeof window !== "undefined" && typeof window.dispatchEvent === "function" && typeof document !== "undefined" && typeof document.createEvent === "function") {
             var fakeNode = document.createElement("react");
-            var invokeGuardedCallbackDev = function(name, func, context, a, b, c, d, e, f) {
+            var invokeGuardedCallbackDev = function(name, func, context, a, b, c, d, e, f2) {
               if (!(typeof document !== "undefined")) {
                 {
                   throw Error("The `document` global was defined when React was initialized, but is not defined anymore. This can happen in a test environment if a component schedules an update from an asynchronous callback, but the test has already finished running. To solve this, you can either unmount the component at the end of your test (and ensure that any asynchronous operations get canceled in `componentWillUnmount`), or you can change the test itself to be asynchronous.");
@@ -2472,12 +2472,12 @@
             caughtError = error2;
           }
         };
-        function invokeGuardedCallback(name, func, context, a, b, c, d, e, f) {
+        function invokeGuardedCallback(name, func, context, a, b, c, d, e, f2) {
           hasError = false;
           caughtError = null;
           invokeGuardedCallbackImpl$1.apply(reporter, arguments);
         }
-        function invokeGuardedCallbackAndCatchFirstError(name, func, context, a, b, c, d, e, f) {
+        function invokeGuardedCallbackAndCatchFirstError(name, func, context, a, b, c, d, e, f2) {
           invokeGuardedCallback.apply(this, arguments);
           if (hasError) {
             var error2 = clearCaughtError();
@@ -2571,7 +2571,7 @@
         var HostPortal = 4;
         var HostComponent = 5;
         var HostText = 6;
-        var Fragment = 7;
+        var Fragment2 = 7;
         var Mode = 8;
         var ContextConsumer = 9;
         var ContextProvider = 10;
@@ -3378,7 +3378,7 @@
             case HostRoot:
             case HostPortal:
             case HostText:
-            case Fragment:
+            case Fragment2:
             case ContextProvider:
             case ContextConsumer:
               return "";
@@ -3732,7 +3732,7 @@
         var didWarnInvalidChild = false;
         function flattenChildren(children) {
           var content = "";
-          React11.Children.forEach(children, function(child) {
+          React38.Children.forEach(children, function(child) {
             if (child == null) {
               return;
             }
@@ -3743,7 +3743,7 @@
         function validateProps(element, props) {
           {
             if (typeof props.children === "object" && props.children !== null) {
-              React11.Children.forEach(props.children, function(child) {
+              React38.Children.forEach(props.children, function(child) {
                 if (child == null) {
                   return;
                 }
@@ -6316,7 +6316,7 @@
             }
           }
         }
-        function createElement(type, props, rootContainerElement, parentNamespace) {
+        function createElement3(type, props, rootContainerElement, parentNamespace) {
           var isCustomComponentTag;
           var ownerDocument = getOwnerDocumentFromRootContainer(rootContainerElement);
           var domElement;
@@ -7446,7 +7446,7 @@
             }
             parentNamespace = hostContextDev.namespace;
           }
-          var domElement = createElement(type, props, rootContainerInstance, parentNamespace);
+          var domElement = createElement3(type, props, rootContainerInstance, parentNamespace);
           precacheFiberNode(internalInstanceHandle, domElement);
           updateFiberProps(domElement, props);
           return domElement;
@@ -8118,10 +8118,10 @@
         SyntheticEvent.Interface = EventInterface;
         SyntheticEvent.extend = function(Interface) {
           var Super = this;
-          var E = function() {
+          var E3 = function() {
           };
-          E.prototype = Super.prototype;
-          var prototype = new E();
+          E3.prototype = Super.prototype;
+          var prototype = new E3();
           function Class() {
             return Super.apply(this, arguments);
           }
@@ -8716,8 +8716,8 @@
             return [leave, enter];
           }
         };
-        function is(x, y) {
-          return x === y && (x !== 0 || 1 / x === 1 / y) || x !== x && y !== y;
+        function is(x4, y4) {
+          return x4 === y4 && (x4 !== 0 || 1 / x4 === 1 / y4) || x4 !== x4 && y4 !== y4;
         }
         var objectIs = typeof Object.is === "function" ? Object.is : is;
         var hasOwnProperty$2 = Object.prototype.hasOwnProperty;
@@ -9176,7 +9176,7 @@
             case HostComponent:
             case HostText:
             case HostPortal:
-            case Fragment:
+            case Fragment2:
             case ContextProvider:
             case ContextConsumer:
             case Mode:
@@ -9472,9 +9472,9 @@
         var contextStackCursor = createCursor(emptyContextObject);
         var didPerformWorkStackCursor = createCursor(false);
         var previousContext = emptyContextObject;
-        function getUnmaskedContext(workInProgress2, Component6, didPushOwnContextIfProvider) {
+        function getUnmaskedContext(workInProgress2, Component, didPushOwnContextIfProvider) {
           {
-            if (didPushOwnContextIfProvider && isContextProvider(Component6)) {
+            if (didPushOwnContextIfProvider && isContextProvider(Component)) {
               return previousContext;
             }
             return contextStackCursor.current;
@@ -9622,8 +9622,8 @@
                 case HostRoot:
                   return node.stateNode.context;
                 case ClassComponent: {
-                  var Component6 = node.type;
-                  if (isContextProvider(Component6)) {
+                  var Component = node.type;
+                  if (isContextProvider(Component)) {
                     return node.stateNode.__reactInternalMemoizedMergedChildContext;
                   }
                   break;
@@ -10285,10 +10285,10 @@
           }
           return false;
         }
-        function resolveDefaultProps(Component6, baseProps) {
-          if (Component6 && Component6.defaultProps) {
+        function resolveDefaultProps(Component, baseProps) {
+          if (Component && Component.defaultProps) {
             var props = _assign({}, baseProps);
-            var defaultProps = Component6.defaultProps;
+            var defaultProps = Component.defaultProps;
             for (var propName in defaultProps) {
               if (props[propName] === void 0) {
                 props[propName] = defaultProps[propName];
@@ -10777,7 +10777,7 @@
         }
         var fakeInternalInstance = {};
         var isArray = Array.isArray;
-        var emptyRefsObject = new React11.Component().refs;
+        var emptyRefsObject = new React38.Component().refs;
         var didWarnAboutStateAssignmentForComponent;
         var didWarnAboutUninitializedState;
         var didWarnAboutGetSnapshotBeforeUpdateWithoutDidUpdate;
@@ -11553,7 +11553,7 @@
             }
           }
           function updateFragment2(returnFiber, current2, fragment, expirationTime, key) {
-            if (current2 === null || current2.tag !== Fragment) {
+            if (current2 === null || current2.tag !== Fragment2) {
               var created = createFiberFromFragment(fragment, returnFiber.mode, expirationTime, key);
               created.return = returnFiber;
               return created;
@@ -11921,7 +11921,7 @@
             while (child !== null) {
               if (child.key === key) {
                 switch (child.tag) {
-                  case Fragment: {
+                  case Fragment2: {
                     if (element.type === REACT_FRAGMENT_TYPE) {
                       deleteRemainingChildren(returnFiber, child.sibling);
                       var existing = useFiber(child, element.props.children);
@@ -12033,10 +12033,10 @@
                   }
                 }
                 case FunctionComponent: {
-                  var Component6 = returnFiber.type;
+                  var Component = returnFiber.type;
                   {
                     {
-                      throw Error((Component6.displayName || Component6.name || "Component") + "(...): Nothing was returned from render. This usually means a return statement is missing. Or, to render nothing, return null.");
+                      throw Error((Component.displayName || Component.name || "Component") + "(...): Nothing was returned from render. This usually means a return statement is missing. Or, to render nothing, return null.");
                     }
                   }
                 }
@@ -12314,7 +12314,7 @@
           }
           return true;
         }
-        function renderWithHooks(current2, workInProgress2, Component6, props, secondArg, nextRenderExpirationTime) {
+        function renderWithHooks(current2, workInProgress2, Component, props, secondArg, nextRenderExpirationTime) {
           renderExpirationTime = nextRenderExpirationTime;
           currentlyRenderingFiber$1 = workInProgress2;
           {
@@ -12334,7 +12334,7 @@
               ReactCurrentDispatcher.current = HooksDispatcherOnMountInDEV;
             }
           }
-          var children = Component6(props, secondArg);
+          var children = Component(props, secondArg);
           if (workInProgress2.expirationTime === renderExpirationTime) {
             var numberOfReRenders = 0;
             do {
@@ -12355,7 +12355,7 @@
                 hookTypesUpdateIndexDev = -1;
               }
               ReactCurrentDispatcher.current = HooksDispatcherOnRerenderInDEV;
-              children = Component6(props, secondArg);
+              children = Component(props, secondArg);
             } while (workInProgress2.expirationTime === renderExpirationTime);
           }
           ReactCurrentDispatcher.current = ContextOnlyDispatcher;
@@ -13912,16 +13912,16 @@
           workInProgress2.child = reconcileChildFibers(workInProgress2, current2.child, null, renderExpirationTime2);
           workInProgress2.child = reconcileChildFibers(workInProgress2, null, nextChildren, renderExpirationTime2);
         }
-        function updateForwardRef(current2, workInProgress2, Component6, nextProps, renderExpirationTime2) {
+        function updateForwardRef(current2, workInProgress2, Component, nextProps, renderExpirationTime2) {
           {
             if (workInProgress2.type !== workInProgress2.elementType) {
-              var innerPropTypes = Component6.propTypes;
+              var innerPropTypes = Component.propTypes;
               if (innerPropTypes) {
-                checkPropTypes(innerPropTypes, nextProps, "prop", getComponentName(Component6), getCurrentFiberStackInDev);
+                checkPropTypes(innerPropTypes, nextProps, "prop", getComponentName(Component), getCurrentFiberStackInDev);
               }
             }
           }
-          var render2 = Component6.render;
+          var render2 = Component.render;
           var ref = workInProgress2.ref;
           var nextChildren;
           prepareToReadContext(workInProgress2, renderExpirationTime2);
@@ -13944,10 +13944,10 @@
           reconcileChildren(current2, workInProgress2, nextChildren, renderExpirationTime2);
           return workInProgress2.child;
         }
-        function updateMemoComponent(current2, workInProgress2, Component6, nextProps, updateExpirationTime, renderExpirationTime2) {
+        function updateMemoComponent(current2, workInProgress2, Component, nextProps, updateExpirationTime, renderExpirationTime2) {
           if (current2 === null) {
-            var type = Component6.type;
-            if (isSimpleFunctionComponent(type) && Component6.compare === null && Component6.defaultProps === void 0) {
+            var type = Component.type;
+            if (isSimpleFunctionComponent(type) && Component.compare === null && Component.defaultProps === void 0) {
               var resolvedType = type;
               {
                 resolvedType = resolveFunctionForHotReloading(type);
@@ -13965,14 +13965,14 @@
                 checkPropTypes(innerPropTypes, nextProps, "prop", getComponentName(type), getCurrentFiberStackInDev);
               }
             }
-            var child = createFiberFromTypeAndProps(Component6.type, null, nextProps, null, workInProgress2.mode, renderExpirationTime2);
+            var child = createFiberFromTypeAndProps(Component.type, null, nextProps, null, workInProgress2.mode, renderExpirationTime2);
             child.ref = workInProgress2.ref;
             child.return = workInProgress2;
             workInProgress2.child = child;
             return child;
           }
           {
-            var _type = Component6.type;
+            var _type = Component.type;
             var _innerPropTypes = _type.propTypes;
             if (_innerPropTypes) {
               checkPropTypes(_innerPropTypes, nextProps, "prop", getComponentName(_type), getCurrentFiberStackInDev);
@@ -13981,7 +13981,7 @@
           var currentChild = current2.child;
           if (updateExpirationTime < renderExpirationTime2) {
             var prevProps = currentChild.memoizedProps;
-            var compare = Component6.compare;
+            var compare = Component.compare;
             compare = compare !== null ? compare : shallowEqual;
             if (compare(prevProps, nextProps) && current2.ref === workInProgress2.ref) {
               return bailoutOnAlreadyFinishedWork(current2, workInProgress2, renderExpirationTime2);
@@ -13994,7 +13994,7 @@
           workInProgress2.child = newChild;
           return newChild;
         }
-        function updateSimpleMemoComponent(current2, workInProgress2, Component6, nextProps, updateExpirationTime, renderExpirationTime2) {
+        function updateSimpleMemoComponent(current2, workInProgress2, Component, nextProps, updateExpirationTime, renderExpirationTime2) {
           {
             if (workInProgress2.type !== workInProgress2.elementType) {
               var outerMemoType = workInProgress2.elementType;
@@ -14017,7 +14017,7 @@
               }
             }
           }
-          return updateFunctionComponent(current2, workInProgress2, Component6, nextProps, renderExpirationTime2);
+          return updateFunctionComponent(current2, workInProgress2, Component, nextProps, renderExpirationTime2);
         }
         function updateFragment(current2, workInProgress2, renderExpirationTime2) {
           var nextChildren = workInProgress2.pendingProps;
@@ -14044,18 +14044,18 @@
             workInProgress2.effectTag |= Ref;
           }
         }
-        function updateFunctionComponent(current2, workInProgress2, Component6, nextProps, renderExpirationTime2) {
+        function updateFunctionComponent(current2, workInProgress2, Component, nextProps, renderExpirationTime2) {
           {
             if (workInProgress2.type !== workInProgress2.elementType) {
-              var innerPropTypes = Component6.propTypes;
+              var innerPropTypes = Component.propTypes;
               if (innerPropTypes) {
-                checkPropTypes(innerPropTypes, nextProps, "prop", getComponentName(Component6), getCurrentFiberStackInDev);
+                checkPropTypes(innerPropTypes, nextProps, "prop", getComponentName(Component), getCurrentFiberStackInDev);
               }
             }
           }
           var context;
           {
-            var unmaskedContext = getUnmaskedContext(workInProgress2, Component6, true);
+            var unmaskedContext = getUnmaskedContext(workInProgress2, Component, true);
             context = getMaskedContext(workInProgress2, unmaskedContext);
           }
           var nextChildren;
@@ -14063,10 +14063,10 @@
           {
             ReactCurrentOwner$1.current = workInProgress2;
             setIsRendering(true);
-            nextChildren = renderWithHooks(current2, workInProgress2, Component6, nextProps, context, renderExpirationTime2);
+            nextChildren = renderWithHooks(current2, workInProgress2, Component, nextProps, context, renderExpirationTime2);
             if (workInProgress2.mode & StrictMode) {
               if (workInProgress2.memoizedState !== null) {
-                nextChildren = renderWithHooks(current2, workInProgress2, Component6, nextProps, context, renderExpirationTime2);
+                nextChildren = renderWithHooks(current2, workInProgress2, Component, nextProps, context, renderExpirationTime2);
               }
             }
             setIsRendering(false);
@@ -14079,17 +14079,17 @@
           reconcileChildren(current2, workInProgress2, nextChildren, renderExpirationTime2);
           return workInProgress2.child;
         }
-        function updateClassComponent(current2, workInProgress2, Component6, nextProps, renderExpirationTime2) {
+        function updateClassComponent(current2, workInProgress2, Component, nextProps, renderExpirationTime2) {
           {
             if (workInProgress2.type !== workInProgress2.elementType) {
-              var innerPropTypes = Component6.propTypes;
+              var innerPropTypes = Component.propTypes;
               if (innerPropTypes) {
-                checkPropTypes(innerPropTypes, nextProps, "prop", getComponentName(Component6), getCurrentFiberStackInDev);
+                checkPropTypes(innerPropTypes, nextProps, "prop", getComponentName(Component), getCurrentFiberStackInDev);
               }
             }
           }
           var hasContext;
-          if (isContextProvider(Component6)) {
+          if (isContextProvider(Component)) {
             hasContext = true;
             pushContextProvider(workInProgress2);
           } else {
@@ -14104,15 +14104,15 @@
               workInProgress2.alternate = null;
               workInProgress2.effectTag |= Placement;
             }
-            constructClassInstance(workInProgress2, Component6, nextProps);
-            mountClassInstance(workInProgress2, Component6, nextProps, renderExpirationTime2);
+            constructClassInstance(workInProgress2, Component, nextProps);
+            mountClassInstance(workInProgress2, Component, nextProps, renderExpirationTime2);
             shouldUpdate = true;
           } else if (current2 === null) {
-            shouldUpdate = resumeMountClassInstance(workInProgress2, Component6, nextProps, renderExpirationTime2);
+            shouldUpdate = resumeMountClassInstance(workInProgress2, Component, nextProps, renderExpirationTime2);
           } else {
-            shouldUpdate = updateClassInstance(current2, workInProgress2, Component6, nextProps, renderExpirationTime2);
+            shouldUpdate = updateClassInstance(current2, workInProgress2, Component, nextProps, renderExpirationTime2);
           }
-          var nextUnitOfWork = finishClassComponent(current2, workInProgress2, Component6, shouldUpdate, hasContext, renderExpirationTime2);
+          var nextUnitOfWork = finishClassComponent(current2, workInProgress2, Component, shouldUpdate, hasContext, renderExpirationTime2);
           {
             var inst = workInProgress2.stateNode;
             if (inst.props !== nextProps) {
@@ -14124,19 +14124,19 @@
           }
           return nextUnitOfWork;
         }
-        function finishClassComponent(current2, workInProgress2, Component6, shouldUpdate, hasContext, renderExpirationTime2) {
+        function finishClassComponent(current2, workInProgress2, Component, shouldUpdate, hasContext, renderExpirationTime2) {
           markRef(current2, workInProgress2);
           var didCaptureError = (workInProgress2.effectTag & DidCapture) !== NoEffect;
           if (!shouldUpdate && !didCaptureError) {
             if (hasContext) {
-              invalidateContextProvider(workInProgress2, Component6, false);
+              invalidateContextProvider(workInProgress2, Component, false);
             }
             return bailoutOnAlreadyFinishedWork(current2, workInProgress2, renderExpirationTime2);
           }
           var instance = workInProgress2.stateNode;
           ReactCurrentOwner$1.current = workInProgress2;
           var nextChildren;
-          if (didCaptureError && typeof Component6.getDerivedStateFromError !== "function") {
+          if (didCaptureError && typeof Component.getDerivedStateFromError !== "function") {
             nextChildren = null;
             {
               stopProfilerTimerIfRunning();
@@ -14159,7 +14159,7 @@
           }
           workInProgress2.memoizedState = instance.state;
           if (hasContext) {
-            invalidateContextProvider(workInProgress2, Component6, true);
+            invalidateContextProvider(workInProgress2, Component, true);
           }
           return workInProgress2.child;
         }
@@ -14246,61 +14246,61 @@
           }
           var props = workInProgress2.pendingProps;
           cancelWorkTimer(workInProgress2);
-          var Component6 = readLazyComponentType(elementType);
-          workInProgress2.type = Component6;
-          var resolvedTag = workInProgress2.tag = resolveLazyComponentTag(Component6);
+          var Component = readLazyComponentType(elementType);
+          workInProgress2.type = Component;
+          var resolvedTag = workInProgress2.tag = resolveLazyComponentTag(Component);
           startWorkTimer(workInProgress2);
-          var resolvedProps = resolveDefaultProps(Component6, props);
+          var resolvedProps = resolveDefaultProps(Component, props);
           var child;
           switch (resolvedTag) {
             case FunctionComponent: {
               {
-                validateFunctionComponentInDev(workInProgress2, Component6);
-                workInProgress2.type = Component6 = resolveFunctionForHotReloading(Component6);
+                validateFunctionComponentInDev(workInProgress2, Component);
+                workInProgress2.type = Component = resolveFunctionForHotReloading(Component);
               }
-              child = updateFunctionComponent(null, workInProgress2, Component6, resolvedProps, renderExpirationTime2);
+              child = updateFunctionComponent(null, workInProgress2, Component, resolvedProps, renderExpirationTime2);
               return child;
             }
             case ClassComponent: {
               {
-                workInProgress2.type = Component6 = resolveClassForHotReloading(Component6);
+                workInProgress2.type = Component = resolveClassForHotReloading(Component);
               }
-              child = updateClassComponent(null, workInProgress2, Component6, resolvedProps, renderExpirationTime2);
+              child = updateClassComponent(null, workInProgress2, Component, resolvedProps, renderExpirationTime2);
               return child;
             }
             case ForwardRef: {
               {
-                workInProgress2.type = Component6 = resolveForwardRefForHotReloading(Component6);
+                workInProgress2.type = Component = resolveForwardRefForHotReloading(Component);
               }
-              child = updateForwardRef(null, workInProgress2, Component6, resolvedProps, renderExpirationTime2);
+              child = updateForwardRef(null, workInProgress2, Component, resolvedProps, renderExpirationTime2);
               return child;
             }
             case MemoComponent: {
               {
                 if (workInProgress2.type !== workInProgress2.elementType) {
-                  var outerPropTypes = Component6.propTypes;
+                  var outerPropTypes = Component.propTypes;
                   if (outerPropTypes) {
-                    checkPropTypes(outerPropTypes, resolvedProps, "prop", getComponentName(Component6), getCurrentFiberStackInDev);
+                    checkPropTypes(outerPropTypes, resolvedProps, "prop", getComponentName(Component), getCurrentFiberStackInDev);
                   }
                 }
               }
-              child = updateMemoComponent(null, workInProgress2, Component6, resolveDefaultProps(Component6.type, resolvedProps), updateExpirationTime, renderExpirationTime2);
+              child = updateMemoComponent(null, workInProgress2, Component, resolveDefaultProps(Component.type, resolvedProps), updateExpirationTime, renderExpirationTime2);
               return child;
             }
           }
           var hint = "";
           {
-            if (Component6 !== null && typeof Component6 === "object" && Component6.$$typeof === REACT_LAZY_TYPE) {
+            if (Component !== null && typeof Component === "object" && Component.$$typeof === REACT_LAZY_TYPE) {
               hint = " Did you wrap a component in React.lazy() more than once?";
             }
           }
           {
             {
-              throw Error("Element type is invalid. Received a promise that resolves to: " + Component6 + ". Lazy element type must resolve to a class or function." + hint);
+              throw Error("Element type is invalid. Received a promise that resolves to: " + Component + ". Lazy element type must resolve to a class or function." + hint);
             }
           }
         }
-        function mountIncompleteClassComponent(_current, workInProgress2, Component6, nextProps, renderExpirationTime2) {
+        function mountIncompleteClassComponent(_current, workInProgress2, Component, nextProps, renderExpirationTime2) {
           if (_current !== null) {
             _current.alternate = null;
             workInProgress2.alternate = null;
@@ -14308,18 +14308,18 @@
           }
           workInProgress2.tag = ClassComponent;
           var hasContext;
-          if (isContextProvider(Component6)) {
+          if (isContextProvider(Component)) {
             hasContext = true;
             pushContextProvider(workInProgress2);
           } else {
             hasContext = false;
           }
           prepareToReadContext(workInProgress2, renderExpirationTime2);
-          constructClassInstance(workInProgress2, Component6, nextProps);
-          mountClassInstance(workInProgress2, Component6, nextProps, renderExpirationTime2);
-          return finishClassComponent(null, workInProgress2, Component6, true, hasContext, renderExpirationTime2);
+          constructClassInstance(workInProgress2, Component, nextProps);
+          mountClassInstance(workInProgress2, Component, nextProps, renderExpirationTime2);
+          return finishClassComponent(null, workInProgress2, Component, true, hasContext, renderExpirationTime2);
         }
-        function mountIndeterminateComponent(_current, workInProgress2, Component6, renderExpirationTime2) {
+        function mountIndeterminateComponent(_current, workInProgress2, Component, renderExpirationTime2) {
           if (_current !== null) {
             _current.alternate = null;
             workInProgress2.alternate = null;
@@ -14328,14 +14328,14 @@
           var props = workInProgress2.pendingProps;
           var context;
           {
-            var unmaskedContext = getUnmaskedContext(workInProgress2, Component6, false);
+            var unmaskedContext = getUnmaskedContext(workInProgress2, Component, false);
             context = getMaskedContext(workInProgress2, unmaskedContext);
           }
           prepareToReadContext(workInProgress2, renderExpirationTime2);
           var value;
           {
-            if (Component6.prototype && typeof Component6.prototype.render === "function") {
-              var componentName = getComponentName(Component6) || "Unknown";
+            if (Component.prototype && typeof Component.prototype.render === "function") {
+              var componentName = getComponentName(Component) || "Unknown";
               if (!didWarnAboutBadClass[componentName]) {
                 error("The <%s /> component appears to have a render method, but doesn't extend React.Component. This is likely to cause errors. Change %s to extend React.Component instead.", componentName, componentName);
                 didWarnAboutBadClass[componentName] = true;
@@ -14346,13 +14346,13 @@
             }
             setIsRendering(true);
             ReactCurrentOwner$1.current = workInProgress2;
-            value = renderWithHooks(null, workInProgress2, Component6, props, context, renderExpirationTime2);
+            value = renderWithHooks(null, workInProgress2, Component, props, context, renderExpirationTime2);
             setIsRendering(false);
           }
           workInProgress2.effectTag |= PerformedWork;
           if (typeof value === "object" && value !== null && typeof value.render === "function" && value.$$typeof === void 0) {
             {
-              var _componentName = getComponentName(Component6) || "Unknown";
+              var _componentName = getComponentName(Component) || "Unknown";
               if (!didWarnAboutModulePatternComponent[_componentName]) {
                 error("The <%s /> component appears to be a function component that returns a class instance. Change %s to a class that extends React.Component instead. If you can't use a class try assigning the prototype on the function as a workaround. `%s.prototype = React.Component.prototype`. Don't use an arrow function since it cannot be called with `new` by React.", _componentName, _componentName, _componentName);
                 didWarnAboutModulePatternComponent[_componentName] = true;
@@ -14362,7 +14362,7 @@
             workInProgress2.memoizedState = null;
             workInProgress2.updateQueue = null;
             var hasContext = false;
-            if (isContextProvider(Component6)) {
+            if (isContextProvider(Component)) {
               hasContext = true;
               pushContextProvider(workInProgress2);
             } else {
@@ -14370,34 +14370,34 @@
             }
             workInProgress2.memoizedState = value.state !== null && value.state !== void 0 ? value.state : null;
             initializeUpdateQueue(workInProgress2);
-            var getDerivedStateFromProps = Component6.getDerivedStateFromProps;
+            var getDerivedStateFromProps = Component.getDerivedStateFromProps;
             if (typeof getDerivedStateFromProps === "function") {
-              applyDerivedStateFromProps(workInProgress2, Component6, getDerivedStateFromProps, props);
+              applyDerivedStateFromProps(workInProgress2, Component, getDerivedStateFromProps, props);
             }
             adoptClassInstance(workInProgress2, value);
-            mountClassInstance(workInProgress2, Component6, props, renderExpirationTime2);
-            return finishClassComponent(null, workInProgress2, Component6, true, hasContext, renderExpirationTime2);
+            mountClassInstance(workInProgress2, Component, props, renderExpirationTime2);
+            return finishClassComponent(null, workInProgress2, Component, true, hasContext, renderExpirationTime2);
           } else {
             workInProgress2.tag = FunctionComponent;
             {
               if (workInProgress2.mode & StrictMode) {
                 if (workInProgress2.memoizedState !== null) {
-                  value = renderWithHooks(null, workInProgress2, Component6, props, context, renderExpirationTime2);
+                  value = renderWithHooks(null, workInProgress2, Component, props, context, renderExpirationTime2);
                 }
               }
             }
             reconcileChildren(null, workInProgress2, value, renderExpirationTime2);
             {
-              validateFunctionComponentInDev(workInProgress2, Component6);
+              validateFunctionComponentInDev(workInProgress2, Component);
             }
             return workInProgress2.child;
           }
         }
-        function validateFunctionComponentInDev(workInProgress2, Component6) {
+        function validateFunctionComponentInDev(workInProgress2, Component) {
           {
-            if (Component6) {
-              if (Component6.childContextTypes) {
-                error("%s(...): childContextTypes cannot be defined on a function component.", Component6.displayName || Component6.name || "Component");
+            if (Component) {
+              if (Component.childContextTypes) {
+                error("%s(...): childContextTypes cannot be defined on a function component.", Component.displayName || Component.name || "Component");
               }
             }
             if (workInProgress2.ref !== null) {
@@ -14416,15 +14416,15 @@
                 error("Function components cannot be given refs. Attempts to access this ref will fail. Did you mean to use React.forwardRef()?%s", info);
               }
             }
-            if (typeof Component6.getDerivedStateFromProps === "function") {
-              var _componentName2 = getComponentName(Component6) || "Unknown";
+            if (typeof Component.getDerivedStateFromProps === "function") {
+              var _componentName2 = getComponentName(Component) || "Unknown";
               if (!didWarnAboutGetDerivedStateOnFunctionComponent[_componentName2]) {
                 error("%s: Function components do not support getDerivedStateFromProps.", _componentName2);
                 didWarnAboutGetDerivedStateOnFunctionComponent[_componentName2] = true;
               }
             }
-            if (typeof Component6.contextType === "object" && Component6.contextType !== null) {
-              var _componentName3 = getComponentName(Component6) || "Unknown";
+            if (typeof Component.contextType === "object" && Component.contextType !== null) {
+              var _componentName3 = getComponentName(Component) || "Unknown";
               if (!didWarnAboutContextTypeOnFunctionComponent[_componentName3]) {
                 error("%s: Function components do not support contextType.", _componentName3);
                 didWarnAboutContextTypeOnFunctionComponent[_componentName3] = true;
@@ -14970,8 +14970,8 @@
                   }
                   break;
                 case ClassComponent: {
-                  var Component6 = workInProgress2.type;
-                  if (isContextProvider(Component6)) {
+                  var Component = workInProgress2.type;
+                  if (isContextProvider(Component)) {
                     pushContextProvider(workInProgress2);
                   }
                   break;
@@ -15079,7 +15079,7 @@
               var _resolvedProps2 = workInProgress2.elementType === type ? _unresolvedProps2 : resolveDefaultProps(type, _unresolvedProps2);
               return updateForwardRef(current2, workInProgress2, type, _resolvedProps2, renderExpirationTime2);
             }
-            case Fragment:
+            case Fragment2:
               return updateFragment(current2, workInProgress2, renderExpirationTime2);
             case Mode:
               return updateMode(current2, workInProgress2, renderExpirationTime2);
@@ -15228,15 +15228,15 @@
             case SimpleMemoComponent:
             case FunctionComponent:
             case ForwardRef:
-            case Fragment:
+            case Fragment2:
             case Mode:
             case Profiler:
             case ContextConsumer:
             case MemoComponent:
               return null;
             case ClassComponent: {
-              var Component6 = workInProgress2.type;
-              if (isContextProvider(Component6)) {
+              var Component = workInProgress2.type;
+              if (isContextProvider(Component)) {
                 popContext(workInProgress2);
               }
               return null;
@@ -15497,8 +15497,8 @@
         function unwindWork(workInProgress2, renderExpirationTime2) {
           switch (workInProgress2.tag) {
             case ClassComponent: {
-              var Component6 = workInProgress2.type;
-              if (isContextProvider(Component6)) {
+              var Component = workInProgress2.type;
+              if (isContextProvider(Component)) {
                 popContext(workInProgress2);
               }
               var effectTag = workInProgress2.effectTag;
@@ -18301,18 +18301,18 @@ For more info, visit https://fb.me/react-mock-scheduler`);
         var createFiber = function(tag, pendingProps, key, mode) {
           return new FiberNode(tag, pendingProps, key, mode);
         };
-        function shouldConstruct(Component6) {
-          var prototype = Component6.prototype;
+        function shouldConstruct(Component) {
+          var prototype = Component.prototype;
           return !!(prototype && prototype.isReactComponent);
         }
         function isSimpleFunctionComponent(type) {
           return typeof type === "function" && !shouldConstruct(type) && type.defaultProps === void 0;
         }
-        function resolveLazyComponentTag(Component6) {
-          if (typeof Component6 === "function") {
-            return shouldConstruct(Component6) ? ClassComponent : FunctionComponent;
-          } else if (Component6 !== void 0 && Component6 !== null) {
-            var $$typeof = Component6.$$typeof;
+        function resolveLazyComponentTag(Component) {
+          if (typeof Component === "function") {
+            return shouldConstruct(Component) ? ClassComponent : FunctionComponent;
+          } else if (Component !== void 0 && Component !== null) {
+            var $$typeof = Component.$$typeof;
             if ($$typeof === REACT_FORWARD_REF_TYPE) {
               return ForwardRef;
             }
@@ -18542,7 +18542,7 @@ For more info, visit https://fb.me/react-mock-scheduler`);
           return fiber;
         }
         function createFiberFromFragment(elements, mode, expirationTime, key) {
-          var fiber = createFiber(Fragment, elements, key, mode);
+          var fiber = createFiber(Fragment2, elements, key, mode);
           fiber.expirationTime = expirationTime;
           return fiber;
         }
@@ -18744,9 +18744,9 @@ For more info, visit https://fb.me/react-mock-scheduler`);
           var fiber = get(parentComponent);
           var parentContext = findCurrentUnmaskedContext(fiber);
           if (fiber.tag === ClassComponent) {
-            var Component6 = fiber.type;
-            if (isContextProvider(Component6)) {
-              return processChildContext(fiber, Component6, parentContext);
+            var Component = fiber.type;
+            if (isContextProvider(Component)) {
+              return processChildContext(fiber, Component, parentContext);
             }
           }
           return parentContext;
@@ -19323,384 +19323,3382 @@ For more info, visit https://fb.me/react-mock-scheduler`);
     }
   });
 
+  // node_modules/react-is/cjs/react-is.development.js
+  var require_react_is_development = __commonJS((exports) => {
+    "use strict";
+    if (true) {
+      (function() {
+        "use strict";
+        var hasSymbol = typeof Symbol === "function" && Symbol.for;
+        var REACT_ELEMENT_TYPE = hasSymbol ? Symbol.for("react.element") : 60103;
+        var REACT_PORTAL_TYPE = hasSymbol ? Symbol.for("react.portal") : 60106;
+        var REACT_FRAGMENT_TYPE = hasSymbol ? Symbol.for("react.fragment") : 60107;
+        var REACT_STRICT_MODE_TYPE = hasSymbol ? Symbol.for("react.strict_mode") : 60108;
+        var REACT_PROFILER_TYPE = hasSymbol ? Symbol.for("react.profiler") : 60114;
+        var REACT_PROVIDER_TYPE = hasSymbol ? Symbol.for("react.provider") : 60109;
+        var REACT_CONTEXT_TYPE = hasSymbol ? Symbol.for("react.context") : 60110;
+        var REACT_ASYNC_MODE_TYPE = hasSymbol ? Symbol.for("react.async_mode") : 60111;
+        var REACT_CONCURRENT_MODE_TYPE = hasSymbol ? Symbol.for("react.concurrent_mode") : 60111;
+        var REACT_FORWARD_REF_TYPE = hasSymbol ? Symbol.for("react.forward_ref") : 60112;
+        var REACT_SUSPENSE_TYPE = hasSymbol ? Symbol.for("react.suspense") : 60113;
+        var REACT_SUSPENSE_LIST_TYPE = hasSymbol ? Symbol.for("react.suspense_list") : 60120;
+        var REACT_MEMO_TYPE = hasSymbol ? Symbol.for("react.memo") : 60115;
+        var REACT_LAZY_TYPE = hasSymbol ? Symbol.for("react.lazy") : 60116;
+        var REACT_BLOCK_TYPE = hasSymbol ? Symbol.for("react.block") : 60121;
+        var REACT_FUNDAMENTAL_TYPE = hasSymbol ? Symbol.for("react.fundamental") : 60117;
+        var REACT_RESPONDER_TYPE = hasSymbol ? Symbol.for("react.responder") : 60118;
+        var REACT_SCOPE_TYPE = hasSymbol ? Symbol.for("react.scope") : 60119;
+        function isValidElementType(type) {
+          return typeof type === "string" || typeof type === "function" || type === REACT_FRAGMENT_TYPE || type === REACT_CONCURRENT_MODE_TYPE || type === REACT_PROFILER_TYPE || type === REACT_STRICT_MODE_TYPE || type === REACT_SUSPENSE_TYPE || type === REACT_SUSPENSE_LIST_TYPE || typeof type === "object" && type !== null && (type.$$typeof === REACT_LAZY_TYPE || type.$$typeof === REACT_MEMO_TYPE || type.$$typeof === REACT_PROVIDER_TYPE || type.$$typeof === REACT_CONTEXT_TYPE || type.$$typeof === REACT_FORWARD_REF_TYPE || type.$$typeof === REACT_FUNDAMENTAL_TYPE || type.$$typeof === REACT_RESPONDER_TYPE || type.$$typeof === REACT_SCOPE_TYPE || type.$$typeof === REACT_BLOCK_TYPE);
+        }
+        function typeOf(object) {
+          if (typeof object === "object" && object !== null) {
+            var $$typeof = object.$$typeof;
+            switch ($$typeof) {
+              case REACT_ELEMENT_TYPE:
+                var type = object.type;
+                switch (type) {
+                  case REACT_ASYNC_MODE_TYPE:
+                  case REACT_CONCURRENT_MODE_TYPE:
+                  case REACT_FRAGMENT_TYPE:
+                  case REACT_PROFILER_TYPE:
+                  case REACT_STRICT_MODE_TYPE:
+                  case REACT_SUSPENSE_TYPE:
+                    return type;
+                  default:
+                    var $$typeofType = type && type.$$typeof;
+                    switch ($$typeofType) {
+                      case REACT_CONTEXT_TYPE:
+                      case REACT_FORWARD_REF_TYPE:
+                      case REACT_LAZY_TYPE:
+                      case REACT_MEMO_TYPE:
+                      case REACT_PROVIDER_TYPE:
+                        return $$typeofType;
+                      default:
+                        return $$typeof;
+                    }
+                }
+              case REACT_PORTAL_TYPE:
+                return $$typeof;
+            }
+          }
+          return void 0;
+        }
+        var AsyncMode = REACT_ASYNC_MODE_TYPE;
+        var ConcurrentMode = REACT_CONCURRENT_MODE_TYPE;
+        var ContextConsumer = REACT_CONTEXT_TYPE;
+        var ContextProvider = REACT_PROVIDER_TYPE;
+        var Element = REACT_ELEMENT_TYPE;
+        var ForwardRef = REACT_FORWARD_REF_TYPE;
+        var Fragment2 = REACT_FRAGMENT_TYPE;
+        var Lazy = REACT_LAZY_TYPE;
+        var Memo = REACT_MEMO_TYPE;
+        var Portal = REACT_PORTAL_TYPE;
+        var Profiler = REACT_PROFILER_TYPE;
+        var StrictMode = REACT_STRICT_MODE_TYPE;
+        var Suspense = REACT_SUSPENSE_TYPE;
+        var hasWarnedAboutDeprecatedIsAsyncMode = false;
+        function isAsyncMode(object) {
+          {
+            if (!hasWarnedAboutDeprecatedIsAsyncMode) {
+              hasWarnedAboutDeprecatedIsAsyncMode = true;
+              console["warn"]("The ReactIs.isAsyncMode() alias has been deprecated, and will be removed in React 17+. Update your code to use ReactIs.isConcurrentMode() instead. It has the exact same API.");
+            }
+          }
+          return isConcurrentMode(object) || typeOf(object) === REACT_ASYNC_MODE_TYPE;
+        }
+        function isConcurrentMode(object) {
+          return typeOf(object) === REACT_CONCURRENT_MODE_TYPE;
+        }
+        function isContextConsumer(object) {
+          return typeOf(object) === REACT_CONTEXT_TYPE;
+        }
+        function isContextProvider(object) {
+          return typeOf(object) === REACT_PROVIDER_TYPE;
+        }
+        function isElement(object) {
+          return typeof object === "object" && object !== null && object.$$typeof === REACT_ELEMENT_TYPE;
+        }
+        function isForwardRef(object) {
+          return typeOf(object) === REACT_FORWARD_REF_TYPE;
+        }
+        function isFragment(object) {
+          return typeOf(object) === REACT_FRAGMENT_TYPE;
+        }
+        function isLazy(object) {
+          return typeOf(object) === REACT_LAZY_TYPE;
+        }
+        function isMemo(object) {
+          return typeOf(object) === REACT_MEMO_TYPE;
+        }
+        function isPortal(object) {
+          return typeOf(object) === REACT_PORTAL_TYPE;
+        }
+        function isProfiler(object) {
+          return typeOf(object) === REACT_PROFILER_TYPE;
+        }
+        function isStrictMode(object) {
+          return typeOf(object) === REACT_STRICT_MODE_TYPE;
+        }
+        function isSuspense(object) {
+          return typeOf(object) === REACT_SUSPENSE_TYPE;
+        }
+        exports.AsyncMode = AsyncMode;
+        exports.ConcurrentMode = ConcurrentMode;
+        exports.ContextConsumer = ContextConsumer;
+        exports.ContextProvider = ContextProvider;
+        exports.Element = Element;
+        exports.ForwardRef = ForwardRef;
+        exports.Fragment = Fragment2;
+        exports.Lazy = Lazy;
+        exports.Memo = Memo;
+        exports.Portal = Portal;
+        exports.Profiler = Profiler;
+        exports.StrictMode = StrictMode;
+        exports.Suspense = Suspense;
+        exports.isAsyncMode = isAsyncMode;
+        exports.isConcurrentMode = isConcurrentMode;
+        exports.isContextConsumer = isContextConsumer;
+        exports.isContextProvider = isContextProvider;
+        exports.isElement = isElement;
+        exports.isForwardRef = isForwardRef;
+        exports.isFragment = isFragment;
+        exports.isLazy = isLazy;
+        exports.isMemo = isMemo;
+        exports.isPortal = isPortal;
+        exports.isProfiler = isProfiler;
+        exports.isStrictMode = isStrictMode;
+        exports.isSuspense = isSuspense;
+        exports.isValidElementType = isValidElementType;
+        exports.typeOf = typeOf;
+      })();
+    }
+  });
+
+  // node_modules/react-is/index.js
+  var require_react_is = __commonJS((exports, module) => {
+    "use strict";
+    if (false) {
+      module.exports = null;
+    } else {
+      module.exports = require_react_is_development();
+    }
+  });
+
+  // node_modules/prop-types/factoryWithTypeCheckers.js
+  var require_factoryWithTypeCheckers = __commonJS((exports, module) => {
+    "use strict";
+    var ReactIs = require_react_is();
+    var assign = require_object_assign();
+    var ReactPropTypesSecret = require_ReactPropTypesSecret();
+    var checkPropTypes = require_checkPropTypes();
+    var has = Function.call.bind(Object.prototype.hasOwnProperty);
+    var printWarning = function() {
+    };
+    if (true) {
+      printWarning = function(text) {
+        var message = "Warning: " + text;
+        if (typeof console !== "undefined") {
+          console.error(message);
+        }
+        try {
+          throw new Error(message);
+        } catch (x4) {
+        }
+      };
+    }
+    function emptyFunctionThatReturnsNull() {
+      return null;
+    }
+    module.exports = function(isValidElement2, throwOnDirectAccess) {
+      var ITERATOR_SYMBOL = typeof Symbol === "function" && Symbol.iterator;
+      var FAUX_ITERATOR_SYMBOL = "@@iterator";
+      function getIteratorFn(maybeIterable) {
+        var iteratorFn = maybeIterable && (ITERATOR_SYMBOL && maybeIterable[ITERATOR_SYMBOL] || maybeIterable[FAUX_ITERATOR_SYMBOL]);
+        if (typeof iteratorFn === "function") {
+          return iteratorFn;
+        }
+      }
+      var ANONYMOUS = "<<anonymous>>";
+      var ReactPropTypes = {
+        array: createPrimitiveTypeChecker("array"),
+        bool: createPrimitiveTypeChecker("boolean"),
+        func: createPrimitiveTypeChecker("function"),
+        number: createPrimitiveTypeChecker("number"),
+        object: createPrimitiveTypeChecker("object"),
+        string: createPrimitiveTypeChecker("string"),
+        symbol: createPrimitiveTypeChecker("symbol"),
+        any: createAnyTypeChecker(),
+        arrayOf: createArrayOfTypeChecker,
+        element: createElementTypeChecker(),
+        elementType: createElementTypeTypeChecker(),
+        instanceOf: createInstanceTypeChecker,
+        node: createNodeChecker(),
+        objectOf: createObjectOfTypeChecker,
+        oneOf: createEnumTypeChecker,
+        oneOfType: createUnionTypeChecker,
+        shape: createShapeTypeChecker,
+        exact: createStrictShapeTypeChecker
+      };
+      function is(x4, y4) {
+        if (x4 === y4) {
+          return x4 !== 0 || 1 / x4 === 1 / y4;
+        } else {
+          return x4 !== x4 && y4 !== y4;
+        }
+      }
+      function PropTypeError(message) {
+        this.message = message;
+        this.stack = "";
+      }
+      PropTypeError.prototype = Error.prototype;
+      function createChainableTypeChecker(validate) {
+        if (true) {
+          var manualPropTypeCallCache = {};
+          var manualPropTypeWarningCount = 0;
+        }
+        function checkType(isRequired, props, propName, componentName, location, propFullName, secret) {
+          componentName = componentName || ANONYMOUS;
+          propFullName = propFullName || propName;
+          if (secret !== ReactPropTypesSecret) {
+            if (throwOnDirectAccess) {
+              var err = new Error("Calling PropTypes validators directly is not supported by the `prop-types` package. Use `PropTypes.checkPropTypes()` to call them. Read more at http://fb.me/use-check-prop-types");
+              err.name = "Invariant Violation";
+              throw err;
+            } else if (typeof console !== "undefined") {
+              var cacheKey = componentName + ":" + propName;
+              if (!manualPropTypeCallCache[cacheKey] && manualPropTypeWarningCount < 3) {
+                printWarning("You are manually calling a React.PropTypes validation function for the `" + propFullName + "` prop on `" + componentName + "`. This is deprecated and will throw in the standalone `prop-types` package. You may be seeing this warning due to a third-party PropTypes library. See https://fb.me/react-warning-dont-call-proptypes for details.");
+                manualPropTypeCallCache[cacheKey] = true;
+                manualPropTypeWarningCount++;
+              }
+            }
+          }
+          if (props[propName] == null) {
+            if (isRequired) {
+              if (props[propName] === null) {
+                return new PropTypeError("The " + location + " `" + propFullName + "` is marked as required " + ("in `" + componentName + "`, but its value is `null`."));
+              }
+              return new PropTypeError("The " + location + " `" + propFullName + "` is marked as required in " + ("`" + componentName + "`, but its value is `undefined`."));
+            }
+            return null;
+          } else {
+            return validate(props, propName, componentName, location, propFullName);
+          }
+        }
+        var chainedCheckType = checkType.bind(null, false);
+        chainedCheckType.isRequired = checkType.bind(null, true);
+        return chainedCheckType;
+      }
+      function createPrimitiveTypeChecker(expectedType) {
+        function validate(props, propName, componentName, location, propFullName, secret) {
+          var propValue = props[propName];
+          var propType = getPropType(propValue);
+          if (propType !== expectedType) {
+            var preciseType = getPreciseType(propValue);
+            return new PropTypeError("Invalid " + location + " `" + propFullName + "` of type " + ("`" + preciseType + "` supplied to `" + componentName + "`, expected ") + ("`" + expectedType + "`."));
+          }
+          return null;
+        }
+        return createChainableTypeChecker(validate);
+      }
+      function createAnyTypeChecker() {
+        return createChainableTypeChecker(emptyFunctionThatReturnsNull);
+      }
+      function createArrayOfTypeChecker(typeChecker) {
+        function validate(props, propName, componentName, location, propFullName) {
+          if (typeof typeChecker !== "function") {
+            return new PropTypeError("Property `" + propFullName + "` of component `" + componentName + "` has invalid PropType notation inside arrayOf.");
+          }
+          var propValue = props[propName];
+          if (!Array.isArray(propValue)) {
+            var propType = getPropType(propValue);
+            return new PropTypeError("Invalid " + location + " `" + propFullName + "` of type " + ("`" + propType + "` supplied to `" + componentName + "`, expected an array."));
+          }
+          for (var i = 0; i < propValue.length; i++) {
+            var error = typeChecker(propValue, i, componentName, location, propFullName + "[" + i + "]", ReactPropTypesSecret);
+            if (error instanceof Error) {
+              return error;
+            }
+          }
+          return null;
+        }
+        return createChainableTypeChecker(validate);
+      }
+      function createElementTypeChecker() {
+        function validate(props, propName, componentName, location, propFullName) {
+          var propValue = props[propName];
+          if (!isValidElement2(propValue)) {
+            var propType = getPropType(propValue);
+            return new PropTypeError("Invalid " + location + " `" + propFullName + "` of type " + ("`" + propType + "` supplied to `" + componentName + "`, expected a single ReactElement."));
+          }
+          return null;
+        }
+        return createChainableTypeChecker(validate);
+      }
+      function createElementTypeTypeChecker() {
+        function validate(props, propName, componentName, location, propFullName) {
+          var propValue = props[propName];
+          if (!ReactIs.isValidElementType(propValue)) {
+            var propType = getPropType(propValue);
+            return new PropTypeError("Invalid " + location + " `" + propFullName + "` of type " + ("`" + propType + "` supplied to `" + componentName + "`, expected a single ReactElement type."));
+          }
+          return null;
+        }
+        return createChainableTypeChecker(validate);
+      }
+      function createInstanceTypeChecker(expectedClass) {
+        function validate(props, propName, componentName, location, propFullName) {
+          if (!(props[propName] instanceof expectedClass)) {
+            var expectedClassName = expectedClass.name || ANONYMOUS;
+            var actualClassName = getClassName(props[propName]);
+            return new PropTypeError("Invalid " + location + " `" + propFullName + "` of type " + ("`" + actualClassName + "` supplied to `" + componentName + "`, expected ") + ("instance of `" + expectedClassName + "`."));
+          }
+          return null;
+        }
+        return createChainableTypeChecker(validate);
+      }
+      function createEnumTypeChecker(expectedValues) {
+        if (!Array.isArray(expectedValues)) {
+          if (true) {
+            if (arguments.length > 1) {
+              printWarning("Invalid arguments supplied to oneOf, expected an array, got " + arguments.length + " arguments. A common mistake is to write oneOf(x, y, z) instead of oneOf([x, y, z]).");
+            } else {
+              printWarning("Invalid argument supplied to oneOf, expected an array.");
+            }
+          }
+          return emptyFunctionThatReturnsNull;
+        }
+        function validate(props, propName, componentName, location, propFullName) {
+          var propValue = props[propName];
+          for (var i = 0; i < expectedValues.length; i++) {
+            if (is(propValue, expectedValues[i])) {
+              return null;
+            }
+          }
+          var valuesString = JSON.stringify(expectedValues, function replacer(key, value) {
+            var type = getPreciseType(value);
+            if (type === "symbol") {
+              return String(value);
+            }
+            return value;
+          });
+          return new PropTypeError("Invalid " + location + " `" + propFullName + "` of value `" + String(propValue) + "` " + ("supplied to `" + componentName + "`, expected one of " + valuesString + "."));
+        }
+        return createChainableTypeChecker(validate);
+      }
+      function createObjectOfTypeChecker(typeChecker) {
+        function validate(props, propName, componentName, location, propFullName) {
+          if (typeof typeChecker !== "function") {
+            return new PropTypeError("Property `" + propFullName + "` of component `" + componentName + "` has invalid PropType notation inside objectOf.");
+          }
+          var propValue = props[propName];
+          var propType = getPropType(propValue);
+          if (propType !== "object") {
+            return new PropTypeError("Invalid " + location + " `" + propFullName + "` of type " + ("`" + propType + "` supplied to `" + componentName + "`, expected an object."));
+          }
+          for (var key in propValue) {
+            if (has(propValue, key)) {
+              var error = typeChecker(propValue, key, componentName, location, propFullName + "." + key, ReactPropTypesSecret);
+              if (error instanceof Error) {
+                return error;
+              }
+            }
+          }
+          return null;
+        }
+        return createChainableTypeChecker(validate);
+      }
+      function createUnionTypeChecker(arrayOfTypeCheckers) {
+        if (!Array.isArray(arrayOfTypeCheckers)) {
+          true ? printWarning("Invalid argument supplied to oneOfType, expected an instance of array.") : void 0;
+          return emptyFunctionThatReturnsNull;
+        }
+        for (var i = 0; i < arrayOfTypeCheckers.length; i++) {
+          var checker = arrayOfTypeCheckers[i];
+          if (typeof checker !== "function") {
+            printWarning("Invalid argument supplied to oneOfType. Expected an array of check functions, but received " + getPostfixForTypeWarning(checker) + " at index " + i + ".");
+            return emptyFunctionThatReturnsNull;
+          }
+        }
+        function validate(props, propName, componentName, location, propFullName) {
+          for (var i2 = 0; i2 < arrayOfTypeCheckers.length; i2++) {
+            var checker2 = arrayOfTypeCheckers[i2];
+            if (checker2(props, propName, componentName, location, propFullName, ReactPropTypesSecret) == null) {
+              return null;
+            }
+          }
+          return new PropTypeError("Invalid " + location + " `" + propFullName + "` supplied to " + ("`" + componentName + "`."));
+        }
+        return createChainableTypeChecker(validate);
+      }
+      function createNodeChecker() {
+        function validate(props, propName, componentName, location, propFullName) {
+          if (!isNode(props[propName])) {
+            return new PropTypeError("Invalid " + location + " `" + propFullName + "` supplied to " + ("`" + componentName + "`, expected a ReactNode."));
+          }
+          return null;
+        }
+        return createChainableTypeChecker(validate);
+      }
+      function createShapeTypeChecker(shapeTypes) {
+        function validate(props, propName, componentName, location, propFullName) {
+          var propValue = props[propName];
+          var propType = getPropType(propValue);
+          if (propType !== "object") {
+            return new PropTypeError("Invalid " + location + " `" + propFullName + "` of type `" + propType + "` " + ("supplied to `" + componentName + "`, expected `object`."));
+          }
+          for (var key in shapeTypes) {
+            var checker = shapeTypes[key];
+            if (!checker) {
+              continue;
+            }
+            var error = checker(propValue, key, componentName, location, propFullName + "." + key, ReactPropTypesSecret);
+            if (error) {
+              return error;
+            }
+          }
+          return null;
+        }
+        return createChainableTypeChecker(validate);
+      }
+      function createStrictShapeTypeChecker(shapeTypes) {
+        function validate(props, propName, componentName, location, propFullName) {
+          var propValue = props[propName];
+          var propType = getPropType(propValue);
+          if (propType !== "object") {
+            return new PropTypeError("Invalid " + location + " `" + propFullName + "` of type `" + propType + "` " + ("supplied to `" + componentName + "`, expected `object`."));
+          }
+          var allKeys = assign({}, props[propName], shapeTypes);
+          for (var key in allKeys) {
+            var checker = shapeTypes[key];
+            if (!checker) {
+              return new PropTypeError("Invalid " + location + " `" + propFullName + "` key `" + key + "` supplied to `" + componentName + "`.\nBad object: " + JSON.stringify(props[propName], null, "  ") + "\nValid keys: " + JSON.stringify(Object.keys(shapeTypes), null, "  "));
+            }
+            var error = checker(propValue, key, componentName, location, propFullName + "." + key, ReactPropTypesSecret);
+            if (error) {
+              return error;
+            }
+          }
+          return null;
+        }
+        return createChainableTypeChecker(validate);
+      }
+      function isNode(propValue) {
+        switch (typeof propValue) {
+          case "number":
+          case "string":
+          case "undefined":
+            return true;
+          case "boolean":
+            return !propValue;
+          case "object":
+            if (Array.isArray(propValue)) {
+              return propValue.every(isNode);
+            }
+            if (propValue === null || isValidElement2(propValue)) {
+              return true;
+            }
+            var iteratorFn = getIteratorFn(propValue);
+            if (iteratorFn) {
+              var iterator = iteratorFn.call(propValue);
+              var step;
+              if (iteratorFn !== propValue.entries) {
+                while (!(step = iterator.next()).done) {
+                  if (!isNode(step.value)) {
+                    return false;
+                  }
+                }
+              } else {
+                while (!(step = iterator.next()).done) {
+                  var entry = step.value;
+                  if (entry) {
+                    if (!isNode(entry[1])) {
+                      return false;
+                    }
+                  }
+                }
+              }
+            } else {
+              return false;
+            }
+            return true;
+          default:
+            return false;
+        }
+      }
+      function isSymbol(propType, propValue) {
+        if (propType === "symbol") {
+          return true;
+        }
+        if (!propValue) {
+          return false;
+        }
+        if (propValue["@@toStringTag"] === "Symbol") {
+          return true;
+        }
+        if (typeof Symbol === "function" && propValue instanceof Symbol) {
+          return true;
+        }
+        return false;
+      }
+      function getPropType(propValue) {
+        var propType = typeof propValue;
+        if (Array.isArray(propValue)) {
+          return "array";
+        }
+        if (propValue instanceof RegExp) {
+          return "object";
+        }
+        if (isSymbol(propType, propValue)) {
+          return "symbol";
+        }
+        return propType;
+      }
+      function getPreciseType(propValue) {
+        if (typeof propValue === "undefined" || propValue === null) {
+          return "" + propValue;
+        }
+        var propType = getPropType(propValue);
+        if (propType === "object") {
+          if (propValue instanceof Date) {
+            return "date";
+          } else if (propValue instanceof RegExp) {
+            return "regexp";
+          }
+        }
+        return propType;
+      }
+      function getPostfixForTypeWarning(value) {
+        var type = getPreciseType(value);
+        switch (type) {
+          case "array":
+          case "object":
+            return "an " + type;
+          case "boolean":
+          case "date":
+          case "regexp":
+            return "a " + type;
+          default:
+            return type;
+        }
+      }
+      function getClassName(propValue) {
+        if (!propValue.constructor || !propValue.constructor.name) {
+          return ANONYMOUS;
+        }
+        return propValue.constructor.name;
+      }
+      ReactPropTypes.checkPropTypes = checkPropTypes;
+      ReactPropTypes.resetWarningCache = checkPropTypes.resetWarningCache;
+      ReactPropTypes.PropTypes = ReactPropTypes;
+      return ReactPropTypes;
+    };
+  });
+
+  // node_modules/prop-types/index.js
+  var require_prop_types = __commonJS((exports, module) => {
+    if (true) {
+      ReactIs = require_react_is();
+      throwOnDirectAccess = true;
+      module.exports = require_factoryWithTypeCheckers()(ReactIs.isElement, throwOnDirectAccess);
+    } else {
+      module.exports = null();
+    }
+    var ReactIs;
+    var throwOnDirectAccess;
+  });
+
   // <stdin>
-  var import_react10 = __toModule(require_react());
+  var import_react41 = __toModule(require_react());
   var import_react_dom = __toModule(require_react_dom());
 
-  // ns-hugo:/github/workspace/assets/App.jsx
-  var import_react9 = __toModule(require_react());
+  // ns-hugo:/github/workspace/website/assets/App.jsx
+  var import_react39 = __toModule(require_react());
 
-  // ns-hugo:/github/workspace/assets/cart/index.jsx
-  var import_react8 = __toModule(require_react());
+  // node_modules/@babel/runtime/helpers/esm/extends.js
+  function _extends() {
+    _extends = Object.assign || function(target) {
+      for (var i = 1; i < arguments.length; i++) {
+        var source = arguments[i];
+        for (var key in source) {
+          if (Object.prototype.hasOwnProperty.call(source, key)) {
+            target[key] = source[key];
+          }
+        }
+      }
+      return target;
+    };
+    return _extends.apply(this, arguments);
+  }
 
-  // ns-hugo:/github/workspace/assets/cart/header.jsx
+  // node_modules/history/index.js
+  var m;
+  var x = m || (m = {});
+  x.Pop = "POP";
+  x.Push = "PUSH";
+  x.Replace = "REPLACE";
+  var y = true ? function(a) {
+    return Object.freeze(a);
+  } : function(a) {
+    return a;
+  };
+  function z(a, b) {
+    if (!a) {
+      typeof console !== "undefined" && console.warn(b);
+      try {
+        throw Error(b);
+      } catch (g) {
+      }
+    }
+  }
+  function A(a) {
+    a.preventDefault();
+    a.returnValue = "";
+  }
+  function B() {
+    var a = [];
+    return {get length() {
+      return a.length;
+    }, push: function(b) {
+      a.push(b);
+      return function() {
+        a = a.filter(function(a2) {
+          return a2 !== b;
+        });
+      };
+    }, call: function(b) {
+      a.forEach(function(a2) {
+        return a2 && a2(b);
+      });
+    }};
+  }
+  function D() {
+    return Math.random().toString(36).substr(2, 8);
+  }
+  function E(a) {
+    var b = a.pathname, g = a.search;
+    a = a.hash;
+    return (b === void 0 ? "/" : b) + (g === void 0 ? "" : g) + (a === void 0 ? "" : a);
+  }
+  function F(a) {
+    var b = {};
+    if (a) {
+      var g = a.indexOf("#");
+      0 <= g && (b.hash = a.substr(g), a = a.substr(0, g));
+      g = a.indexOf("?");
+      0 <= g && (b.search = a.substr(g), a = a.substr(0, g));
+      a && (b.pathname = a);
+    }
+    return b;
+  }
+  function createBrowserHistory(a) {
+    function b() {
+      var a2 = h.location, d = f2.state || {};
+      return [d.idx, y({pathname: a2.pathname, search: a2.search, hash: a2.hash, state: d.usr || null, key: d.key || "default"})];
+    }
+    function g(a2) {
+      return typeof a2 === "string" ? a2 : E(a2);
+    }
+    function t(a2, d) {
+      d === void 0 && (d = null);
+      return y(_extends({}, l2, {}, typeof a2 === "string" ? F(a2) : a2, {state: d, key: D()}));
+    }
+    function v2(a2) {
+      n2 = a2;
+      a2 = b();
+      q2 = a2[0];
+      l2 = a2[1];
+      c.call({action: n2, location: l2});
+    }
+    function w3(a2, d) {
+      function c2() {
+        w3(a2, d);
+      }
+      var k2 = m.Push, C2 = t(a2, d);
+      if (!e.length || (e.call({
+        action: k2,
+        location: C2,
+        retry: c2
+      }), false)) {
+        var b2 = [{usr: C2.state, key: C2.key, idx: q2 + 1}, g(C2)];
+        C2 = b2[0];
+        b2 = b2[1];
+        try {
+          f2.pushState(C2, "", b2);
+        } catch (G2) {
+          h.location.assign(b2);
+        }
+        v2(k2);
+      }
+    }
+    function u(a2, d) {
+      function c2() {
+        u(a2, d);
+      }
+      var b2 = m.Replace, k2 = t(a2, d);
+      e.length && (e.call({action: b2, location: k2, retry: c2}), 1) || (k2 = [{usr: k2.state, key: k2.key, idx: q2}, g(k2)], f2.replaceState(k2[0], "", k2[1]), v2(b2));
+    }
+    function r2(a2) {
+      f2.go(a2);
+    }
+    a === void 0 && (a = {});
+    a = a.window;
+    var h = a === void 0 ? document.defaultView : a, f2 = h.history, p3 = null;
+    h.addEventListener("popstate", function() {
+      if (p3)
+        e.call(p3), p3 = null;
+      else {
+        var a2 = m.Pop, d = b(), c2 = d[0];
+        d = d[1];
+        if (e.length)
+          if (c2 != null) {
+            var f3 = q2 - c2;
+            f3 && (p3 = {action: a2, location: d, retry: function() {
+              r2(-1 * f3);
+            }}, r2(f3));
+          } else
+            true ? z(false, "You are trying to block a POP navigation to a location that was not created by the history library. The block will fail silently in production, but in general you should do all navigation with the history library (instead of using window.history.pushState directly) to avoid this situation.") : void 0;
+        else
+          v2(a2);
+      }
+    });
+    var n2 = m.Pop;
+    a = b();
+    var q2 = a[0], l2 = a[1], c = B(), e = B();
+    q2 == null && (q2 = 0, f2.replaceState(_extends({}, f2.state, {idx: q2}), ""));
+    return {get action() {
+      return n2;
+    }, get location() {
+      return l2;
+    }, createHref: g, push: w3, replace: u, go: r2, back: function() {
+      r2(-1);
+    }, forward: function() {
+      r2(1);
+    }, listen: function(a2) {
+      return c.push(a2);
+    }, block: function(a2) {
+      var d = e.push(a2);
+      e.length === 1 && h.addEventListener("beforeunload", A);
+      return function() {
+        d();
+        e.length || h.removeEventListener("beforeunload", A);
+      };
+    }};
+  }
+  function createHashHistory(a) {
+    function b() {
+      var a2 = F(f2.location.hash.substr(1)), c2 = a2.pathname, b2 = a2.search;
+      a2 = a2.hash;
+      var e2 = p3.state || {};
+      return [e2.idx, y({pathname: c2 === void 0 ? "/" : c2, search: b2 === void 0 ? "" : b2, hash: a2 === void 0 ? "" : a2, state: e2.usr || null, key: e2.key || "default"})];
+    }
+    function g() {
+      if (n2)
+        k2.call(n2), n2 = null;
+      else {
+        var a2 = m.Pop, c2 = b(), e2 = c2[0];
+        c2 = c2[1];
+        if (k2.length)
+          if (e2 != null) {
+            var f3 = l2 - e2;
+            f3 && (n2 = {action: a2, location: c2, retry: function() {
+              h(-1 * f3);
+            }}, h(f3));
+          } else
+            true ? z(false, "You are trying to block a POP navigation to a location that was not created by the history library. The block will fail silently in production, but in general you should do all navigation with the history library (instead of using window.history.pushState directly) to avoid this situation.") : void 0;
+        else
+          w3(a2);
+      }
+    }
+    function t(a2) {
+      var d = document.querySelector("base"), c2 = "";
+      d && d.getAttribute("href") && (d = f2.location.href, c2 = d.indexOf("#"), c2 = c2 === -1 ? d : d.slice(0, c2));
+      return c2 + "#" + (typeof a2 === "string" ? a2 : E(a2));
+    }
+    function v2(a2, b2) {
+      b2 === void 0 && (b2 = null);
+      return y(_extends({}, c, {}, typeof a2 === "string" ? F(a2) : a2, {state: b2, key: D()}));
+    }
+    function w3(a2) {
+      q2 = a2;
+      a2 = b();
+      l2 = a2[0];
+      c = a2[1];
+      e.call({action: q2, location: c});
+    }
+    function u(a2, c2) {
+      function d() {
+        u(a2, c2);
+      }
+      var b2 = m.Push, e2 = v2(a2, c2);
+      true ? z(e2.pathname.charAt(0) === "/", "Relative pathnames are not supported in hash history.push(" + JSON.stringify(a2) + ")") : void 0;
+      if (!k2.length || (k2.call({action: b2, location: e2, retry: d}), false)) {
+        var g2 = [{usr: e2.state, key: e2.key, idx: l2 + 1}, t(e2)];
+        e2 = g2[0];
+        g2 = g2[1];
+        try {
+          p3.pushState(e2, "", g2);
+        } catch (H2) {
+          f2.location.assign(g2);
+        }
+        w3(b2);
+      }
+    }
+    function r2(a2, c2) {
+      function d() {
+        r2(a2, c2);
+      }
+      var e2 = m.Replace, b2 = v2(a2, c2);
+      true ? z(b2.pathname.charAt(0) === "/", "Relative pathnames are not supported in hash history.replace(" + JSON.stringify(a2) + ")") : void 0;
+      k2.length && (k2.call({
+        action: e2,
+        location: b2,
+        retry: d
+      }), 1) || (b2 = [{usr: b2.state, key: b2.key, idx: l2}, t(b2)], p3.replaceState(b2[0], "", b2[1]), w3(e2));
+    }
+    function h(a2) {
+      p3.go(a2);
+    }
+    a === void 0 && (a = {});
+    a = a.window;
+    var f2 = a === void 0 ? document.defaultView : a, p3 = f2.history, n2 = null;
+    f2.addEventListener("popstate", g);
+    f2.addEventListener("hashchange", function() {
+      var a2 = b()[1];
+      E(a2) !== E(c) && g();
+    });
+    var q2 = m.Pop;
+    a = b();
+    var l2 = a[0], c = a[1], e = B(), k2 = B();
+    l2 == null && (l2 = 0, p3.replaceState(_extends({}, p3.state, {idx: l2}), ""));
+    return {
+      get action() {
+        return q2;
+      },
+      get location() {
+        return c;
+      },
+      createHref: t,
+      push: u,
+      replace: r2,
+      go: h,
+      back: function() {
+        h(-1);
+      },
+      forward: function() {
+        h(1);
+      },
+      listen: function(a2) {
+        return e.push(a2);
+      },
+      block: function(a2) {
+        var c2 = k2.push(a2);
+        k2.length === 1 && f2.addEventListener("beforeunload", A);
+        return function() {
+          c2();
+          k2.length || f2.removeEventListener("beforeunload", A);
+        };
+      }
+    };
+  }
+  function createMemoryHistory(a) {
+    function b(a2, b2) {
+      b2 === void 0 && (b2 = null);
+      return y(_extends({}, n2, {}, typeof a2 === "string" ? F(a2) : a2, {state: b2, key: D()}));
+    }
+    function g(a2, b2, f3) {
+      return !l2.length || (l2.call({action: a2, location: b2, retry: f3}), false);
+    }
+    function t(a2, b2) {
+      p3 = a2;
+      n2 = b2;
+      q2.call({action: p3, location: n2});
+    }
+    function v2(a2, e) {
+      var c = m.Push, d = b(a2, e);
+      true ? z(n2.pathname.charAt(0) === "/", "Relative pathnames are not supported in memory history.push(" + JSON.stringify(a2) + ")") : void 0;
+      g(c, d, function() {
+        v2(a2, e);
+      }) && (f2 += 1, h.splice(f2, h.length, d), t(c, d));
+    }
+    function w3(a2, e) {
+      var c = m.Replace, d = b(a2, e);
+      true ? z(n2.pathname.charAt(0) === "/", "Relative pathnames are not supported in memory history.replace(" + JSON.stringify(a2) + ")") : void 0;
+      g(c, d, function() {
+        w3(a2, e);
+      }) && (h[f2] = d, t(c, d));
+    }
+    function u(a2) {
+      var b2 = Math.min(Math.max(f2 + a2, 0), h.length - 1), c = m.Pop, d = h[b2];
+      g(c, d, function() {
+        u(a2);
+      }) && (f2 = b2, t(c, d));
+    }
+    a === void 0 && (a = {});
+    var r2 = a;
+    a = r2.initialEntries;
+    r2 = r2.initialIndex;
+    var h = (a === void 0 ? ["/"] : a).map(function(a2) {
+      var b2 = y(_extends({pathname: "/", search: "", hash: "", state: null, key: D()}, typeof a2 === "string" ? F(a2) : a2));
+      true ? z(b2.pathname.charAt(0) === "/", "Relative pathnames are not supported in createMemoryHistory({ initialEntries }) (invalid entry: " + JSON.stringify(a2) + ")") : void 0;
+      return b2;
+    }), f2 = Math.min(Math.max(r2 == null ? h.length - 1 : r2, 0), h.length - 1), p3 = m.Pop, n2 = h[f2], q2 = B(), l2 = B();
+    return {get index() {
+      return f2;
+    }, get action() {
+      return p3;
+    }, get location() {
+      return n2;
+    }, createHref: function(a2) {
+      return typeof a2 === "string" ? a2 : E(a2);
+    }, push: v2, replace: w3, go: u, back: function() {
+      u(-1);
+    }, forward: function() {
+      u(1);
+    }, listen: function(a2) {
+      return q2.push(a2);
+    }, block: function(a2) {
+      return l2.push(a2);
+    }};
+  }
+
+  // node_modules/react-router/index.js
+  var import_prop_types = __toModule(require_prop_types());
   var import_react = __toModule(require_react());
-  var Header = () => {
-    return /* @__PURE__ */ import_react.default.createElement("header", {
-      className: "snipcart-cart-header"
-    }, /* @__PURE__ */ import_react.default.createElement("button", {
-      className: "snipcart-cart-header__close-button snipcart-modal__close"
-    }, /* @__PURE__ */ import_react.default.createElement("svg", {
+  function f() {
+    f = Object.assign || function(a) {
+      for (var b = 1; b < arguments.length; b++) {
+        var c = arguments[b], d;
+        for (d in c)
+          Object.prototype.hasOwnProperty.call(c, d) && (a[d] = c[d]);
+      }
+      return a;
+    };
+    return f.apply(this, arguments);
+  }
+  var k = true ? function(a) {
+    return Object.freeze(a);
+  } : function(a) {
+    return a;
+  };
+  function l(a, b) {
+    if (!a)
+      throw Error(b);
+  }
+  function m2(a, b) {
+    if (!a) {
+      typeof console !== "undefined" && console.warn(b);
+      try {
+        throw Error(b);
+      } catch (c) {
+      }
+    }
+  }
+  var p = {};
+  function q(a, b, c) {
+    b || p[a] || (p[a] = true, true ? m2(false, c) : void 0);
+  }
+  var r = (0, import_react.createContext)({static: false});
+  r.displayName = "Location";
+  var v = (0, import_react.createContext)({outlet: null, params: k({}), pathname: "", route: null});
+  v.displayName = "Route";
+  function w(a) {
+    var b = a.children, c = a.initialEntries;
+    a = a.initialIndex;
+    var d = (0, import_react.useRef)();
+    d.current == null && (d.current = createMemoryHistory({initialEntries: c, initialIndex: a}));
+    var e = d.current;
+    c = (0, import_react.useReducer)(function(a2, c2) {
+      return c2;
+    }, {action: e.action, location: e.location});
+    a = c[0];
+    var g = c[1];
+    (0, import_react.useLayoutEffect)(function() {
+      return e.listen(g);
+    }, [e]);
+    return (0, import_react.createElement)(x2, {children: b, action: a.action, location: a.location, navigator: e});
+  }
+  w.displayName = "MemoryRouter", w.propTypes = {children: import_prop_types.default.node, initialEntries: import_prop_types.default.arrayOf(import_prop_types.default.oneOfType([import_prop_types.default.string, import_prop_types.default.shape({pathname: import_prop_types.default.string, search: import_prop_types.default.string, hash: import_prop_types.default.string, state: import_prop_types.default.object, key: import_prop_types.default.string})])), initialIndex: import_prop_types.default.number};
+  function y2(a) {
+    var b = a.to, c = a.replace, d = a.state;
+    z2() ? void 0 : true ? l(false, "<Navigate> may be used only in the context of a <Router> component.") : l(false);
+    true ? m2(!(0, import_react.useContext)(r).static, "<Navigate> must not be used on the initial render in a <StaticRouter>. This is a no-op, but you should modify your code so the <Navigate> is only ever rendered in response to some user interaction or state change.") : void 0;
+    var e = A2();
+    (0, import_react.useEffect)(function() {
+      e(b, {
+        replace: c,
+        state: d
+      });
+    });
+    return null;
+  }
+  y2.displayName = "Navigate", y2.propTypes = {to: import_prop_types.default.oneOfType([import_prop_types.default.string, import_prop_types.default.shape({pathname: import_prop_types.default.string, search: import_prop_types.default.string, hash: import_prop_types.default.string})]).isRequired, replace: import_prop_types.default.bool, state: import_prop_types.default.object};
+  function B2() {
+    return C();
+  }
+  B2.displayName = "Outlet", B2.propTypes = {};
+  function D2(a) {
+    a = a.element;
+    return a === void 0 ? (0, import_react.createElement)(B2, null) : a;
+  }
+  D2.displayName = "Route", D2.propTypes = {caseSensitive: import_prop_types.default.bool, children: import_prop_types.default.node, element: import_prop_types.default.element, path: import_prop_types.default.string};
+  function x2(a) {
+    var b = a.children;
+    b = b === void 0 ? null : b;
+    var c = a.action;
+    c = c === void 0 ? m.Pop : c;
+    var d = a.location, e = a.navigator;
+    a = a.static;
+    a = a === void 0 ? false : a;
+    z2() ? true ? l(false, "You cannot render a <Router> inside another <Router>. You never need more than one.") : l(false) : void 0;
+    return (0, import_react.createElement)(r.Provider, {children: b, value: {action: c, location: d, navigator: e, static: a}});
+  }
+  x2.displayName = "Router", x2.propTypes = {children: import_prop_types.default.node, action: import_prop_types.default.oneOf(["POP", "PUSH", "REPLACE"]), location: import_prop_types.default.object.isRequired, navigator: import_prop_types.default.shape({createHref: import_prop_types.default.func.isRequired, push: import_prop_types.default.func.isRequired, replace: import_prop_types.default.func.isRequired, go: import_prop_types.default.func.isRequired, block: import_prop_types.default.func.isRequired}).isRequired, static: import_prop_types.default.bool};
+  function E2(a) {
+    var b = a.basename;
+    b = b === void 0 ? "" : b;
+    a = F2(a.children);
+    return G(a, b);
+  }
+  E2.displayName = "Routes", E2.propTypes = {basename: import_prop_types.default.string, children: import_prop_types.default.node};
+  function z2() {
+    return (0, import_react.useContext)(r).location != null;
+  }
+  function H() {
+    z2() ? void 0 : true ? l(false, "useLocation() may be used only in the context of a <Router> component.") : l(false);
+    return (0, import_react.useContext)(r).location;
+  }
+  function A2() {
+    z2() ? void 0 : true ? l(false, "useNavigate() may be used only in the context of a <Router> component.") : l(false);
+    var a = (0, import_react.useContext)(r).navigator, b = (0, import_react.useContext)(v).pathname, c = (0, import_react.useRef)(false);
+    (0, import_react.useEffect)(function() {
+      c.current = true;
+    });
+    return (0, import_react.useCallback)(function(d, e) {
+      e === void 0 && (e = {});
+      c.current ? typeof d === "number" ? a.go(d) : (d = J(d, b), (e.replace ? a.replace : a.push)(d, e.state)) : true ? m2(false, "You should call navigate() in a useEffect, not when your component is first rendered.") : void 0;
+    }, [a, b]);
+  }
+  function C() {
+    return (0, import_react.useContext)(v).outlet;
+  }
+  function K(a) {
+    var b = (0, import_react.useContext)(v).pathname;
+    return (0, import_react.useMemo)(function() {
+      return J(a, b);
+    }, [a, b]);
+  }
+  function G(a, b) {
+    b === void 0 && (b = "");
+    var c = (0, import_react.useContext)(v), d = c.route, e = c.pathname, g = c.params;
+    c = d && d.path, q(e, !d || d.path.endsWith("*"), 'You rendered descendant <Routes> (or called `useRoutes`) at "' + e + '" (under <Route path="' + (c + `">) but the parent route path has no trailing "*". This means if you navigate deeper, the parent won't match anymore and therefore the child routes will never render.
+
+Please change the parent <Route path="`) + (c + '"> to <Route path="' + c + '/*">.'));
+    b = b ? L([e, b]) : e;
+    var h = H();
+    return (d = (0, import_react.useMemo)(function() {
+      return M(a, h, b);
+    }, [h, a, b])) ? d.reduceRight(function(a2, c2) {
+      var d2 = c2.pathname, e2 = c2.route;
+      return (0, import_react.createElement)(v.Provider, {children: e2.element, value: {outlet: a2, params: k(f({}, g, {}, c2.params)), pathname: L([b, d2]), route: e2}});
+    }, null) : null;
+  }
+  function F2(a) {
+    var b = [];
+    import_react.Children.forEach(a, function(a2) {
+      if ((0, import_react.isValidElement)(a2))
+        if (a2.type === import_react.Fragment)
+          b.push.apply(b, F2(a2.props.children));
+        else {
+          var c = {path: a2.props.path || "/", caseSensitive: a2.props.caseSensitive === true, element: a2};
+          a2.props.children && (a2 = F2(a2.props.children), a2.length && (c.children = a2));
+          b.push(c);
+        }
+    });
+    return b;
+  }
+  function M(a, b, c) {
+    c === void 0 && (c = "");
+    typeof b === "string" && (b = F(b));
+    b = b.pathname || "/";
+    if (c)
+      if (c = c.replace(/^\/*/, "/").replace(/\/+$/, ""), b.startsWith(c))
+        b = b === c ? "/" : b.slice(c.length);
+      else
+        return null;
+    a = O(a);
+    P(a);
+    var d = null;
+    for (c = 0; d == null && c < a.length; ++c)
+      a: {
+        d = b;
+        for (var e = a[c][1], g = "/", h = {}, I = [], n2 = 0; n2 < e.length; ++n2) {
+          var t = e[n2], u = g === "/" ? d : d.slice(g.length) || "/";
+          u = Q({path: t.path, caseSensitive: t.caseSensitive, end: n2 === e.length - 1}, u);
+          if (!u) {
+            d = null;
+            break a;
+          }
+          g = L([g, u.pathname]);
+          h = f({}, h, {}, u.params);
+          I.push({route: t, pathname: g, params: k(h)});
+        }
+        d = I;
+      }
+    return d;
+  }
+  function O(a, b, c, d, e) {
+    b === void 0 && (b = []);
+    c === void 0 && (c = "");
+    d === void 0 && (d = []);
+    e === void 0 && (e = []);
+    a.forEach(function(a2, h) {
+      var g = L([c, a2.path]), n2 = d.concat(a2);
+      h = e.concat(h);
+      a2.children && O(a2.children, b, g, n2, h);
+      b.push([g, n2, h]);
+    });
+    return b;
+  }
+  function P(a) {
+    var b = a.reduce(function(a2, b2) {
+      b2 = b2[0];
+      a2[b2] = R(b2);
+      return a2;
+    }, {});
+    S(a, function(a2, d) {
+      var c = a2[2];
+      a2 = b[a2[0]];
+      var g = d[2];
+      d = b[d[0]];
+      return a2 !== d ? d - a2 : T(c, g);
+    });
+  }
+  var U = /^:\w+$/;
+  var V = 2;
+  var W = 1;
+  var X = 10;
+  var Y = -2;
+  function Z(a) {
+    return a === "*";
+  }
+  function R(a) {
+    a = a.split("/");
+    var b = a.length;
+    a.some(Z) && (b += Y);
+    return a.filter(function(a2) {
+      return !Z(a2);
+    }).reduce(function(a2, b2) {
+      return a2 + (U.test(b2) ? V : b2 === "" ? W : X);
+    }, b);
+  }
+  function T(a, b) {
+    return a.length === b.length && a.slice(0, -1).every(function(a2, d) {
+      return a2 === b[d];
+    }) ? a[a.length - 1] - b[b.length - 1] : 0;
+  }
+  function S(a, b) {
+    var c = a.slice(0);
+    a.sort(function(a2, e) {
+      return b(a2, e) || c.indexOf(a2) - c.indexOf(e);
+    });
+  }
+  function Q(a, b) {
+    typeof a === "string" && (a = {path: a});
+    var c = a;
+    a = c.path;
+    var d = c.caseSensitive;
+    c = c.end;
+    c = aa(a, d === void 0 ? false : d, c === void 0 ? true : c);
+    d = c[1];
+    c = b.match(c[0]);
+    if (!c)
+      return null;
+    b = c[1];
+    var e = c.slice(2);
+    d = d.reduce(function(a2, b2, c2) {
+      c2 = e[c2];
+      try {
+        var d2 = decodeURIComponent(c2.replace(/\+/g, " "));
+      } catch (t) {
+        true ? m2(false, 'The value for the URL param "' + b2 + '" will not be decoded because the string "' + (c2 + '" is a malformed URL segment. This is probably due to a bad percent encoding (') + (t + ").")) : void 0, d2 = c2;
+      }
+      a2[b2] = d2;
+      return a2;
+    }, {});
+    return {path: a, pathname: b, params: d};
+  }
+  function aa(a, b, c) {
+    var d = [], e = "^(" + a.replace(/^\/*/, "/").replace(/\/?\*?$/, "").replace(/[\\.*+^$?{}|()[\]]/g, "\\$&").replace(/:(\w+)/g, function(a2, b2) {
+      d.push(b2);
+      return "([^\\/]+)";
+    }) + ")";
+    a.endsWith("*") ? (a.endsWith("/*") && (e += "\\/?"), d.push("*"), e += "(.*)") : c && (e += "\\/?");
+    c && (e += "$");
+    return [new RegExp(e, b ? void 0 : "i"), d];
+  }
+  function J(a, b) {
+    b === void 0 && (b = "/");
+    var c = typeof a === "string" ? F(a) : a;
+    a = c.pathname;
+    var d = c.search;
+    d = d === void 0 ? "" : d;
+    c = c.hash;
+    c = c === void 0 ? "" : c;
+    return {pathname: a ? ba(a, a.startsWith("/") ? "/" : b) : b, search: d, hash: c};
+  }
+  function L(a) {
+    return a.join("/").replace(/\/\/+/g, "/");
+  }
+  function ba(a, b) {
+    var c = b.replace(/\/+$/, "").replace(/\/\/+/g, "/").split("/");
+    a.replace(/\/\/+/g, "/").split("/").forEach(function(a2) {
+      a2 === ".." ? 1 < c.length && c.pop() : a2 !== "." && c.push(a2);
+    });
+    return 1 < c.length ? L(c) : "/";
+  }
+  function useBlocker(a, b) {
+    b === void 0 && (b = true);
+    z2() ? void 0 : true ? l(false, "useBlocker() may be used only in the context of a <Router> component.") : l(false);
+    var c = (0, import_react.useContext)(r).navigator;
+    (0, import_react.useEffect)(function() {
+      if (b) {
+        var d = c.block(function(b2) {
+          var c2 = f({}, b2, {retry: function() {
+            d();
+            b2.retry();
+          }});
+          a(c2);
+        });
+        return d;
+      }
+    }, [c, a, b]);
+  }
+  function useHref(a) {
+    z2() ? void 0 : true ? l(false, "useHref() may be used only in the context of a <Router> component.") : l(false);
+    var b = (0, import_react.useContext)(r).navigator;
+    a = K(a);
+    return b.createHref(a);
+  }
+
+  // node_modules/react-router-dom/index.js
+  var import_prop_types2 = __toModule(require_prop_types());
+  var import_react2 = __toModule(require_react());
+  function n() {
+    n = Object.assign || function(a) {
+      for (var d = 1; d < arguments.length; d++) {
+        var b = arguments[d], c;
+        for (c in b)
+          Object.prototype.hasOwnProperty.call(b, c) && (a[c] = b[c]);
+      }
+      return a;
+    };
+    return n.apply(this, arguments);
+  }
+  function p2(a, d) {
+    if (a == null)
+      return {};
+    var b = {}, c = Object.keys(a), e;
+    for (e = 0; e < c.length; e++) {
+      var f2 = c[e];
+      0 <= d.indexOf(f2) || (b[f2] = a[f2]);
+    }
+    return b;
+  }
+  function w2(a) {
+    var d = a.children;
+    a = a.window;
+    var b = (0, import_react2.useRef)();
+    b.current == null && (b.current = createBrowserHistory({window: a}));
+    var c = b.current;
+    a = (0, import_react2.useReducer)(function(a2, b2) {
+      return b2;
+    }, {action: c.action, location: c.location});
+    b = a[0];
+    var e = a[1];
+    (0, import_react2.useLayoutEffect)(function() {
+      return c.listen(e);
+    }, [c]);
+    return (0, import_react2.createElement)(x2, {children: d, action: b.action, location: b.location, navigator: c});
+  }
+  w2.displayName = "BrowserRouter", w2.propTypes = {children: import_prop_types2.default.node, window: import_prop_types2.default.object};
+  function x3(a) {
+    var d = a.children;
+    a = a.window;
+    var b = (0, import_react2.useRef)();
+    b.current == null && (b.current = createHashHistory({window: a}));
+    var c = b.current;
+    a = (0, import_react2.useReducer)(function(a2, b2) {
+      return b2;
+    }, {action: c.action, location: c.location});
+    b = a[0];
+    var e = a[1];
+    (0, import_react2.useLayoutEffect)(function() {
+      return c.listen(e);
+    }, [c]);
+    return (0, import_react2.createElement)(x2, {children: d, action: b.action, location: b.location, navigator: c});
+  }
+  x3.displayName = "HashRouter", x3.propTypes = {children: import_prop_types2.default.node, window: import_prop_types2.default.object};
+  var y3 = (0, import_react2.forwardRef)(function(a, d) {
+    var b = a.onClick, c = a.replace, e = c === void 0 ? false : c, f2 = a.state, g = a.target, m3 = a.to;
+    a = p2(a, ["onClick", "replace", "state", "target", "to"]);
+    c = useHref(m3);
+    var k2 = A2(), u = H(), h = K(m3);
+    return (0, import_react2.createElement)("a", Object.assign({}, a, {href: c, onClick: function(a2) {
+      b && b(a2);
+      a2.defaultPrevented || a2.button !== 0 || g && g !== "_self" || a2.metaKey || a2.altKey || a2.ctrlKey || a2.shiftKey || (a2.preventDefault(), a2 = !!e || E(u) === E(h), k2(m3, {replace: a2, state: f2}));
+    }, ref: d, target: g}));
+  });
+  y3.displayName = "Link", y3.propTypes = {onClick: import_prop_types2.default.func, replace: import_prop_types2.default.bool, state: import_prop_types2.default.object, target: import_prop_types2.default.string, to: import_prop_types2.default.oneOfType([import_prop_types2.default.string, import_prop_types2.default.shape({pathname: import_prop_types2.default.string, search: import_prop_types2.default.string, hash: import_prop_types2.default.string})]).isRequired};
+  var z3 = (0, import_react2.forwardRef)(function(a, d) {
+    var b = a["aria-current"], c = b === void 0 ? "page" : b;
+    b = a.activeClassName;
+    var e = b === void 0 ? "active" : b;
+    b = a.activeStyle;
+    var f2 = a.caseSensitive, g = f2 === void 0 ? false : f2;
+    f2 = a.className;
+    var m3 = f2 === void 0 ? "" : f2;
+    f2 = a.end;
+    var k2 = f2 === void 0 ? false : f2, u = a.style;
+    f2 = a.to;
+    a = p2(a, "aria-current activeClassName activeStyle caseSensitive className end style to".split(" "));
+    var h = H(), l2 = K(f2);
+    h = h.pathname;
+    l2 = l2.pathname;
+    g || (h = h.toLowerCase(), l2 = l2.toLowerCase());
+    c = (g = k2 ? h === l2 : h.startsWith(l2)) ? c : void 0;
+    e = [m3, g ? e : null].filter(Boolean).join(" ");
+    b = n({}, u, {}, g ? b : null);
+    return (0, import_react2.createElement)(y3, Object.assign({}, a, {"aria-current": c, className: e, ref: d, style: b, to: f2}));
+  });
+  z3.displayName = "NavLink", z3.propTypes = n({}, y3.propTypes, {"aria-current": import_prop_types2.default.oneOf("page step location date time true".split(" ")), activeClassName: import_prop_types2.default.string, activeStyle: import_prop_types2.default.object, className: import_prop_types2.default.string, style: import_prop_types2.default.object, to: import_prop_types2.default.oneOfType([import_prop_types2.default.string, import_prop_types2.default.shape({pathname: import_prop_types2.default.string, search: import_prop_types2.default.string, hash: import_prop_types2.default.string})]).isRequired});
+  function A3(a) {
+    B3(a.message, a.when);
+    return null;
+  }
+  A3.displayName = "Prompt", A3.propTypes = {message: import_prop_types2.default.string, when: import_prop_types2.default.bool};
+  function B3(a, d) {
+    d === void 0 && (d = true);
+    var b = (0, import_react2.useCallback)(function(b2) {
+      window.confirm(a) && b2.retry();
+    }, [a]);
+    useBlocker(b, d);
+  }
+
+  // ns-hugo:/github/workspace/website/assets/components/products/Products.jsx
+  var import_react21 = __toModule(require_react());
+
+  // ns-hugo:/github/workspace/website/assets/components/products/Header.jsx
+  var import_react5 = __toModule(require_react());
+
+  // ns-hugo:/github/workspace/website/assets/icons/arrow-left.jsx
+  var import_react3 = __toModule(require_react());
+  function ArrowLeft() {
+    return /* @__PURE__ */ import_react3.default.createElement("svg", {
       viewBox: "0 0 64 64",
       fill: "none",
       xmlns: "http://www.w3.org/2000/svg",
       className: "snipcart-modal__close-icon snipcart__icon--blue-light snipcart__icon"
-    }, /* @__PURE__ */ import_react.default.createElement("path", {
+    }, /* @__PURE__ */ import_react3.default.createElement("path", {
       d: "M12.636 30.158H58v3.423H12.372l9.148 9.055L19.132 45 6 32l13.132-13 2.388 2.364-8.884 8.794z",
       fill: "#313749"
-    })), /* @__PURE__ */ import_react.default.createElement("span", {
-      className: "snipcart-modal__close-title snipcart__font--std"
-    }, " Continue shopping ")), /* @__PURE__ */ import_react.default.createElement("div", null, /* @__PURE__ */ import_react.default.createElement("h3", {
-      className: "snipcart-cart-header__title snipcart__font--black snipcart__font--secondary"
-    }, " Cart summary ")), /* @__PURE__ */ import_react.default.createElement("div", {
-      className: "snipcart-cart-header__options"
-    }, /* @__PURE__ */ import_react.default.createElement("button", {
-      className: "snipcart-cart-header__option snipcart-cart-header__count snipcart__font--secondary snipcart__font--bold"
-    }, /* @__PURE__ */ import_react.default.createElement("svg", {
+    }));
+  }
+
+  // ns-hugo:/github/workspace/website/assets/icons/basket.jsx
+  var import_react4 = __toModule(require_react());
+  function Basket() {
+    return /* @__PURE__ */ import_react4.default.createElement("svg", {
       viewBox: "0 0 64 64",
       fill: "none",
       xmlns: "http://www.w3.org/2000/svg",
       className: "snipcart-cart-header__icon snipcart__icon--blue-dark snipcart__icon"
-    }, /* @__PURE__ */ import_react.default.createElement("path", {
+    }, /* @__PURE__ */ import_react4.default.createElement("path", {
       fillRule: "evenodd",
       clipRule: "evenodd",
       d: "M51.714 20.47L55 60H9l3.286-39.53h9.857v-6.588C22.143 8.424 26.556 4 32 4c5.444 0 9.857 4.424 9.857 9.882v6.589h9.857zM25.43 13.883v16.47h-3.286v-6.587h-6.834l-2.737 32.94h38.856l-2.737-32.94h-6.834v6.588h-3.286v-16.47c0-3.634-2.947-6.589-6.571-6.589-3.624 0-6.571 2.955-6.571 6.588zm3.285 9.883V20.47h6.572v3.294h-6.572z",
       fill: "#313749"
-    })), " 3 ")));
-  };
-  var header_default = Header;
+    }));
+  }
 
-  // ns-hugo:/github/workspace/assets/cart/content.jsx
+  // ns-hugo:/github/workspace/website/assets/components/products/Header.jsx
+  function Header({numberOfItems, saveData}) {
+    return /* @__PURE__ */ import_react5.default.createElement("header", {
+      className: "snipcart-cart-header"
+    }, /* @__PURE__ */ import_react5.default.createElement("button", {
+      className: "snipcart-cart-header__close-button snipcart-modal__close",
+      onClick: () => {
+        saveData();
+        window.location.href = "/";
+      }
+    }, /* @__PURE__ */ import_react5.default.createElement(ArrowLeft, null), /* @__PURE__ */ import_react5.default.createElement("span", {
+      className: "snipcart-modal__close-title snipcart__font--std"
+    }, "Continue shopping")), /* @__PURE__ */ import_react5.default.createElement("div", null, /* @__PURE__ */ import_react5.default.createElement("h3", {
+      className: "snipcart-cart-header__title snipcart__font--black snipcart__font--secondary"
+    }, "Cart summary")), /* @__PURE__ */ import_react5.default.createElement("div", {
+      className: "snipcart-cart-header__options"
+    }, /* @__PURE__ */ import_react5.default.createElement("button", {
+      className: "snipcart-cart-header__option snipcart-cart-header__count snipcart__font--secondary snipcart__font--bold"
+    }, /* @__PURE__ */ import_react5.default.createElement(Basket, null), numberOfItems)));
+  }
+
+  // ns-hugo:/github/workspace/website/assets/components/products/Product.jsx
+  var import_react13 = __toModule(require_react());
+
+  // ns-hugo:/github/workspace/website/assets/components/products/Quantity.jsx
+  var import_react8 = __toModule(require_react());
+
+  // ns-hugo:/github/workspace/website/assets/icons/minus.jsx
+  var import_react6 = __toModule(require_react());
+  function Minus() {
+    return /* @__PURE__ */ import_react6.default.createElement("svg", {
+      viewBox: "0 0 64 64",
+      fill: "none",
+      xmlns: "http://www.w3.org/2000/svg",
+      alt: "Decrement quantity",
+      title: "Decrement quantity",
+      className: "snipcart__icon"
+    }, /* @__PURE__ */ import_react6.default.createElement("path", {
+      d: "M48 31H16v2.462h32V31z",
+      fill: "#313749"
+    }));
+  }
+
+  // ns-hugo:/github/workspace/website/assets/icons/plus.jsx
   var import_react7 = __toModule(require_react());
+  function Plus() {
+    return /* @__PURE__ */ import_react7.default.createElement("svg", {
+      viewBox: "0 0 64 64",
+      fill: "none",
+      xmlns: "http://www.w3.org/2000/svg",
+      alt: "Increment quantity",
+      title: "Increment quantity",
+      className: "snipcart__icon"
+    }, /* @__PURE__ */ import_react7.default.createElement("path", {
+      d: "M33.23 30.77H48v2.46H33.23V48h-2.46V33.23H16v-2.46h14.77V16h2.46v14.77z",
+      fill: "#313749"
+    }));
+  }
 
-  // ns-hugo:/github/workspace/assets/cart/product.jsx
-  var import_react5 = __toModule(require_react());
+  // ns-hugo:/github/workspace/website/assets/services/shared.js
+  function round(num) {
+    return (Math.round(num * 100) / 100).toFixed(2);
+  }
+  function guid() {
+    return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, function(c) {
+      var r2 = Math.random() * 16 | 0, v2 = c == "x" ? r2 : r2 & 3 | 8;
+      return v2.toString(16);
+    });
+  }
+  function shippingRate(id) {
+    switch (id) {
+      case "free-shipping-orders-above-15":
+        return 0;
+      case "shipping-united-states":
+        return 4.5;
+      case "shipping-canada":
+        return 4.5;
+      case "shipping-netherlands":
+        return 1.95;
+      case "shipping-default":
+        return 4.5;
+      default:
+        return 4.5;
+    }
+  }
 
-  // ns-hugo:/github/workspace/assets/cart/product-quantity.jsx
-  var import_react2 = __toModule(require_react());
-  var Quantity = class extends import_react2.Component {
-    constructor(props) {
-      super(props);
-      this.state = {
-        quantity: 4,
-        value: 1
-      };
-    }
-    decrease() {
-      this.setState({quantity: this.state.quantity - 1});
-    }
-    increase() {
-      this.setState({quantity: this.state.quantity + 1});
-    }
-    render() {
-      return /* @__PURE__ */ import_react2.default.createElement("div", {
-        className: "snipcart-item-quantity snipcart-item-line__quantity"
-      }, /* @__PURE__ */ import_react2.default.createElement("label", {
-        className: "snipcart-item-quantity__label snipcart__font--tiny"
-      }, "Quantity"), /* @__PURE__ */ import_react2.default.createElement("div", {
-        className: "snipcart-item-quantity__quantity-price-container"
-      }, /* @__PURE__ */ import_react2.default.createElement("div", {
-        className: "snipcart-item-quantity__quantity snipcart__font--std"
-      }, /* @__PURE__ */ import_react2.default.createElement("button", {
-        className: "snipcart__button--icon snipcart__button--no-border snipcart-item-quantity__button",
-        onClick: this.decrease
-      }, /* @__PURE__ */ import_react2.default.createElement("svg", {
-        viewBox: "0 0 64 64",
-        fill: "none",
-        xmlns: "http://www.w3.org/2000/svg",
-        alt: "Decrement quantity",
-        title: "Decrement quantity",
-        className: "snipcart__icon"
-      }, /* @__PURE__ */ import_react2.default.createElement("path", {
-        d: "M48 31H16v2.462h32V31z",
-        fill: "#313749"
-      }))), /* @__PURE__ */ import_react2.default.createElement("span", {
-        className: "snipcart__font--secondary snipcart__font--regular"
-      }, this.state.quantity), /* @__PURE__ */ import_react2.default.createElement("button", {
-        className: "snipcart__button--icon snipcart__button--no-border snipcart-item-quantity__button",
-        onClick: this.increase
-      }, /* @__PURE__ */ import_react2.default.createElement("svg", {
-        viewBox: "0 0 64 64",
-        fill: "none",
-        xmlns: "http://www.w3.org/2000/svg",
-        alt: "Increment quantity",
-        title: "Increment quantity",
-        className: "snipcart__icon"
-      }, /* @__PURE__ */ import_react2.default.createElement("path", {
-        d: "M33.23 30.77H48v2.46H33.23V48h-2.46V33.23H16v-2.46h14.77V16h2.46v14.77z",
-        fill: "#313749"
-      })))), /* @__PURE__ */ import_react2.default.createElement("div", {
-        className: "snipcart-item-quantity__total-price snipcart__font--bold snipcart__font--secondary"
-      }, "\u20AC29.85")));
-    }
-  };
-  var product_quantity_default = Quantity;
+  // ns-hugo:/github/workspace/website/assets/components/products/Quantity.jsx
+  function Quantity({product, updateQuantity}) {
+    return /* @__PURE__ */ import_react8.default.createElement("div", {
+      className: "snipcart-item-quantity snipcart-item-line__quantity"
+    }, /* @__PURE__ */ import_react8.default.createElement("label", {
+      className: "snipcart-item-quantity__label snipcart__font--tiny"
+    }, "Quantity"), /* @__PURE__ */ import_react8.default.createElement("div", {
+      className: "snipcart-item-quantity__quantity-price-container"
+    }, /* @__PURE__ */ import_react8.default.createElement("div", {
+      className: "snipcart-item-quantity__quantity snipcart__font--std"
+    }, /* @__PURE__ */ import_react8.default.createElement("button", {
+      className: "snipcart__button--icon snipcart__button--no-border snipcart-item-quantity__button",
+      onClick: () => updateQuantity(product.productId, --product.quantity)
+    }, /* @__PURE__ */ import_react8.default.createElement(Minus, null)), /* @__PURE__ */ import_react8.default.createElement("span", {
+      className: "snipcart__font--secondary snipcart__font--regular"
+    }, product.quantity), /* @__PURE__ */ import_react8.default.createElement("button", {
+      className: "snipcart__button--icon snipcart__button--no-border snipcart-item-quantity__button",
+      onClick: () => updateQuantity(product.productId, ++product.quantity)
+    }, /* @__PURE__ */ import_react8.default.createElement(Plus, null))), /* @__PURE__ */ import_react8.default.createElement("div", {
+      className: "snipcart-item-quantity__total-price snipcart__font--bold snipcart__font--secondary"
+    }, round(product.quantity * product.price))));
+  }
 
-  // ns-hugo:/github/workspace/assets/cart/product-properties.jsx
-  var import_react3 = __toModule(require_react());
-  var Properties = () => {
-    return /* @__PURE__ */ import_react3.default.createElement("div", null, /* @__PURE__ */ import_react3.default.createElement("div", {
-      className: "snipcart-item-custom-fields"
-    }, /* @__PURE__ */ import_react3.default.createElement("div", {
-      className: "snipcart-item-custom-fields__field snipcart-dropdown-custom-field--standard snipcart-item-custom-fields--dropdown"
-    }, /* @__PURE__ */ import_react3.default.createElement("label", {
-      htmlFor: "Optionally choose a different text color",
-      className: "snipcart-form__label snipcart__font--tiny snipcart-custom-field-wrapper__label"
-    }, "Optionally choose a different text color"), /* @__PURE__ */ import_react3.default.createElement("div", {
-      className: "snipcart-custom-field-wrapper__input snipcart__font--secondary snipcart__font--std"
-    }, /* @__PURE__ */ import_react3.default.createElement("select", {
-      name: "Optionally choose a different text color",
-      className: "snipcart-dropdown-custom-field snipcart-form__select snipcart__font--secondary snipcart__font--regular"
-    }, /* @__PURE__ */ import_react3.default.createElement("option", {
-      value: "Default: Black"
-    }, "Default: Black"), /* @__PURE__ */ import_react3.default.createElement("option", {
-      value: "White"
-    }, " White "), /* @__PURE__ */ import_react3.default.createElement("option", {
-      value: "Green"
-    }, " Green "), /* @__PURE__ */ import_react3.default.createElement("option", {
-      value: "Red"
-    }, " Red ")))), /* @__PURE__ */ import_react3.default.createElement("div", {
+  // ns-hugo:/github/workspace/website/assets/components/products/Properties.jsx
+  var import_react10 = __toModule(require_react());
+
+  // ns-hugo:/github/workspace/website/assets/components/products/Properties_TextField.jsx
+  var import_react9 = __toModule(require_react());
+  function TextField({property, updateProperty}) {
+    return /* @__PURE__ */ import_react9.default.createElement("div", {
       className: "snipcart-item-custom-fields__field snipcart-item-custom-fields--textbox"
-    }, /* @__PURE__ */ import_react3.default.createElement("label", {
+    }, /* @__PURE__ */ import_react9.default.createElement("label", {
       htmlFor: "Your pinball initials (3 characters)",
       className: "snipcart-form__label snipcart__font--tiny snipcart-custom-field-wrapper__label"
-    }, "Your pinball initials (3 characters)", /* @__PURE__ */ import_react3.default.createElement("span", {
+    }, "Your pinball initials (3 characters)", /* @__PURE__ */ import_react9.default.createElement("span", {
       className: "required__asterisk"
-    }, "*")), /* @__PURE__ */ import_react3.default.createElement("div", {
+    }, "*")), /* @__PURE__ */ import_react9.default.createElement("div", {
       className: "snipcart-custom-field-wrapper__input snipcart__font--secondary snipcart__font--std"
-    }, /* @__PURE__ */ import_react3.default.createElement("div", {
+    }, /* @__PURE__ */ import_react9.default.createElement("div", {
       className: "snipcart-input",
       required: "required"
-    }, /* @__PURE__ */ import_react3.default.createElement("input", {
-      id: "Your pinball initials (3 characters)",
-      name: "Your pinball initials (3 characters)",
+    }, /* @__PURE__ */ import_react9.default.createElement("input", {
+      id: property.rowKey,
+      name: property.name,
       type: "text",
-      required: "required",
+      required: property.required ? "required" : "",
+      value: property.value,
+      onChange: (e) => updateProperty(property.rowKey, e.target.value),
       className: "snipcart-input__input snipcart__font--secondary snipcart__font--bold",
       placeholder: ""
-    }))))));
-  };
-  var product_properties_default = Properties;
+    }))));
+  }
 
-  // ns-hugo:/github/workspace/assets/cart/product-actions.jsx
-  var import_react4 = __toModule(require_react());
-  var Actions = () => {
-    return /* @__PURE__ */ import_react4.default.createElement("div", {
-      className: "snipcart-item-line__actions"
-    }, /* @__PURE__ */ import_react4.default.createElement("button", {
-      className: "snipcart__button--icon"
-    }, /* @__PURE__ */ import_react4.default.createElement("svg", {
+  // ns-hugo:/github/workspace/website/assets/components/products/Properties.jsx
+  function Properties({productProperties, updateProperty}) {
+    function renderProperty(item) {
+      return /* @__PURE__ */ import_react10.default.createElement(TextField, {
+        property: item,
+        updateProperty,
+        key: item.rowKey || "new item"
+      });
+    }
+    return /* @__PURE__ */ import_react10.default.createElement("div", null, /* @__PURE__ */ import_react10.default.createElement("div", {
+      className: "snipcart-item-custom-fields"
+    }), productProperties?.map(renderProperty));
+  }
+
+  // ns-hugo:/github/workspace/website/assets/components/products/Actions.jsx
+  var import_react12 = __toModule(require_react());
+
+  // ns-hugo:/github/workspace/website/assets/icons/trashcan.jsx
+  var import_react11 = __toModule(require_react());
+  function Trashcan() {
+    return /* @__PURE__ */ import_react11.default.createElement("svg", {
       viewBox: "0 0 64 64",
       fill: "none",
       xmlns: "http://www.w3.org/2000/svg",
       alt: "Remove item",
       title: "Remove item",
       className: "snipcart__icon--red snipcart__icon"
-    }, /* @__PURE__ */ import_react4.default.createElement("path", {
+    }, /* @__PURE__ */ import_react11.default.createElement("path", {
       fillRule: "evenodd",
       cli: "evenodd",
       d: "M22 4v6.47H12v3.236h40V10.47H42V4H22zm3.333 6.47V7.235H38.67v3.235H25.333zm20.001 9.707h3.333V59H15.334V20.177h3.333v35.588h26.667V20.177zm-15 29.116V23.412h3.334v25.881h-3.334z",
       fill: "#313749"
-    }))));
-  };
-  var product_actions_default = Actions;
+    }));
+  }
 
-  // ns-hugo:/github/workspace/assets/cart/product.jsx
-  var Product = () => {
-    return /* @__PURE__ */ import_react5.default.createElement("li", {
+  // ns-hugo:/github/workspace/website/assets/components/products/Actions.jsx
+  function Actions({product, removeChartProduct, saveData}) {
+    return /* @__PURE__ */ import_react12.default.createElement("div", {
+      className: "snipcart-item-line__actions"
+    }, /* @__PURE__ */ import_react12.default.createElement("button", {
+      className: "snipcart__button--icon",
+      onClick: () => {
+        removeChartProduct(product.productId);
+      }
+    }, /* @__PURE__ */ import_react12.default.createElement(Trashcan, null)));
+  }
+
+  // ns-hugo:/github/workspace/website/assets/components/products/Product.jsx
+  function Product({
+    product,
+    updateQuantity,
+    updateProperty,
+    removeChartProduct,
+    saveData
+  }) {
+    return /* @__PURE__ */ import_react13.default.createElement("li", {
       className: "snipcart-item-line"
-    }, /* @__PURE__ */ import_react5.default.createElement("div", {
+    }, /* @__PURE__ */ import_react13.default.createElement("div", {
       className: "snipcart-item-line__container"
-    }, /* @__PURE__ */ import_react5.default.createElement("figure", {
-      className: "snipcart-item-line__media"
-    }, /* @__PURE__ */ import_react5.default.createElement("img", {
-      src: "http://localhost:1313/images/renders/BW1.png",
+    }, /* @__PURE__ */ import_react13.default.createElement("figure", {
       className: "snipcart-item-line__image"
-    })), /* @__PURE__ */ import_react5.default.createElement("div", {
+    }, /* @__PURE__ */ import_react13.default.createElement("img", {
+      src: product.image,
+      className: "snipcart-item-line__image"
+    })), /* @__PURE__ */ import_react13.default.createElement("div", {
       className: "snipcart-item-line__product"
-    }, /* @__PURE__ */ import_react5.default.createElement("div", {
+    }, /* @__PURE__ */ import_react13.default.createElement("div", {
       className: "snipcart-item-line__header"
-    }, /* @__PURE__ */ import_react5.default.createElement("h2", {
+    }, /* @__PURE__ */ import_react13.default.createElement("h2", {
       className: "snipcart-item-line__title snipcart__font--xlarge snipcart__font--secondary snipcart__font--black"
-    }, "Black and White"), /* @__PURE__ */ import_react5.default.createElement(product_actions_default, null)), /* @__PURE__ */ import_react5.default.createElement("div", {
+    }, product.name), /* @__PURE__ */ import_react13.default.createElement(Actions, {
+      product,
+      removeChartProduct,
+      saveData
+    })), /* @__PURE__ */ import_react13.default.createElement("div", {
       className: "snipcart-item-line__content"
-    }, /* @__PURE__ */ import_react5.default.createElement("div", {
+    }, /* @__PURE__ */ import_react13.default.createElement("div", {
       className: "snipcart-item-line__body"
-    }, /* @__PURE__ */ import_react5.default.createElement("div", {
+    }, /* @__PURE__ */ import_react13.default.createElement("div", {
       className: "snipcart-item-line__info"
-    }), /* @__PURE__ */ import_react5.default.createElement("div", {
+    }), /* @__PURE__ */ import_react13.default.createElement("div", {
       className: "snipcart-item-line__variants"
-    }, /* @__PURE__ */ import_react5.default.createElement(product_properties_default, null), /* @__PURE__ */ import_react5.default.createElement(product_quantity_default, null)))))));
-  };
-  var product_default = Product;
+    }, /* @__PURE__ */ import_react13.default.createElement(Properties, {
+      productProperties: product.properties,
+      updateProperty
+    }), /* @__PURE__ */ import_react13.default.createElement(Quantity, {
+      product,
+      updateQuantity
+    })))))));
+  }
 
-  // ns-hugo:/github/workspace/assets/cart/footer.jsx
-  var import_react6 = __toModule(require_react());
-  var Footer = () => {
-    return /* @__PURE__ */ import_react6.default.createElement("div", {
-      className: "snipcart-cart__footer"
-    }, /* @__PURE__ */ import_react6.default.createElement("div", {
-      className: "snipcart-cart__footer-col cart__footer-discount-box snipcart-cart__actions"
-    }, /* @__PURE__ */ import_react6.default.createElement("div", {
-      className: "snipcart-discount-box snipcart__font--secondary snipcart-cart__discount-box"
-    }, /* @__PURE__ */ import_react6.default.createElement("button", {
-      className: "snipcart-discount-box__button snipcart__font--bold"
-    }, " Promo code?"))), /* @__PURE__ */ import_react6.default.createElement("div", {
-      className: "snipcart-cart__footer-col"
-    }, /* @__PURE__ */ import_react6.default.createElement("div", {
-      className: "snipcart-cart-summary-fees snipcart-cart-summary-fees--reverse"
-    }, /* @__PURE__ */ import_react6.default.createElement("div", {
-      className: "snipcart-cart-summary-fees__notice snipcart__font--regular"
-    }, " Shipping and taxes will be calculated at checkout. "), /* @__PURE__ */ import_react6.default.createElement("div", {
-      className: "snipcart-cart-summary-fees"
-    }, /* @__PURE__ */ import_react6.default.createElement("div", {
-      className: "snipcart-cart-summary-fees__item snipcart-cart-summary-fees__total snipcart__font--bold snipcart__font--secondary"
-    }, /* @__PURE__ */ import_react6.default.createElement("span", {
-      className: "snipcart-cart-summary-fees__title snipcart-cart-summary-fees__title--highlight snipcart__font--large"
-    }, "Total"), /* @__PURE__ */ import_react6.default.createElement("span", {
-      className: "snipcart-cart-summary-fees__amount snipcart-cart-summary-fees__amount--highlight snipcart__font--large"
-    }, "\u20AC29.85")))), /* @__PURE__ */ import_react6.default.createElement("footer", null, /* @__PURE__ */ import_react6.default.createElement("button", {
-      type: "button",
-      className: "snipcart-cart-button snipcart__font--bold snipcart__font--secondary snipcart-cart__checkout-button snipcart-cart-button--highlight snipcart__font--large"
-    }, /* @__PURE__ */ import_react6.default.createElement("span", {
-      className: "snipcart-cart-button__icon"
-    }), " Checkout ", /* @__PURE__ */ import_react6.default.createElement("svg", {
-      viewBox: "0 0 64 64",
-      fill: "none",
-      xmlns: "http://www.w3.org/2000/svg",
-      alt: "",
-      title: "",
-      className: "snipcart-cart-button__icon snipcart-cart-button__icon--right snipcart__icon"
-    }, /* @__PURE__ */ import_react6.default.createElement("path", {
-      d: "M51.364 30.158H6v3.423h45.628l-9.148 9.055L44.868 45 58 32 44.868 19l-2.388 2.364 8.884 8.794z",
-      fill: "#313749"
-    })))), /* @__PURE__ */ import_react6.default.createElement("div", {
-      className: "snipcart-cart__featured-payment-methods-container"
-    }, /* @__PURE__ */ import_react6.default.createElement("div", {
-      className: "snipcart-featured-payment-methods"
-    }, /* @__PURE__ */ import_react6.default.createElement("h3", {
-      className: "snipcart__font--secondary snipcart__font--bold  snipcart-featured-payment-methods__title"
-    }, /* @__PURE__ */ import_react6.default.createElement("a", {
-      href: "https://snipcart.com/security?utm_source=cart_referral&utm_medium=powered_by&utm_campaign=powered_by_ref&utm_term=onestoppinballshop.com",
-      target: "_blank",
-      rel: "nofollow noopener",
-      className: "snipcart-featured-payment-methods__link"
-    }, /* @__PURE__ */ import_react6.default.createElement("svg", {
+  // ns-hugo:/github/workspace/website/assets/components/products/Footer.jsx
+  var import_react20 = __toModule(require_react());
+
+  // ns-hugo:/github/workspace/website/assets/icons/lock.jsx
+  var import_react14 = __toModule(require_react());
+  function Lock() {
+    return /* @__PURE__ */ import_react14.default.createElement("svg", {
       viewBox: "0 0 64 64",
       fill: "none",
       xmlns: "http://www.w3.org/2000/svg",
       alt: "",
       title: "",
       className: "snipcart-featured-payment-methods__title-icon snipcart__icon"
-    }, /* @__PURE__ */ import_react6.default.createElement("path", {
+    }, /* @__PURE__ */ import_react14.default.createElement("path", {
       d: "M16.615 23.765v-4.942C16.615 10.637 23.28 4 31.5 4c8.22 0 14.885 6.637 14.885 14.823v4.942H53V60H10V23.765h6.615zm0 3.294h-3.307v29.647h36.384V27.059H16.615zm13.231 9.882h3.308v9.883h-3.308V36.94zm-9.923-13.176h23.154v-4.942c0-6.367-5.183-11.529-11.577-11.529s-11.577 5.162-11.577 11.53v4.94z",
       fill: "#313749"
-    })), " Secured by OneStopPinballShop ")), /* @__PURE__ */ import_react6.default.createElement("ul", {
-      className: "snipcart-featured-payment-methods__list"
-    }, /* @__PURE__ */ import_react6.default.createElement("li", {
-      className: "snipcart-featured-payment-methods__list-item"
-    }, /* @__PURE__ */ import_react6.default.createElement("svg", {
+    }));
+  }
+
+  // ns-hugo:/github/workspace/website/assets/icons/visa.jsx
+  var import_react15 = __toModule(require_react());
+  function Visa() {
+    return /* @__PURE__ */ import_react15.default.createElement("svg", {
       viewBox: "0 0 174 56",
       fill: "none",
       xmlns: "http://www.w3.org/2000/svg",
       alt: "Visa",
       title: "Visa",
       className: "snipcart__icon--brand snipcart__icon"
-    }, /* @__PURE__ */ import_react6.default.createElement("path", {
+    }, /* @__PURE__ */ import_react15.default.createElement("path", {
       d: "M74.98 55.192H60.965L69.73.982h14.016l-8.766 54.21zM125.793 2.308C123.028 1.21 118.643 0 113.221 0c-13.842 0-23.59 7.381-23.65 17.934-.114 7.786 6.98 12.111 12.285 14.707 5.423 2.653 7.267 4.385 7.267 6.75-.056 3.63-4.382 5.305-8.418 5.305-5.596 0-8.595-.863-13.151-2.884l-1.846-.866-1.962 12.169c3.288 1.498 9.345 2.827 15.633 2.885 14.707 0 24.282-7.267 24.396-18.513.056-6.171-3.69-10.9-11.766-14.764-4.902-2.48-7.905-4.152-7.905-6.69.058-2.307 2.54-4.67 8.074-4.67 4.557-.116 7.905.98 10.441 2.075l1.268.576 1.906-11.706zM144.423 35.988c1.154-3.114 5.596-15.168 5.596-15.168-.058.116 1.152-3.171 1.844-5.19l.98 4.672s2.654 12.976 3.23 15.686h-11.65zM161.725.983h-10.842c-3.344 0-5.884.98-7.326 4.498l-20.821 49.71h14.708l2.942-8.131h17.996a2177.47 2177.47 0 011.673 8.132h12.978L161.725.982zM49.257.983L35.529 37.949l-1.5-7.497C31.491 21.8 23.532 12.401 14.65 7.729l12.574 47.406h14.822L64.078.983H49.256z",
       fill: "#00579F"
-    }), /* @__PURE__ */ import_react6.default.createElement("path", {
+    }), /* @__PURE__ */ import_react15.default.createElement("path", {
       d: "M22.782.983H.232L0 2.078C17.592 6.577 29.242 17.42 34.03 30.454L29.126 5.54c-.807-3.463-3.288-4.443-6.345-4.557z",
       fill: "#FAA61A"
-    }))), /* @__PURE__ */ import_react6.default.createElement("li", {
-      className: "snipcart-featured-payment-methods__list-item"
-    }, /* @__PURE__ */ import_react6.default.createElement("svg", {
+    }));
+  }
+
+  // ns-hugo:/github/workspace/website/assets/icons/mastercard.jsx
+  var import_react16 = __toModule(require_react());
+  function Mastercard() {
+    return /* @__PURE__ */ import_react16.default.createElement("svg", {
       viewBox: "0 0 104 64",
       fill: "none",
       xmlns: "http://www.w3.org/2000/svg",
       alt: "Mastercard",
       title: "Mastercard",
       className: "snipcart__icon--brand snipcart__icon"
-    }, /* @__PURE__ */ import_react6.default.createElement("path", {
+    }, /* @__PURE__ */ import_react16.default.createElement("path", {
       d: "M67.173 6.842H36.37v50.31h30.803V6.842z",
       fill: "#FF5F00"
-    }), /* @__PURE__ */ import_react6.default.createElement("path", {
+    }), /* @__PURE__ */ import_react16.default.createElement("path", {
       d: "M39.543 32.002a31.939 31.939 0 0112.22-25.15 31.994 31.994 0 100 50.31 31.939 31.939 0 01-12.22-25.16z",
       fill: "#EB001B"
-    }), /* @__PURE__ */ import_react6.default.createElement("path", {
+    }), /* @__PURE__ */ import_react16.default.createElement("path", {
       d: "M103.53 32.002a31.991 31.991 0 01-35.41 31.81 31.994 31.994 0 01-16.357-6.66 31.992 31.992 0 000-50.31 31.994 31.994 0 0151.767 25.151v.009z",
       fill: "#F79E1B"
-    }))))))));
-  };
-  var footer_default = Footer;
+    }));
+  }
 
-  // ns-hugo:/github/workspace/assets/cart/content.jsx
-  var Content = () => {
-    return /* @__PURE__ */ import_react7.default.createElement("div", {
-      className: "snipcart-layout__content"
-    }, /* @__PURE__ */ import_react7.default.createElement("section", {
-      className: "snipcart-cart__content"
-    }, /* @__PURE__ */ import_react7.default.createElement("ul", {
-      className: "snipcart-item-list snipcart-item-list--no-shadow"
-    }, /* @__PURE__ */ import_react7.default.createElement(product_default, null)), /* @__PURE__ */ import_react7.default.createElement(footer_default, null)));
-  };
-  var content_default = Content;
+  // ns-hugo:/github/workspace/website/assets/icons/paypal.jsx
+  var import_react17 = __toModule(require_react());
+  function Paypal() {
+    return /* @__PURE__ */ import_react17.default.createElement("svg", {
+      viewBox: "0 0 350 161",
+      fill: "none",
+      xmlns: "http://www.w3.org/2000/svg",
+      alt: "PayPal",
+      title: "PayPal",
+      className: "snipcart-payment-methods-list-item__icon snipcart__icon"
+    }, /* @__PURE__ */ import_react17.default.createElement("path", {
+      d: "M78.676 47.805c-3.476-3.963-9.76-5.662-17.8-5.662H37.544a3.342 3.342 0 00-3.302 2.819l-9.71 61.619a2 2 0 001.14 2.13c.263.121.549.184.838.183h14.405l3.617-22.946-.112.719a3.332 3.332 0 013.288-2.818h6.845c13.447 0 23.976-5.462 27.051-21.262.092-.467.17-.922.24-1.367.913-5.84-.007-9.814-3.166-13.413",
+      fill: "#003087"
+    }), /* @__PURE__ */ import_react17.default.createElement("path", {
+      d: "M255.017 77.126c-.88 5.782-5.296 5.782-9.565 5.782h-2.43l1.705-10.795a1.341 1.341 0 011.325-1.132h1.115c2.907 0 5.653 0 7.069 1.655.846.99 1.101 2.461.781 4.49zm-1.859-15.085h-16.107a2.243 2.243 0 00-2.214 1.89l-6.508 41.3a1.345 1.345 0 001.325 1.551h8.265c.771 0 1.427-.56 1.547-1.321l1.849-11.712a2.238 2.238 0 012.209-1.89h5.097c10.612 0 16.734-5.132 18.333-15.31.721-4.449.029-7.946-2.054-10.394-2.29-2.692-6.35-4.116-11.739-4.116",
+      fill: "#009CDE"
+    }), /* @__PURE__ */ import_react17.default.createElement("path", {
+      d: "M140.131 77.126c-.88 5.782-5.295 5.782-9.567 5.782h-2.43l1.705-10.795a1.342 1.342 0 011.325-1.132h1.115c2.908 0 5.653 0 7.069 1.655.848.99 1.103 2.461.783 4.49zm-1.858-15.085h-16.108a2.24 2.24 0 00-2.211 1.89l-6.511 41.3a1.342 1.342 0 001.325 1.551h7.692a2.238 2.238 0 002.21-1.89l1.759-11.141a2.237 2.237 0 012.21-1.89h5.096c10.612 0 16.734-5.134 18.333-15.312.721-4.449.03-7.946-2.053-10.394-2.291-2.692-6.351-4.116-11.74-4.116l-.002.002zm37.396 29.913c-.748 4.407-4.243 7.367-8.706 7.367-2.237 0-4.029-.721-5.179-2.084-1.143-1.35-1.57-3.274-1.209-5.416.693-4.37 4.249-7.422 8.643-7.422 2.191 0 3.967.727 5.142 2.102 1.182 1.385 1.647 3.32 1.309 5.453zm10.749-15.015h-7.713a1.345 1.345 0 00-1.329 1.136l-.337 2.156-.54-.78c-1.669-2.424-5.393-3.236-9.11-3.236-8.521 0-15.8 6.458-17.217 15.513-.737 4.521.31 8.839 2.873 11.852 2.353 2.768 5.711 3.921 9.713 3.921 6.869 0 10.678-4.411 10.678-4.411l-.345 2.143a1.353 1.353 0 00.765 1.429c.177.081.368.123.562.122h6.945a2.239 2.239 0 002.212-1.89l4.17-26.401a1.344 1.344 0 00-1.329-1.552",
+      fill: "#003087"
+    }), /* @__PURE__ */ import_react17.default.createElement("path", {
+      d: "M290.554 91.954c-.747 4.407-4.242 7.367-8.705 7.367-2.237 0-4.029-.721-5.18-2.084-1.142-1.35-1.57-3.274-1.208-5.416.693-4.37 4.247-7.422 8.643-7.422 2.191 0 3.967.727 5.142 2.102 1.182 1.385 1.647 3.32 1.308 5.453zm10.75-15.015h-7.713a1.345 1.345 0 00-1.329 1.136l-.337 2.156-.54-.78c-1.67-2.424-5.393-3.236-9.111-3.236-8.518 0-15.797 6.458-17.216 15.513-.737 4.521.312 8.839 2.874 11.852 2.353 2.768 5.712 3.921 9.713 3.921 6.872 0 10.681-4.411 10.681-4.411l-.345 2.143a1.335 1.335 0 001.323 1.551h6.943a2.242 2.242 0 002.214-1.89l4.17-26.401a1.344 1.344 0 00-1.329-1.552",
+      fill: "#009CDE"
+    }), /* @__PURE__ */ import_react17.default.createElement("path", {
+      d: "M227.498 76.941h-7.754a2.23 2.23 0 00-1.849.983L207.2 93.674l-4.534-15.136a2.237 2.237 0 00-2.145-1.599h-7.619a1.346 1.346 0 00-1.329 1.149c-.031.211-.011.427.058.63l8.535 25.057-8.029 11.329a1.341 1.341 0 001.097 2.118h7.746c.731 0 1.419-.359 1.838-.961l25.781-37.212a1.346 1.346 0 00.088-1.387 1.343 1.343 0 00-1.189-.72z",
+      fill: "#003087"
+    }), /* @__PURE__ */ import_react17.default.createElement("path", {
+      d: "M310.394 63.177l-6.613 42.056a1.34 1.34 0 00.766 1.428c.176.081.367.123.561.123h6.648a2.24 2.24 0 002.212-1.89l6.519-41.302a1.347 1.347 0 00-1.327-1.551h-7.439a1.34 1.34 0 00-1.327 1.134",
+      fill: "#009CDE"
+    }), /* @__PURE__ */ import_react17.default.createElement("path", {
+      d: "M78.676 47.805c-3.476-3.963-9.76-5.662-17.8-5.662H37.544a3.342 3.342 0 00-3.302 2.819l-9.71 61.619a2 2 0 001.14 2.13c.263.121.549.184.838.183h14.405l3.617-22.946-.112.719a3.332 3.332 0 013.288-2.818h6.845c13.447 0 23.976-5.462 27.051-21.262.092-.467.17-.922.24-1.367.913-5.84-.007-9.814-3.166-13.413",
+      fill: "#003087"
+    }), /* @__PURE__ */ import_react17.default.createElement("path", {
+      d: "M48.418 61.297a2.924 2.924 0 012.885-2.465h18.291c2.167 0 4.187.141 6.034.436a25.35 25.35 0 012.99.669c1.116.314 2.195.744 3.221 1.283.918-5.841-.004-9.814-3.163-13.415-3.478-3.96-9.76-5.66-17.8-5.66H37.542a3.342 3.342 0 00-3.298 2.819l-9.715 61.613a2 2 0 001.977 2.315h14.407l3.617-22.948 3.888-24.647z",
+      fill: "#003087"
+    }), /* @__PURE__ */ import_react17.default.createElement("path", {
+      d: "M81.841 61.218c-.071.457-.15.913-.239 1.367-3.075 15.798-13.605 21.262-27.052 21.262h-6.846a3.327 3.327 0 00-3.286 2.818l-3.505 22.225-.997 6.305a1.752 1.752 0 001.732 2.027H53.79a2.923 2.923 0 002.885-2.465l.118-.619 2.289-14.504.145-.802a2.922 2.922 0 012.887-2.465h1.817c11.763 0 20.973-4.776 23.665-18.599 1.121-5.773.54-10.598-2.43-13.985a11.596 11.596 0 00-3.325-2.565z",
+      fill: "#009CDE"
+    }), /* @__PURE__ */ import_react17.default.createElement("path", {
+      d: "M78.62 59.937c-.47-.14-.953-.264-1.452-.374a25.674 25.674 0 00-1.54-.29c-1.849-.302-3.867-.443-6.035-.443h-18.29a2.915 2.915 0 00-2.885 2.467L44.53 85.948l-.112.717a3.327 3.327 0 013.285-2.818h6.848c13.447 0 23.976-5.462 27.051-21.262.092-.467.168-.92.24-1.367a16.607 16.607 0 00-2.53-1.067 26.858 26.858 0 00-.692-.216",
+      fill: "#012169"
+    }));
+  }
 
-  // ns-hugo:/github/workspace/assets/cart/index.jsx
-  var Cart = class extends import_react8.Component {
-    state = {};
-    render() {
-      return /* @__PURE__ */ import_react8.default.createElement("div", {
+  // ns-hugo:/github/workspace/website/assets/components/products/CheckoutButton.jsx
+  var import_react19 = __toModule(require_react());
+
+  // ns-hugo:/github/workspace/website/assets/icons/arrow-right.jsx
+  var import_react18 = __toModule(require_react());
+  function ArrowRight() {
+    return /* @__PURE__ */ import_react18.default.createElement("svg", {
+      viewBox: "0 0 64 64",
+      fill: "none",
+      xmlns: "http://www.w3.org/2000/svg",
+      alt: "",
+      title: "",
+      className: "snipcart-cart-button__icon snipcart-cart-button__icon--right snipcart__icon"
+    }, /* @__PURE__ */ import_react18.default.createElement("path", {
+      d: "M51.364 30.158H6v3.423h45.628l-9.148 9.055L44.868 45 58 32 44.868 19l-2.388 2.364 8.884 8.794z",
+      fill: "#313749"
+    }));
+  }
+
+  // ns-hugo:/github/workspace/website/assets/components/products/CheckoutButton.jsx
+  function CheckoutButton({products, invalidateShipping}) {
+    const errors = getErrors(products);
+    const valid = Object.keys(errors).length === 0;
+    function getErrors(products2) {
+      const result = {};
+      if (!products2)
+        return;
+      products2.forEach((product) => {
+        product.properties.forEach((prop) => {
+          if (prop.required && !prop.value)
+            result.empty = "field is required";
+        });
+      });
+      return result;
+    }
+    if (valid) {
+      return /* @__PURE__ */ import_react19.default.createElement(y3, {
+        onClick: () => invalidateShipping(),
+        to: "/checkout",
+        className: "snipcart-cart-button snipcart__font--bold snipcart__font--secondary snipcart-cart__checkout-button snipcart-cart-button--highlight snipcart__font--large"
+      }, /* @__PURE__ */ import_react19.default.createElement("span", {
+        className: "snipcart-cart-button__icon"
+      }), " Checkout", /* @__PURE__ */ import_react19.default.createElement(ArrowRight, null));
+    }
+    return /* @__PURE__ */ import_react19.default.createElement("div", {
+      className: "snipcart-flash-message snipcart-flash-message--error"
+    }, /* @__PURE__ */ import_react19.default.createElement("div", {
+      className: "snipcart-flash-message__content"
+    }, /* @__PURE__ */ import_react19.default.createElement("h2", {
+      className: "snipcart-flash-message__title snipcart__font--secondary snipcart__font--black snipcart__font--large"
+    }, "Missing required information."), /* @__PURE__ */ import_react19.default.createElement("div", {
+      className: "snipcart-flash-message__action-container snipcart__font--std snipcart__font--black"
+    }, "Some products in the cart are missing mandatory information. Please edit the cart to continue.")));
+  }
+
+  // ns-hugo:/github/workspace/website/assets/components/products/Footer.jsx
+  function Footer({products, total, invalidateShipping}) {
+    return /* @__PURE__ */ import_react20.default.createElement("div", {
+      className: "snipcart-cart__footer"
+    }, /* @__PURE__ */ import_react20.default.createElement("div", {
+      className: "snipcart-cart__footer-col cart__footer-discount-box snipcart-cart__actions"
+    }), /* @__PURE__ */ import_react20.default.createElement("div", {
+      className: "snipcart-cart__footer-col"
+    }, /* @__PURE__ */ import_react20.default.createElement("div", {
+      className: "snipcart-cart-summary-fees snipcart-cart-summary-fees--reverse"
+    }, /* @__PURE__ */ import_react20.default.createElement("div", {
+      className: "snipcart-cart-summary-fees__notice snipcart__font--regular"
+    }, "Shipping and taxes will be calculated at checkout."), /* @__PURE__ */ import_react20.default.createElement("div", {
+      className: "snipcart-cart-summary-fees"
+    }, /* @__PURE__ */ import_react20.default.createElement("div", {
+      className: "snipcart-cart-summary-fees__item snipcart-cart-summary-fees__total snipcart__font--bold snipcart__font--secondary"
+    }, /* @__PURE__ */ import_react20.default.createElement("span", {
+      className: "snipcart-cart-summary-fees__title snipcart-cart-summary-fees__title--highlight snipcart__font--large"
+    }, "Total"), /* @__PURE__ */ import_react20.default.createElement("span", {
+      className: "snipcart-cart-summary-fees__amount snipcart-cart-summary-fees__amount--highlight snipcart__font--large"
+    }, "\u20AC", round(total))))), /* @__PURE__ */ import_react20.default.createElement("footer", null, /* @__PURE__ */ import_react20.default.createElement(CheckoutButton, {
+      products,
+      invalidateShipping
+    })), /* @__PURE__ */ import_react20.default.createElement("div", {
+      className: "snipcart-cart__featured-payment-methods-container"
+    }, /* @__PURE__ */ import_react20.default.createElement("div", {
+      className: "snipcart-featured-payment-methods"
+    }, /* @__PURE__ */ import_react20.default.createElement("h3", {
+      className: "snipcart__font--secondary snipcart__font--bold  snipcart-featured-payment-methods__title"
+    }, /* @__PURE__ */ import_react20.default.createElement("a", {
+      href: "/privacy-policy/",
+      target: "_self",
+      rel: "nofollow noopener",
+      className: "snipcart-featured-payment-methods__link"
+    }, /* @__PURE__ */ import_react20.default.createElement(Lock, null), "Secured by OneStopPinballShop")), /* @__PURE__ */ import_react20.default.createElement("ul", {
+      className: "snipcart-featured-payment-methods__list"
+    }, /* @__PURE__ */ import_react20.default.createElement("li", {
+      className: "snipcart-featured-payment-methods__list-item"
+    }, /* @__PURE__ */ import_react20.default.createElement(Visa, null)), /* @__PURE__ */ import_react20.default.createElement("li", {
+      className: "snipcart-featured-payment-methods__list-item"
+    }, /* @__PURE__ */ import_react20.default.createElement(Mastercard, null)), /* @__PURE__ */ import_react20.default.createElement("li", {
+      className: "snipcart-featured-payment-methods__list-item"
+    }, /* @__PURE__ */ import_react20.default.createElement(Paypal, null)))))));
+  }
+
+  // ns-hugo:/github/workspace/website/assets/components/products/Products.jsx
+  function Products({
+    products,
+    setProducts,
+    calculateTotalPrice,
+    invalidateShipping,
+    saveData
+  }) {
+    saveData();
+    function renderProduct(item) {
+      return /* @__PURE__ */ import_react21.default.createElement(Product, {
+        key: item.productId,
+        product: item,
+        updateProperty,
+        updateQuantity,
+        removeChartProduct,
+        saveData
+      });
+    }
+    function updateProperty(id, value) {
+      setProducts((items) => {
+        return items.map((i) => i.rowKey === id ? {
+          ...i,
+          properties: i.properties.map((p3) => p3.rowKey === id ? {...p3, value} : p3)
+        } : i);
+      });
+    }
+    function updateQuantity(id, quantity) {
+      if (quantity <= 0) {
+        removeChartProduct(id);
+      }
+      setProducts((items) => {
+        return items.map((i) => i.productId === id ? {...i, quantity} : i);
+      });
+      saveData();
+    }
+    function removeChartProduct(id) {
+      if (products.length == 1) {
+        setProducts([]);
+      } else {
+        setProducts((items) => {
+          return items.filter((i) => i.productId !== id);
+        });
+      }
+    }
+    if (products.length == 0) {
+      return /* @__PURE__ */ import_react21.default.createElement("div", {
         id: "snipcart",
         className: "snipcart"
-      }, /* @__PURE__ */ import_react8.default.createElement("div", {
+      }, /* @__PURE__ */ import_react21.default.createElement("div", {
         className: "snipcart-modal__container"
-      }, /* @__PURE__ */ import_react8.default.createElement("div", {
+      }, /* @__PURE__ */ import_react21.default.createElement("div", {
         className: "snipcart-layout snipcart-modal"
-      }, /* @__PURE__ */ import_react8.default.createElement(header_default, null), /* @__PURE__ */ import_react8.default.createElement(content_default, null))));
+      }, /* @__PURE__ */ import_react21.default.createElement("section", {
+        className: "snipcart-empty-cart"
+      }, /* @__PURE__ */ import_react21.default.createElement("h1", {
+        className: "snipcart-empty-cart__title snipcart__font--secondary snipcart__font--xlarge snipcart__font--bold"
+      }, " ", "Your cart is empty.", " "), /* @__PURE__ */ import_react21.default.createElement("button", {
+        type: "button",
+        className: "snipcart-cart-button snipcart__font--bold snipcart__font--secondary snipcart-cart-button--secondary snipcart-cart-button--fit",
+        onClick: () => {
+          window.location.href = "/";
+        }
+      }, /* @__PURE__ */ import_react21.default.createElement("svg", {
+        viewBox: "0 0 64 64",
+        fill: "none",
+        xmlns: "http://www.w3.org/2000/svg",
+        alt: "",
+        title: "",
+        className: "snipcart-cart-button__icon snipcart-cart-button__icon--left snipcart__icon"
+      }, /* @__PURE__ */ import_react21.default.createElement("path", {
+        d: "M12.636 30.158H58v3.423H12.372l9.148 9.055L19.132 45 6 32l13.132-13 2.388 2.364-8.884 8.794z",
+        fill: "#313749"
+      })), " ", "Back to store", " ", /* @__PURE__ */ import_react21.default.createElement("span", {
+        className: "snipcart-cart-button__icon"
+      }))))));
     }
-  };
-  var cart_default = Cart;
+    return /* @__PURE__ */ import_react21.default.createElement("div", {
+      id: "snipcart",
+      className: "snipcart"
+    }, /* @__PURE__ */ import_react21.default.createElement("div", {
+      className: "snipcart-modal__container"
+    }, /* @__PURE__ */ import_react21.default.createElement("div", {
+      className: "snipcart-layout snipcart-modal"
+    }, /* @__PURE__ */ import_react21.default.createElement(Header, {
+      numberOfItems: products?.length,
+      saveData
+    }), /* @__PURE__ */ import_react21.default.createElement("div", {
+      className: "snipcart-layout__content"
+    }, /* @__PURE__ */ import_react21.default.createElement("section", {
+      className: "snipcart-cart__content"
+    }, /* @__PURE__ */ import_react21.default.createElement("ul", {
+      className: "snipcart-item-list snipcart-item-list--no-shadow"
+    }, /* @__PURE__ */ import_react21.default.createElement("section", {
+      id: "products"
+    }, products.map(renderProduct))), /* @__PURE__ */ import_react21.default.createElement(Footer, {
+      products,
+      total: calculateTotalPrice(),
+      invalidateShipping
+    }))))));
+  }
 
-  // ns-hugo:/github/workspace/assets/App.jsx
-  var Welcome = class extends import_react9.default.Component {
-    state = {};
-    render() {
-      if (this.props.house)
-        return /* @__PURE__ */ import_react9.default.createElement("h1", null, "Hello2, ", this.props.name, /* @__PURE__ */ import_react9.default.createElement("img", {
-          src: this.props.avatar
-        }), /* @__PURE__ */ import_react9.default.createElement("p", null, this.props.gender), /* @__PURE__ */ import_react9.default.createElement("p", null, this.props.house.name));
-      return /* @__PURE__ */ import_react9.default.createElement("h1", null, "no house");
+  // ns-hugo:/github/workspace/website/assets/components/checkout/Checkout.jsx
+  var import_react37 = __toModule(require_react());
+
+  // ns-hugo:/github/workspace/website/assets/components/checkout/Billing.jsx
+  var import_react27 = __toModule(require_react());
+
+  // ns-hugo:/github/workspace/website/assets/icons/checkmark.jsx
+  var import_react22 = __toModule(require_react());
+  function Checkmark() {
+    return /* @__PURE__ */ import_react22.default.createElement("svg", {
+      viewBox: "0 0 40 40",
+      fill: "none",
+      xmlns: "http://www.w3.org/2000/svg",
+      alt: "",
+      title: "",
+      className: "snipcart__icon--large snipcart__icon--blue-dark snipcart__icon"
+    }, /* @__PURE__ */ import_react22.default.createElement("path", {
+      d: "M16.773 24.21l-4.554-4.472L11 20.933l5.773 5.667L29 14.595 27.781 13.4 16.773 24.21z",
+      fill: "url(#paint0_linear)"
+    }), /* @__PURE__ */ import_react22.default.createElement("defs", null, /* @__PURE__ */ import_react22.default.createElement("linearGradient", {
+      id: "paint0_linear",
+      x1: "11",
+      y1: "19.138",
+      x2: "29",
+      y2: "19.138",
+      gradientUnits: "userSpaceOnUse"
+    }, /* @__PURE__ */ import_react22.default.createElement("stop", {
+      stopColor: "#5082E4"
+    }), /* @__PURE__ */ import_react22.default.createElement("stop", {
+      offset: "1",
+      stopColor: "#52BCF8"
+    }))));
+  }
+
+  // ns-hugo:/github/workspace/website/assets/icons/location.jsx
+  var import_react23 = __toModule(require_react());
+  function Location() {
+    return /* @__PURE__ */ import_react23.default.createElement("svg", {
+      viewBox: "0 0 64 64",
+      fill: "none",
+      xmlns: "http://www.w3.org/2000/svg",
+      alt: "",
+      title: "",
+      className: "snipcart__icon--blue-dark snipcart__icon"
+    }, /* @__PURE__ */ import_react23.default.createElement("path", {
+      fillRule: "evenodd",
+      clipRule: "evenodd",
+      d: "M15 24.573C15 14.868 22.835 7 32.5 7S50 14.868 50 24.573C50 40.687 32.5 56 32.5 56S15 40.687 15 24.573zm31.95 0c0-8.003-6.484-14.51-14.45-14.51-7.966 0-14.45 6.507-14.45 14.51 0 11.438 10.061 22.79 14.447 27.2 4.386-4.415 14.453-15.796 14.453-27.2zm-20.55.802c0-3.381 2.733-6.125 6.1-6.125 3.367 0 6.1 2.744 6.1 6.125S35.867 31.5 32.5 31.5c-3.367 0-6.1-2.744-6.1-6.125zm9.15 0a3.057 3.057 0 00-3.05-3.063 3.057 3.057 0 00-3.05 3.063 3.057 3.057 0 003.05 3.063 3.057 3.057 0 003.05-3.063z",
+      fill: "#313749"
+    }));
+  }
+
+  // ns-hugo:/github/workspace/website/assets/icons/user.jsx
+  var import_react24 = __toModule(require_react());
+  function User() {
+    return /* @__PURE__ */ import_react24.default.createElement("svg", {
+      viewBox: "0 0 64 64",
+      fill: "none",
+      xmlns: "http://www.w3.org/2000/svg",
+      alt: "",
+      title: "",
+      className: "snipcart__icon--blue-dark snipcart__icon"
+    }, /* @__PURE__ */ import_react24.default.createElement("path", {
+      fillRule: "evenodd",
+      clipRule: "evenodd",
+      d: "M19.609 57c-2.131 0-4.107-.888-5.562-2.499-1.543-1.707-2.268-4.023-1.988-6.342l.856-7.167c.487-4.11 2.666-7.791 5.985-10.095l1.753 2.454c-2.609 1.812-4.329 4.725-4.715 7.989l-.859 7.17a5.074 5.074 0 001.242 3.999c.868.96 2.037 1.491 3.288 1.491H45.39c1.251 0 2.42-.531 3.288-1.491a5.074 5.074 0 001.242-3.999l-.855-7.167c-.39-3.267-2.107-6.177-4.72-7.992l1.754-2.454c3.319 2.307 5.501 5.988 5.989 10.098l.852 7.164c.28 2.319-.445 4.635-1.988 6.342C49.501 56.112 47.523 57 45.391 57H19.61zM18.8 19.5c0-7.443 6.147-13.5 13.7-13.5C40.054 6 46.2 12.057 46.2 19.5S40.053 33 32.5 33c-7.552 0-13.699-6.057-13.699-13.5zm3.045 0c0 5.79 4.78 10.5 10.655 10.5 5.875 0 10.655-4.71 10.655-10.5S38.376 9 32.5 9c-5.876 0-10.655 4.71-10.655 10.5z",
+      fill: "#313749"
+    }));
+  }
+
+  // ns-hugo:/github/workspace/website/assets/components/checkout/address/Address.jsx
+  var import_react26 = __toModule(require_react());
+
+  // ns-hugo:/github/workspace/website/assets/components/checkout/address/State.jsx
+  var import_react25 = __toModule(require_react());
+  function State({
+    id,
+    address,
+    handleOnAddressChange,
+    handleBlur
+  }) {
+    if (address?.country === "US") {
+      return /* @__PURE__ */ import_react25.default.createElement(import_react25.default.Fragment, null, /* @__PURE__ */ import_react25.default.createElement("label", {
+        htmlFor: `province_${id}`,
+        className: "snipcart-form__label snipcart__font--tiny"
+      }, "Province/State"), /* @__PURE__ */ import_react25.default.createElement("div", {
+        className: "snipcart-typeahead"
+      }, /* @__PURE__ */ import_react25.default.createElement("div", {
+        className: "snipcart-typeahead__content"
+      }, /* @__PURE__ */ import_react25.default.createElement("select", {
+        id: `province_${id}`,
+        name: "province",
+        className: "snipcart-form__select snipcart__font--secondary snipcart__font--bold",
+        autoComplete: "nope",
+        value: address?.province || "",
+        onChange: handleOnAddressChange
+      }, /* @__PURE__ */ import_react25.default.createElement("option", {
+        value: "AL"
+      }, " Alabama "), /* @__PURE__ */ import_react25.default.createElement("option", {
+        value: "AK"
+      }, " Alaska "), /* @__PURE__ */ import_react25.default.createElement("option", {
+        value: "AS"
+      }, " American Samoa "), /* @__PURE__ */ import_react25.default.createElement("option", {
+        value: "AZ"
+      }, " Arizona "), /* @__PURE__ */ import_react25.default.createElement("option", {
+        value: "AR"
+      }, " Arkansas "), /* @__PURE__ */ import_react25.default.createElement("option", {
+        value: "CA"
+      }, " California "), /* @__PURE__ */ import_react25.default.createElement("option", {
+        value: "CO"
+      }, " Colorado "), /* @__PURE__ */ import_react25.default.createElement("option", {
+        value: "CT"
+      }, " Connecticut "), /* @__PURE__ */ import_react25.default.createElement("option", {
+        value: "DE"
+      }, " Delaware "), /* @__PURE__ */ import_react25.default.createElement("option", {
+        value: "DC"
+      }, " District Of Columbia "), /* @__PURE__ */ import_react25.default.createElement("option", {
+        value: "FM"
+      }, "Federated States Of Micronesia"), /* @__PURE__ */ import_react25.default.createElement("option", {
+        value: "FL"
+      }, " Florida "), /* @__PURE__ */ import_react25.default.createElement("option", {
+        value: "GA"
+      }, " Georgia "), /* @__PURE__ */ import_react25.default.createElement("option", {
+        value: "GU"
+      }, " Guam "), /* @__PURE__ */ import_react25.default.createElement("option", {
+        value: "HI"
+      }, " Hawaii "), /* @__PURE__ */ import_react25.default.createElement("option", {
+        value: "ID"
+      }, " Idaho "), /* @__PURE__ */ import_react25.default.createElement("option", {
+        value: "IL"
+      }, " Illinois "), /* @__PURE__ */ import_react25.default.createElement("option", {
+        value: "IN"
+      }, " Indiana "), /* @__PURE__ */ import_react25.default.createElement("option", {
+        value: "IA"
+      }, " Iowa "), /* @__PURE__ */ import_react25.default.createElement("option", {
+        value: "KS"
+      }, " Kansas "), /* @__PURE__ */ import_react25.default.createElement("option", {
+        value: "KY"
+      }, " Kentucky "), /* @__PURE__ */ import_react25.default.createElement("option", {
+        value: "LA"
+      }, " Louisiana "), /* @__PURE__ */ import_react25.default.createElement("option", {
+        value: "ME"
+      }, " Maine "), /* @__PURE__ */ import_react25.default.createElement("option", {
+        value: "MH"
+      }, " Marshall Islands "), /* @__PURE__ */ import_react25.default.createElement("option", {
+        value: "MD"
+      }, " Maryland "), /* @__PURE__ */ import_react25.default.createElement("option", {
+        value: "MA"
+      }, " Massachusetts "), /* @__PURE__ */ import_react25.default.createElement("option", {
+        value: "MI"
+      }, " Michigan "), /* @__PURE__ */ import_react25.default.createElement("option", {
+        value: "MN"
+      }, " Minnesota "), /* @__PURE__ */ import_react25.default.createElement("option", {
+        value: "MS"
+      }, " Mississippi "), /* @__PURE__ */ import_react25.default.createElement("option", {
+        value: "MO"
+      }, " Missouri "), /* @__PURE__ */ import_react25.default.createElement("option", {
+        value: "MT"
+      }, " Montana "), /* @__PURE__ */ import_react25.default.createElement("option", {
+        value: "NE"
+      }, " Nebraska "), /* @__PURE__ */ import_react25.default.createElement("option", {
+        value: "NV"
+      }, " Nevada "), /* @__PURE__ */ import_react25.default.createElement("option", {
+        value: "NH"
+      }, " New Hampshire "), /* @__PURE__ */ import_react25.default.createElement("option", {
+        value: "NJ"
+      }, " New Jersey "), /* @__PURE__ */ import_react25.default.createElement("option", {
+        value: "NM"
+      }, " New Mexico "), /* @__PURE__ */ import_react25.default.createElement("option", {
+        value: "NY"
+      }, " New York "), /* @__PURE__ */ import_react25.default.createElement("option", {
+        value: "NC"
+      }, " North Carolina "), /* @__PURE__ */ import_react25.default.createElement("option", {
+        value: "ND"
+      }, " North Dakota "), /* @__PURE__ */ import_react25.default.createElement("option", {
+        value: "MP"
+      }, " Northern Mariana Islands "), /* @__PURE__ */ import_react25.default.createElement("option", {
+        value: "OH"
+      }, " Ohio "), /* @__PURE__ */ import_react25.default.createElement("option", {
+        value: "OK"
+      }, " Oklahoma "), /* @__PURE__ */ import_react25.default.createElement("option", {
+        value: "OR"
+      }, " Oregon "), /* @__PURE__ */ import_react25.default.createElement("option", {
+        value: "PW"
+      }, " Palau "), /* @__PURE__ */ import_react25.default.createElement("option", {
+        value: "PA"
+      }, " Pennsylvania "), /* @__PURE__ */ import_react25.default.createElement("option", {
+        value: "PR"
+      }, " Puerto Rico "), /* @__PURE__ */ import_react25.default.createElement("option", {
+        value: "RI"
+      }, " Rhode Island "), /* @__PURE__ */ import_react25.default.createElement("option", {
+        value: "SC"
+      }, " South Carolina "), /* @__PURE__ */ import_react25.default.createElement("option", {
+        value: "SD"
+      }, " South Dakota "), /* @__PURE__ */ import_react25.default.createElement("option", {
+        value: "TN"
+      }, " Tennessee "), /* @__PURE__ */ import_react25.default.createElement("option", {
+        value: "TX"
+      }, " Texas "), /* @__PURE__ */ import_react25.default.createElement("option", {
+        value: "UT"
+      }, " Utah "), /* @__PURE__ */ import_react25.default.createElement("option", {
+        value: "VT"
+      }, " Vermont "), /* @__PURE__ */ import_react25.default.createElement("option", {
+        value: "VI"
+      }, " Virgin Islands "), /* @__PURE__ */ import_react25.default.createElement("option", {
+        value: "VA"
+      }, " Virginia "), /* @__PURE__ */ import_react25.default.createElement("option", {
+        value: "WA"
+      }, " Washington "), /* @__PURE__ */ import_react25.default.createElement("option", {
+        value: "WV"
+      }, " West Virginia "), /* @__PURE__ */ import_react25.default.createElement("option", {
+        value: "WI"
+      }, " Wisconsin "), /* @__PURE__ */ import_react25.default.createElement("option", {
+        value: "WY"
+      }, " Wyoming "), /* @__PURE__ */ import_react25.default.createElement("option", {
+        value: "AA"
+      }, " Armed Forces Americas "), /* @__PURE__ */ import_react25.default.createElement("option", {
+        value: "AE"
+      }, " Armed Forces Europe "), /* @__PURE__ */ import_react25.default.createElement("option", {
+        value: "AP"
+      }, " Armed Forces Pacific ")))));
     }
-  };
-  var App = class extends import_react9.default.Component {
-    state = {};
-    componentDidMount() {
-      this.fetchHouses();
+    if (!address || address?.country !== "US") {
+      return /* @__PURE__ */ import_react25.default.createElement(import_react25.default.Fragment, null, /* @__PURE__ */ import_react25.default.createElement("label", {
+        htmlFor: `province_${id}`,
+        className: "snipcart-form__label snipcart__font--tiny"
+      }, "Province/State"), /* @__PURE__ */ import_react25.default.createElement("div", {
+        className: "snipcart-typeahead"
+      }, /* @__PURE__ */ import_react25.default.createElement("div", {
+        className: "snipcart-typeahead__content"
+      }, /* @__PURE__ */ import_react25.default.createElement("div", {
+        className: "snipcart-input"
+      }, /* @__PURE__ */ import_react25.default.createElement("input", {
+        id: "province",
+        name: "province",
+        type: "text",
+        className: "snipcart-input__input snipcart__font--secondary snipcart__font--bold",
+        onBlur: handleBlur,
+        onChange: handleOnAddressChange,
+        value: address?.province || ""
+      })))));
     }
-    fetchHouses = () => {
-      fetch("/data/houses.json").then((rsp) => rsp.json()).then((allHouses) => {
-        this.allHouses = allHouses;
-        this.pickRandom();
-      });
-    };
-    pickRandom = () => {
-      if (this.allHouses) {
-        const randomIndex = Math.floor(Math.random() * this.allHouses.length);
-        const house = this.allHouses[randomIndex];
-        this.setState({house});
+  }
+
+  // ns-hugo:/github/workspace/website/assets/components/checkout/address/Address.jsx
+  function Address({id, address, setAddress}) {
+    const errors = getErrors(address);
+    const valid = Object.keys(errors).length === 0;
+    function getErrors(address2) {
+      const result = {};
+      if (!address2?.fullName)
+        result.fullName = "Full name is required";
+      if (!address2?.email)
+        result.email = "Email is required";
+      if (address2?.email && !validEmail(address2?.email))
+        result.email = "Email is invalid";
+      if (!address2?.address1)
+        result.address1 = "Street address is required";
+      if (!address2?.address2)
+        result.address2 = "Apt/Suite is required";
+      if (!address2?.city)
+        result.city = "City is required";
+      if (!address2?.province)
+        result.city = "Province is required";
+      if (!address2?.postalCode)
+        result.postalCode = "PostalCode is required";
+      return result;
+    }
+    function validEmail(email) {
+      const re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+      return re.test(email);
+    }
+    if (address) {
+      if (!address.country) {
+        address.country = "NL";
       }
+    }
+    function handleBlur(event) {
+      event.persist();
+      if (!event.target.value) {
+        event.target.className = "snipcart-input__input snipcart__font--secondary snipcart__font--bold snipcart-input--invalid";
+      } else {
+        event.target.className = "snipcart-input__input snipcart__font--secondary snipcart__font--bold";
+      }
+    }
+    function handleOnAddressChange(event) {
+      event.persist();
+      setAddress((curAddress) => {
+        let adr = {...curAddress, [event.target.name]: event.target.value};
+        if (event.target.name == "country") {
+          adr = {...adr, province: ""};
+        }
+        let errors2 = Object.keys(getErrors(adr)).length !== 0;
+        adr = {...adr, errors: errors2};
+        return adr;
+      });
+    }
+    return /* @__PURE__ */ import_react26.default.createElement(import_react26.default.Fragment, null, /* @__PURE__ */ import_react26.default.createElement("fieldset", {
+      className: "snipcart-form__set"
+    }, /* @__PURE__ */ import_react26.default.createElement("div", {
+      className: "snipcart-form__field"
+    }, /* @__PURE__ */ import_react26.default.createElement("label", {
+      htmlFor: `fullName_${id}`,
+      className: "snipcart-form__label snipcart__font--tiny"
+    }, "Full name"), /* @__PURE__ */ import_react26.default.createElement("div", {
+      className: "snipcart-input"
+    }, /* @__PURE__ */ import_react26.default.createElement("input", {
+      id: `fullName_${id}`,
+      name: "fullName",
+      type: "text",
+      className: "snipcart-input__input snipcart__font--secondary snipcart__font--bold",
+      onBlur: handleBlur,
+      onChange: handleOnAddressChange,
+      value: address?.fullName || ""
+    }))), /* @__PURE__ */ import_react26.default.createElement("div", {
+      className: "snipcart-form__field"
+    }, /* @__PURE__ */ import_react26.default.createElement("label", {
+      htmlFor: `email_${id}`,
+      className: "snipcart-form__label snipcart__font--tiny"
+    }, "Email"), /* @__PURE__ */ import_react26.default.createElement("div", {
+      className: "snipcart-input"
+    }, /* @__PURE__ */ import_react26.default.createElement("input", {
+      id: `email_${id}`,
+      name: "email",
+      type: "text",
+      className: "snipcart-input__input snipcart__font--secondary snipcart__font--bold",
+      onBlur: handleBlur,
+      onChange: handleOnAddressChange,
+      value: address?.email || ""
+    })))), /* @__PURE__ */ import_react26.default.createElement("div", null, /* @__PURE__ */ import_react26.default.createElement("fieldset", {
+      className: "snipcart-form__set"
+    }, /* @__PURE__ */ import_react26.default.createElement("div", {
+      className: "snipcart-form__row"
+    }, /* @__PURE__ */ import_react26.default.createElement("div", {
+      className: "snipcart-form__field snipcart-form__cell--large"
+    }, /* @__PURE__ */ import_react26.default.createElement("label", {
+      htmlFor: `address1_${id}`,
+      className: "snipcart-form__label snipcart__font--tiny"
+    }, "Street address"), /* @__PURE__ */ import_react26.default.createElement("div", {
+      className: "snipcart-input"
+    }, /* @__PURE__ */ import_react26.default.createElement("input", {
+      id: `address1_${id}`,
+      name: "address1",
+      type: "text",
+      className: "snipcart-input__input snipcart__font--secondary snipcart__font--bold",
+      onBlur: handleBlur,
+      onChange: handleOnAddressChange,
+      value: address?.address1 || ""
+    }))), /* @__PURE__ */ import_react26.default.createElement("div", {
+      className: "snipcart-form__field snipcart-form__cell--tidy"
+    }, /* @__PURE__ */ import_react26.default.createElement("label", {
+      htmlFor: `address2_${id}`,
+      className: "snipcart-form__label snipcart__font--tiny"
+    }, "Apt/Suite"), /* @__PURE__ */ import_react26.default.createElement("div", {
+      className: "snipcart-input"
+    }, /* @__PURE__ */ import_react26.default.createElement("input", {
+      id: `address2_${id}`,
+      name: "address2",
+      type: "text",
+      className: "snipcart-input__input snipcart__font--secondary snipcart__font--bold",
+      onChange: handleOnAddressChange,
+      onBlur: handleBlur,
+      value: address?.address2 || ""
+    })))), /* @__PURE__ */ import_react26.default.createElement("div", {
+      className: "snipcart-form__field"
+    }, /* @__PURE__ */ import_react26.default.createElement("label", {
+      htmlFor: `city_${id}`,
+      className: "snipcart-form__label snipcart__font--tiny"
+    }, "City"), /* @__PURE__ */ import_react26.default.createElement("div", {
+      className: "snipcart-input"
+    }, /* @__PURE__ */ import_react26.default.createElement("input", {
+      id: `city_${id}`,
+      name: "city",
+      type: "text",
+      className: "snipcart-input__input snipcart__font--secondary snipcart__font--bold",
+      onChange: handleOnAddressChange,
+      onBlur: handleBlur,
+      value: address?.city || ""
+    }))), /* @__PURE__ */ import_react26.default.createElement("div", {
+      className: "snipcart-form__field"
+    }, /* @__PURE__ */ import_react26.default.createElement("label", {
+      htmlFor: `country_${id}`,
+      className: "snipcart-form__label snipcart__font--tiny"
+    }, "Country"), /* @__PURE__ */ import_react26.default.createElement("div", {
+      className: "snipcart-typeahead"
+    }, /* @__PURE__ */ import_react26.default.createElement("div", {
+      className: "snipcart-typeahead__content"
+    }, /* @__PURE__ */ import_react26.default.createElement("input", {
+      name: "country-target",
+      autoComplete: "country",
+      tabIndex: "-1",
+      "aria-hidden": "true",
+      className: "snipcart-form__hidden-autofill",
+      style: {
+        position: "absolute",
+        pointerEvents: "none",
+        right: 1e7 + "px"
+      }
+    }), /* @__PURE__ */ import_react26.default.createElement("select", {
+      id: `country_${id}`,
+      name: "country",
+      className: "snipcart-form__select snipcart__font--secondary snipcart__font--bold",
+      autoComplete: "nope",
+      onChange: handleOnAddressChange,
+      value: address?.country || "NL"
+    }, /* @__PURE__ */ import_react26.default.createElement("option", {
+      value: "NL"
+    }, " Netherlands "), /* @__PURE__ */ import_react26.default.createElement("option", {
+      value: "CA"
+    }, " Canada "), /* @__PURE__ */ import_react26.default.createElement("option", {
+      value: "US"
+    }, " United States "), /* @__PURE__ */ import_react26.default.createElement("option", {
+      value: "AT"
+    }, " Austria "), /* @__PURE__ */ import_react26.default.createElement("option", {
+      value: "BE"
+    }, " Belgium "), /* @__PURE__ */ import_react26.default.createElement("option", {
+      value: "BG"
+    }, " Bulgaria "), /* @__PURE__ */ import_react26.default.createElement("option", {
+      value: "HR"
+    }, " Croatia "), /* @__PURE__ */ import_react26.default.createElement("option", {
+      value: "CY"
+    }, " Cyprus "), /* @__PURE__ */ import_react26.default.createElement("option", {
+      value: "CZ"
+    }, " Czechia "), /* @__PURE__ */ import_react26.default.createElement("option", {
+      value: "DK"
+    }, " Denmark "), /* @__PURE__ */ import_react26.default.createElement("option", {
+      value: "EE"
+    }, " Estonia "), /* @__PURE__ */ import_react26.default.createElement("option", {
+      value: "FI"
+    }, " Finland "), /* @__PURE__ */ import_react26.default.createElement("option", {
+      value: "FR"
+    }, " France "), /* @__PURE__ */ import_react26.default.createElement("option", {
+      value: "DE"
+    }, " Germany "), /* @__PURE__ */ import_react26.default.createElement("option", {
+      value: "GR"
+    }, " Greece "), /* @__PURE__ */ import_react26.default.createElement("option", {
+      value: "HU"
+    }, " Hungary "), /* @__PURE__ */ import_react26.default.createElement("option", {
+      value: "IE"
+    }, " Ireland "), /* @__PURE__ */ import_react26.default.createElement("option", {
+      value: "IT"
+    }, " Italy "), /* @__PURE__ */ import_react26.default.createElement("option", {
+      value: "LV"
+    }, " Latvia "), /* @__PURE__ */ import_react26.default.createElement("option", {
+      value: "LT"
+    }, " Lithuania "), /* @__PURE__ */ import_react26.default.createElement("option", {
+      value: "LU"
+    }, " Luxembourg "), /* @__PURE__ */ import_react26.default.createElement("option", {
+      value: "MT"
+    }, " Malta "), /* @__PURE__ */ import_react26.default.createElement("option", {
+      value: "PL"
+    }, " Poland "), /* @__PURE__ */ import_react26.default.createElement("option", {
+      value: "PT"
+    }, " Portugal "), /* @__PURE__ */ import_react26.default.createElement("option", {
+      value: "RO"
+    }, " Romania "), /* @__PURE__ */ import_react26.default.createElement("option", {
+      value: "SK"
+    }, " Slovakia "), /* @__PURE__ */ import_react26.default.createElement("option", {
+      value: "SI"
+    }, " Slovenia "), /* @__PURE__ */ import_react26.default.createElement("option", {
+      value: "ES"
+    }, " Spain "), /* @__PURE__ */ import_react26.default.createElement("option", {
+      value: "SE"
+    }, " Sweden "), /* @__PURE__ */ import_react26.default.createElement("option", {
+      value: "GB"
+    }, " United Kingdom "))))), /* @__PURE__ */ import_react26.default.createElement("div", {
+      className: "snipcart-form__row"
+    }, /* @__PURE__ */ import_react26.default.createElement("div", {
+      className: "snipcart-form__field snipcart-form__cell--large"
+    }, /* @__PURE__ */ import_react26.default.createElement(State, {
+      id,
+      address,
+      handleOnAddressChange,
+      handleBlur
+    })), /* @__PURE__ */ import_react26.default.createElement("div", {
+      className: "snipcart-form__field snipcart-form__cell--tidy"
+    }, /* @__PURE__ */ import_react26.default.createElement("label", {
+      htmlFor: `postalCode_${id}`,
+      className: "snipcart-form__label snipcart__font--tiny"
+    }, "Postal/ZIP code"), /* @__PURE__ */ import_react26.default.createElement("div", {
+      className: "snipcart-input"
+    }, /* @__PURE__ */ import_react26.default.createElement("input", {
+      id: `postalCode_${id}`,
+      name: "postalCode",
+      type: "text",
+      className: "snipcart-input__input snipcart__font--secondary snipcart__font--bold",
+      onChange: handleOnAddressChange,
+      onBlur: handleBlur,
+      value: address?.postalCode || ""
+    })))))), !valid && /* @__PURE__ */ import_react26.default.createElement("div", {
+      className: "snipcart-error-message snipcart-error-message--input snipcart__font--tiny"
+    }, /* @__PURE__ */ import_react26.default.createElement("ul", null, Object.keys(errors).map((key) => {
+      return /* @__PURE__ */ import_react26.default.createElement("li", {
+        key
+      }, errors[key]);
+    }))));
+  }
+
+  // ns-hugo:/github/workspace/website/assets/services/status.js
+  var BILLINGSTATUS = {
+    EDIT: "EDIT",
+    COMPLETED: "COMPLETED"
+  };
+  var SHIPPINGSTATUS = {
+    ADDRESS: "ADDRESS",
+    SHIPPING: "SHIPPING",
+    COMPLETED: "COMPLETED"
+  };
+
+  // ns-hugo:/github/workspace/website/assets/components/checkout/Billing.jsx
+  function Billing({
+    cart,
+    setCart,
+    address,
+    setAddress,
+    billingStatus,
+    setBillingStatus,
+    saveData
+  }) {
+    function continueToShipping() {
+      saveData();
+      setBillingStatus(BILLINGSTATUS.COMPLETED);
+    }
+    function handleUseDifferentShippingAddress(event) {
+      event.persist();
+      setCart((curCustomer) => {
+        return {
+          ...curCustomer,
+          [event.target.name]: event.target.checked ? "on" : "off",
+          shippingMethod: "not set"
+        };
+      });
+    }
+    if (billingStatus == BILLINGSTATUS.COMPLETED) {
+      return /* @__PURE__ */ import_react27.default.createElement("div", {
+        className: "snipcart__box snipcart-billing-completed snipcart__box--gray"
+      }, /* @__PURE__ */ import_react27.default.createElement("div", {
+        className: "snipcart-billing-completed__header snipcart__box--header"
+      }, /* @__PURE__ */ import_react27.default.createElement("div", {
+        className: "snipcart__box--title"
+      }, /* @__PURE__ */ import_react27.default.createElement("div", {
+        className: "snipcart__box--badge snipcart__font--bold snipcart__font--secondary"
+      }, /* @__PURE__ */ import_react27.default.createElement(Checkmark, null)), /* @__PURE__ */ import_react27.default.createElement("h1", {
+        className: "snipcart-billing-completed__title snipcart__font--subtitle"
+      }, "Billing")), /* @__PURE__ */ import_react27.default.createElement("button", {
+        type: "button",
+        className: "snipcart__actions--link",
+        onClick: () => setBillingStatus(BILLINGSTATUS.EDIT)
+      }, "Edit")), /* @__PURE__ */ import_react27.default.createElement("div", {
+        className: "snipcart-checkout-step__cols snipcart__font--std"
+      }, /* @__PURE__ */ import_react27.default.createElement("div", {
+        className: "snipcart-checkout-step__col"
+      }, /* @__PURE__ */ import_react27.default.createElement("div", {
+        className: "snipcart-checkout-step__icon snipcart-billing-completed__step-icon"
+      }, /* @__PURE__ */ import_react27.default.createElement(User, null)), /* @__PURE__ */ import_react27.default.createElement("div", null, /* @__PURE__ */ import_react27.default.createElement("h3", {
+        className: "snipcart-billing-completed__step-title snipcart__font--secondary snipcart__font--bold"
+      }, "Customer information"), /* @__PURE__ */ import_react27.default.createElement("span", {
+        className: "snipcart-billing-completed__information snipcart__font--std"
+      }, address?.fullName, /* @__PURE__ */ import_react27.default.createElement("br", null), cart?.email))), /* @__PURE__ */ import_react27.default.createElement("div", {
+        className: "snipcart-checkout-step__col"
+      }, /* @__PURE__ */ import_react27.default.createElement("div", {
+        className: "snipcart-checkout-step__icon snipcart-billing-completed__step-icon"
+      }, /* @__PURE__ */ import_react27.default.createElement(Location, null)), /* @__PURE__ */ import_react27.default.createElement("div", null, /* @__PURE__ */ import_react27.default.createElement("h3", {
+        className: "snipcart-billing-completed__step-title snipcart__font--secondary snipcart__font--bold"
+      }, "Billing address"), /* @__PURE__ */ import_react27.default.createElement("span", {
+        className: "snipcart-billing-completed__information snipcart__font--std"
+      }, address?.address1, " ", address?.address2, ", ", address?.city, ",", address?.country, ", ", address?.postalCode)))));
+    }
+    if (billingStatus == BILLINGSTATUS.EDIT) {
+      return /* @__PURE__ */ import_react27.default.createElement(import_react27.default.Fragment, null, /* @__PURE__ */ import_react27.default.createElement("div", {
+        id: "snipcart-checkout-step-billing",
+        className: "snipcart-checkout-step"
+      }, /* @__PURE__ */ import_react27.default.createElement("div", {
+        className: "snipcart__box"
+      }, /* @__PURE__ */ import_react27.default.createElement("div", {
+        className: "snipcart__box--header"
+      }, /* @__PURE__ */ import_react27.default.createElement("div", {
+        className: "snipcart__box--title"
+      }, /* @__PURE__ */ import_react27.default.createElement("div", {
+        className: "snipcart__box--badge snipcart__box--badge snipcart__box--badge-highlight snipcart__font--bold snipcart__font--secondary"
+      }, "1"), /* @__PURE__ */ import_react27.default.createElement("h1", {
+        className: "snipcart__font--subtitle"
+      }, " Billing "))), /* @__PURE__ */ import_react27.default.createElement(Address, {
+        id: "billing",
+        address,
+        setAddress
+      }), /* @__PURE__ */ import_react27.default.createElement("hr", {
+        className: "snipcart-form__separator"
+      }), /* @__PURE__ */ import_react27.default.createElement("fieldset", {
+        className: "snipcart-form__set snipcart-form__set--different-shipping"
+      }, /* @__PURE__ */ import_react27.default.createElement("div", {
+        className: "snipcart-form__field"
+      }, /* @__PURE__ */ import_react27.default.createElement("div", {
+        className: "snipcart-form__field-checkbox"
+      }, /* @__PURE__ */ import_react27.default.createElement("input", {
+        type: "checkbox",
+        name: "useDifferentShippingAddress",
+        id: "useDifferentShippingAddress",
+        className: "snipcart-checkbox",
+        onClick: handleUseDifferentShippingAddress,
+        defaultChecked: cart.useDifferentShippingAddress === "on"
+      }), /* @__PURE__ */ import_react27.default.createElement("label", {
+        htmlFor: "useDifferentShippingAddress",
+        className: "snipcart-form__label snipcart__font--tiny snipcart-form__label--checkbox"
+      }, "Use different shipping address")))), /* @__PURE__ */ import_react27.default.createElement("div", {
+        className: "snipcart-form__footer"
+      }, /* @__PURE__ */ import_react27.default.createElement("button", {
+        type: "button",
+        className: "snipcart-cart-button snipcart__font--bold snipcart__font--secondary snipcart-cart-button--highlight snipcart__font--large",
+        onClick: () => continueToShipping(),
+        disabled: address == null || address?.errors
+      }, /* @__PURE__ */ import_react27.default.createElement("span", {
+        className: "snipcart-cart-button__icon"
+      }), " Continue to shipping ", /* @__PURE__ */ import_react27.default.createElement("span", {
+        className: "snipcart-cart-button__icon"
+      }))))));
+    }
+  }
+
+  // ns-hugo:/github/workspace/website/assets/components/checkout/shipping/Shipping.jsx
+  var import_react31 = __toModule(require_react());
+
+  // ns-hugo:/github/workspace/website/assets/icons/package.jsx
+  var import_react28 = __toModule(require_react());
+  function Package() {
+    return /* @__PURE__ */ import_react28.default.createElement("svg", {
+      viewBox: "0 0 64 64",
+      fill: "none",
+      xmlns: "http://www.w3.org/2000/svg",
+      alt: "",
+      title: "",
+      className: "snipcart__icon--blue-dark snipcart__icon"
+    }, /* @__PURE__ */ import_react28.default.createElement("path", {
+      fillRule: "evenodd",
+      clipRule: "evenodd",
+      d: "M32 9L6.929 18.635v26.153L31.999 55.8l25.072-11.012V18.635L32 9zm-7.65 5.891L32 11.954l21.36 8.21-8.437 3.473-20.573-8.746zm-13.71 5.272l10.011-3.849 20.69 8.799L32 28.959l-21.36-8.796zm33.533 16.493l1.106-.017V26.63l9.006-3.71V43l-20.892 9.173V31.53l9.1-3.752v9.905l1.68-1.027zM9.714 43V22.92l20.893 8.61v20.645L9.714 43.001z",
+      fill: "#313749"
+    }));
+  }
+
+  // ns-hugo:/github/workspace/website/assets/components/checkout/shipping/ShippingMethod.jsx
+  var import_react30 = __toModule(require_react());
+
+  // ns-hugo:/github/workspace/website/assets/components/checkout/shipping/ShippingMethodOption.jsx
+  var import_react29 = __toModule(require_react());
+  function ShippingMethodOption({
+    display,
+    handleOnChange,
+    activeShippingMethod,
+    id,
+    name
+  }) {
+    function active(id2) {
+      if (activeShippingMethod === id2) {
+        return "snipcart-shipping-rates-list-item snipcart__font--secondary snipcart__font--bold snipcart-shipping-rates-list-item--highlight";
+      }
+      return "snipcart-shipping-rates-list-item snipcart__font--secondary";
+    }
+    if (display) {
+      return /* @__PURE__ */ import_react29.default.createElement("li", {
+        className: active(id)
+      }, /* @__PURE__ */ import_react29.default.createElement("span", null, /* @__PURE__ */ import_react29.default.createElement("span", {
+        className: "snipcart-shipping-rates-list-item__label--highlight"
+      }, /* @__PURE__ */ import_react29.default.createElement("input", {
+        type: "radio",
+        name: "shippingMethod",
+        id,
+        className: "snipcart-form-radio",
+        value: id,
+        defaultChecked: activeShippingMethod === id,
+        onChange: handleOnChange
+      }), /* @__PURE__ */ import_react29.default.createElement("label", {
+        htmlFor: id,
+        className: "snipcart-form__label snipcart-form-radio__label snipcart__font--std"
+      }, name))), /* @__PURE__ */ import_react29.default.createElement("span", {
+        className: "snipcart-shipping-rates-list-item--right snipcart-shipping-rates-list-item__price snipcart__font--black"
+      }, "\u20AC", round(shippingRate(id))));
+    } else {
+      return /* @__PURE__ */ import_react29.default.createElement(import_react29.default.Fragment, null);
+    }
+  }
+
+  // ns-hugo:/github/workspace/website/assets/components/checkout/shipping/ShippingMethod.jsx
+  function ShippingMethod({
+    mode,
+    cart,
+    setCart,
+    country,
+    totalPrice,
+    setShippingStatus
+  }) {
+    function handleOnChange(event) {
+      event.persist();
+      setShippingStatus(SHIPPINGSTATUS.COMPLETED);
+      setCart((items) => {
+        return {
+          ...items,
+          [event.target.name]: event.target.value
+        };
+      });
+    }
+    if (mode == "view") {
+      return /* @__PURE__ */ import_react30.default.createElement("div", null, /* @__PURE__ */ import_react30.default.createElement("h3", {
+        className: "snipcart-checkout-step__title snipcart-shipping-completed__step-title snipcart__font--secondary snipcart__font--bold"
+      }, "Shipping method"), /* @__PURE__ */ import_react30.default.createElement("span", {
+        className: "snipcart-shipping-completed__information"
+      }, cart.shippingMethod));
+    }
+    if (mode === "edit") {
+      return /* @__PURE__ */ import_react30.default.createElement("ul", {
+        className: "snipcart-shipping-rates-list",
+        "item-template": "shipping-rates-list-item"
+      }, /* @__PURE__ */ import_react30.default.createElement(ShippingMethodOption, {
+        display: totalPrice >= 15,
+        handleOnChange,
+        activeShippingMethod: cart.shippingMethod,
+        id: "free-shipping-orders-above-15",
+        name: "Free Shipping (orders above 15)"
+      }), /* @__PURE__ */ import_react30.default.createElement(ShippingMethodOption, {
+        display: country === "US",
+        handleOnChange,
+        activeShippingMethod: cart.shippingMethod,
+        id: "shipping-united-states",
+        name: "Shipping United States"
+      }), /* @__PURE__ */ import_react30.default.createElement(ShippingMethodOption, {
+        display: country === "CA",
+        handleOnChange,
+        activeShippingMethod: cart.shippingMethod,
+        id: "shipping-canada",
+        name: "Shipping Canada"
+      }), /* @__PURE__ */ import_react30.default.createElement(ShippingMethodOption, {
+        display: country === "NL",
+        handleOnChange,
+        activeShippingMethod: cart.shippingMethod,
+        id: "shipping-netherlands",
+        name: "Verzending Nederland"
+      }), /* @__PURE__ */ import_react30.default.createElement(ShippingMethodOption, {
+        display: country !== "NL" && country !== "US" && country !== "CA" && totalPrice < 15,
+        handleOnChange,
+        activeShippingMethod: cart.shippingMethod,
+        id: "shipping-default",
+        name: "Shipping"
+      }));
+    }
+  }
+
+  // ns-hugo:/github/workspace/website/assets/components/checkout/shipping/Shipping.jsx
+  function Shipping({
+    cart,
+    setCart,
+    billingAddress,
+    shippingAddress,
+    setAddress,
+    billingStatus,
+    shippingStatus,
+    setShippingStatus,
+    calculateTotalPrice,
+    saveData
+  }) {
+    var finalAddress = cart.useDifferentShippingAddress == "on" ? shippingAddress : billingAddress;
+    function continueToPayment() {
+      saveData();
+      setShippingStatus(SHIPPINGSTATUS.COMPLETED);
+    }
+    function setUseDifferentShippingAddress() {
+      setCart((cart2) => {
+        return {
+          ...cart2,
+          ["useDifferentShippingAddress"]: "on"
+        };
+      });
+    }
+    if (billingStatus === BILLINGSTATUS.EDIT) {
+      return /* @__PURE__ */ import_react31.default.createElement("div", {
+        className: "snipcart__box snipcart__box--gray snipcart__box--slim"
+      }, /* @__PURE__ */ import_react31.default.createElement("div", {
+        className: "snipcart__box--header"
+      }, /* @__PURE__ */ import_react31.default.createElement("div", {
+        className: "snipcart__box--title"
+      }, /* @__PURE__ */ import_react31.default.createElement("div", {
+        className: "snipcart__box--badge snipcart__font--bold snipcart__font--secondary"
+      }, "2"), /* @__PURE__ */ import_react31.default.createElement("h1", {
+        className: "snipcart__font--subtitle"
+      }, " Shipping "))));
+    }
+    if (cart.useDifferentShippingAddress == "on" && shippingStatus === SHIPPINGSTATUS.ADDRESS) {
+      return /* @__PURE__ */ import_react31.default.createElement("div", {
+        className: "snipcart__box"
+      }, /* @__PURE__ */ import_react31.default.createElement("div", {
+        className: "snipcart__box--header"
+      }, /* @__PURE__ */ import_react31.default.createElement("div", {
+        className: "snipcart__box--title"
+      }, /* @__PURE__ */ import_react31.default.createElement("div", {
+        className: "snipcart__box--badge snipcart__box--badge snipcart__box--badge-highlight snipcart__font--bold snipcart__font--secondary"
+      }, "2"), /* @__PURE__ */ import_react31.default.createElement("h1", {
+        className: "snipcart__font--subtitle snipcart-shipping-address__title"
+      }, "Shipping"))), /* @__PURE__ */ import_react31.default.createElement("div", {
+        className: "snipcart-shipping-address--readonly"
+      }, /* @__PURE__ */ import_react31.default.createElement("div", {
+        className: "snipcart-shipping-address__header--readonly"
+      }, /* @__PURE__ */ import_react31.default.createElement("h3", {
+        className: "snipcart-shipping-address__subtitle snipcart__font--bold"
+      }, "Shipping to:"))), /* @__PURE__ */ import_react31.default.createElement(Address, {
+        id: "shipping",
+        address: shippingAddress,
+        setAddress
+      }), /* @__PURE__ */ import_react31.default.createElement("div", {
+        className: "snipcart-form__footer"
+      }, /* @__PURE__ */ import_react31.default.createElement("button", {
+        type: "button",
+        className: "snipcart-cart-button snipcart__font--bold snipcart__font--secondary snipcart-cart-button--highlight snipcart__font--large",
+        onClick: () => setShippingStatus(SHIPPINGSTATUS.SHIPPING),
+        disabled: shippingAddress == null || shippingAddress?.errors
+      }, /* @__PURE__ */ import_react31.default.createElement("span", {
+        className: "snipcart-cart-button__icon"
+      }), " Use this address", /* @__PURE__ */ import_react31.default.createElement("span", {
+        className: "snipcart-cart-button__icon"
+      }))));
+    }
+    if (shippingStatus == SHIPPINGSTATUS.SHIPPING || cart.shippingMethod === "not set") {
+      return /* @__PURE__ */ import_react31.default.createElement("div", {
+        className: "snipcart__box"
+      }, /* @__PURE__ */ import_react31.default.createElement("div", {
+        className: "snipcart__box--header"
+      }, /* @__PURE__ */ import_react31.default.createElement("div", {
+        className: "snipcart__box--title"
+      }, /* @__PURE__ */ import_react31.default.createElement("div", {
+        className: "snipcart__box--badge snipcart__box--badge snipcart__box--badge-highlight snipcart__font--bold snipcart__font--secondary"
+      }, "2"), /* @__PURE__ */ import_react31.default.createElement("h1", {
+        className: "snipcart__font--subtitle"
+      }, "Shipping")), /* @__PURE__ */ import_react31.default.createElement("button", {
+        className: "snipcart__actions--link",
+        onClick: () => {
+          setUseDifferentShippingAddress();
+          setShippingStatus(SHIPPINGSTATUS.ADDRESS);
+        }
+      }, "Edit")), /* @__PURE__ */ import_react31.default.createElement("div", {
+        className: "snipcart-shipping-address--readonly"
+      }, /* @__PURE__ */ import_react31.default.createElement("div", {
+        className: "snipcart-shipping-address__header--readonly"
+      }, /* @__PURE__ */ import_react31.default.createElement("h3", {
+        className: "snipcart-shipping-address__subtitle"
+      }, "Shipping to:")), /* @__PURE__ */ import_react31.default.createElement("div", {
+        className: "snipcart-shipping-address__address-field snipcart-shipping-address__content snipcart-shipping-address__content--readonly snipcart__font--std"
+      }, /* @__PURE__ */ import_react31.default.createElement("strong", {
+        className: "snipcart__notice--with-icon snipcart__font--secondary snipcart__font--bold"
+      }, /* @__PURE__ */ import_react31.default.createElement(Location, null), finalAddress?.address1, " ", finalAddress?.address2, ",", finalAddress?.city, ", ", finalAddress?.country, ",", finalAddress?.postalCode))), /* @__PURE__ */ import_react31.default.createElement(ShippingMethod, {
+        mode: "edit",
+        cart,
+        setCart,
+        country: finalAddress?.country,
+        totalPrice: calculateTotalPrice(),
+        setShippingStatus
+      }), /* @__PURE__ */ import_react31.default.createElement("div", {
+        className: "snipcart-form__footer"
+      }, /* @__PURE__ */ import_react31.default.createElement("button", {
+        type: "button",
+        disabled: cart.shippingMethod === "not set",
+        className: "snipcart-cart-button snipcart__font--bold snipcart__font--secondary snipcart-cart-button--highlight snipcart__font--large",
+        onClick: continueToPayment
+      }, /* @__PURE__ */ import_react31.default.createElement("span", {
+        className: "snipcart-cart-button__icon"
+      }), " Continue to payment ", /* @__PURE__ */ import_react31.default.createElement("span", {
+        className: "snipcart-cart-button__icon"
+      }))));
+    }
+    if (shippingStatus == SHIPPINGSTATUS.COMPLETED) {
+      return /* @__PURE__ */ import_react31.default.createElement("div", {
+        className: "snipcart__box snipcart-shipping-completed snipcart__box--gray"
+      }, /* @__PURE__ */ import_react31.default.createElement("div", {
+        className: "snipcart-shipping-completed__header snipcart__box--header"
+      }, /* @__PURE__ */ import_react31.default.createElement("div", {
+        className: "snipcart__box--title"
+      }, /* @__PURE__ */ import_react31.default.createElement("div", {
+        className: "snipcart__box--badge snipcart__font--bold snipcart__font--secondary"
+      }, /* @__PURE__ */ import_react31.default.createElement(Checkmark, null)), /* @__PURE__ */ import_react31.default.createElement("h1", {
+        className: "snipcart-shipping-completed__title snipcart__font--subtitle"
+      }, "Shipping")), /* @__PURE__ */ import_react31.default.createElement("button", {
+        type: "button",
+        className: "snipcart__actions--link",
+        onClick: () => {
+          setShippingStatus(SHIPPINGSTATUS.SHIPPING);
+        }
+      }, "Edit")), /* @__PURE__ */ import_react31.default.createElement("div", {
+        className: "snipcart-checkout-step__cols snipcart__font--std"
+      }, /* @__PURE__ */ import_react31.default.createElement("div", {
+        className: "snipcart-checkout-step__col"
+      }, /* @__PURE__ */ import_react31.default.createElement("div", {
+        className: "snipcart-checkout-step__icon snipcart-shipping-completed__step-icon"
+      }, /* @__PURE__ */ import_react31.default.createElement(Location, null)), /* @__PURE__ */ import_react31.default.createElement("div", {
+        className: "snipcart__address__display"
+      }, /* @__PURE__ */ import_react31.default.createElement("h3", {
+        className: "snipcart-checkout-step__title snipcart-shipping-completed__step-title snipcart__font--secondary snipcart__font--bold"
+      }, "Shipping address"), /* @__PURE__ */ import_react31.default.createElement("span", {
+        className: "snipcart-shipping-completed__information snipcart__font--std"
+      }, finalAddress?.address1, " ", finalAddress?.address2, ",", " ", finalAddress?.city, ", ", finalAddress?.country, ",", " ", finalAddress?.postalCode))), /* @__PURE__ */ import_react31.default.createElement("div", {
+        className: "snipcart-checkout-step__col"
+      }, /* @__PURE__ */ import_react31.default.createElement("div", {
+        className: "snipcart-checkout-step__icon snipcart-shipping-completed__step-icon"
+      }, /* @__PURE__ */ import_react31.default.createElement(Package, null)), /* @__PURE__ */ import_react31.default.createElement(ShippingMethod, {
+        mode: "view",
+        cart,
+        setCart
+      }))));
+    }
+  }
+
+  // ns-hugo:/github/workspace/website/assets/components/checkout/Payment.jsx
+  var import_react33 = __toModule(require_react());
+
+  // ns-hugo:/github/workspace/website/assets/Spinner.jsx
+  var import_react32 = __toModule(require_react());
+  function Spinner() {
+    return /* @__PURE__ */ import_react32.default.createElement("div", {
+      className: "lds-container"
+    }, /* @__PURE__ */ import_react32.default.createElement("div", {
+      className: "lds-dual-ring"
+    }));
+  }
+
+  // ns-hugo:/github/workspace/website/assets/components/checkout/Payment.jsx
+  function Payment({shippingStatus, baseUrl, customerNr}) {
+    const [loading, setLoading] = (0, import_react33.useState)(false);
+    const [error, setError] = (0, import_react33.useState)(false);
+    function placeOrder() {
+      return fetch(baseUrl + "/PlaceOrder?id=" + customerNr).then((response) => {
+        if (response.ok)
+          return response.json();
+        throw response;
+      });
+    }
+    async function pay() {
+      const debug = false;
+      if (debug) {
+        let approveUrl = "https://www.sandbox.paypal.com/checkoutnow?token=4T21280023024873G";
+        document.location.href = approveUrl;
+      } else {
+        try {
+          setLoading(true);
+          let payPalOrder = await placeOrder();
+          let link = payPalOrder.links.filter((x4) => x4.rel == "approve");
+          document.location.href = link[0].href;
+        } catch (e) {
+          console.log(e);
+          setError(true);
+        }
+      }
+    }
+    if (loading) {
+      return /* @__PURE__ */ import_react33.default.createElement("form", {
+        className: "snipcart-form snipcart-payment snipcart__box"
+      }, /* @__PURE__ */ import_react33.default.createElement("div", {
+        className: "snipcart__box--header"
+      }, /* @__PURE__ */ import_react33.default.createElement("div", {
+        className: "snipcart__box--title"
+      }, /* @__PURE__ */ import_react33.default.createElement("div", {
+        className: "snipcart__box--badge snipcart__box--badge snipcart__box--badge-highlight  snipcart__font--bold snipcart__font--secondary"
+      }, "3"), /* @__PURE__ */ import_react33.default.createElement("h1", {
+        className: "snipcart-payment__header snipcart__font--subtitle"
+      }, "Payment"))), /* @__PURE__ */ import_react33.default.createElement("div", {
+        className: "snipcart-loading-overlay snipcart-payment__loading"
+      }, /* @__PURE__ */ import_react33.default.createElement("div", {
+        className: "snipcart-loading-overlay__content"
+      }, /* @__PURE__ */ import_react33.default.createElement("div", {
+        className: "snipcart-loading-overlay snipcart-payment-methods-list__container"
+      }, /* @__PURE__ */ import_react33.default.createElement("div", {
+        className: "snipcart-loading-overlay__content"
+      }, /* @__PURE__ */ import_react33.default.createElement(Spinner, null))))));
+    }
+    if (error) {
+      return /* @__PURE__ */ import_react33.default.createElement("div", {
+        className: "snipcart-flash-message snipcart-flash-message--error"
+      }, /* @__PURE__ */ import_react33.default.createElement("svg", {
+        viewBox: "0 0 32 32",
+        fill: "none",
+        xmlns: "http://www.w3.org/2000/svg",
+        alt: "",
+        title: "",
+        className: "snipcart-flash-message__icon snipcart__icon"
+      }, /* @__PURE__ */ import_react33.default.createElement("path", {
+        "fill-rule": "evenodd",
+        "clip-rule": "evenodd",
+        d: "M27.829 7C29.027 7 30 7.956 30 9.135v14.23c0 1.18-.973 2.135-2.171 2.135H4.67c-1.2 0-2.171-.956-2.171-2.135V9.135C2.5 7.955 3.472 7 4.671 7H27.83zm.724 16.365V9.135a.718.718 0 00-.724-.712H4.67c-.4 0-.724.319-.724.712v14.23c0 .393.325.712.724.712H27.83a.718.718 0 00.724-.712zM6.118 15.54a.717.717 0 01-.723-.712V11.98c0-.394.323-.712.723-.712h7.237c.4 0 .724.318.724.712v2.846a.718.718 0 01-.724.712H6.118zm2.895 3.913c.4 0 .724.318.724.711v.712a.717.717 0 01-.724.712H6.118a.717.717 0 01-.723-.712v-.712c0-.393.323-.711.723-.711h2.895zm5.79 0c.4 0 .723.318.723.711v.712a.717.717 0 01-.723.712h-2.895a.717.717 0 01-.724-.712v-.712c0-.393.324-.711.724-.711h2.895zm5.79 0c.399 0 .723.318.723.711v.712a.717.717 0 01-.724.712h-2.895a.717.717 0 01-.723-.712v-.712c0-.393.323-.711.723-.711h2.895zm5.789 0c.4 0 .723.318.723.711v.712a.717.717 0 01-.723.712h-2.895a.717.717 0 01-.724-.712v-.712c0-.393.324-.711.724-.711h2.895z",
+        fill: "#313332"
+      })), /* @__PURE__ */ import_react33.default.createElement("div", {
+        className: "snipcart-flash-message__content"
+      }, /* @__PURE__ */ import_react33.default.createElement("h2", {
+        className: "snipcart-flash-message__title snipcart__font--secondary snipcart__font--black snipcart__font--large"
+      }, "Order couldn\u2019t be processed."), /* @__PURE__ */ import_react33.default.createElement("p", {
+        className: "snipcart-flash-message__description snipcart__font--std"
+      }, "You have not been charged. Please contact the store owner for details.")));
+    }
+    if (shippingStatus !== SHIPPINGSTATUS.COMPLETED) {
+      return /* @__PURE__ */ import_react33.default.createElement("div", {
+        id: "snipcart-checkout-step-payment",
+        className: "snipcart-checkout-step"
+      }, /* @__PURE__ */ import_react33.default.createElement("div", {
+        className: "snipcart__box snipcart__box--gray snipcart__box--slim"
+      }, /* @__PURE__ */ import_react33.default.createElement("div", {
+        className: "snipcart__box--header"
+      }, /* @__PURE__ */ import_react33.default.createElement("div", {
+        className: "snipcart__box--title"
+      }, /* @__PURE__ */ import_react33.default.createElement("div", {
+        className: "snipcart__box--badge snipcart__font--bold snipcart__font--secondary"
+      }, "3"), /* @__PURE__ */ import_react33.default.createElement("h1", {
+        className: "snipcart__font--subtitle"
+      }, " Payment ")))));
+    }
+    if (shippingStatus === SHIPPINGSTATUS.COMPLETED) {
+      return /* @__PURE__ */ import_react33.default.createElement("form", {
+        className: "snipcart-form snipcart-payment snipcart__box"
+      }, /* @__PURE__ */ import_react33.default.createElement("div", {
+        className: "snipcart__box--header"
+      }, /* @__PURE__ */ import_react33.default.createElement("div", {
+        className: "snipcart__box--title"
+      }, /* @__PURE__ */ import_react33.default.createElement("div", {
+        className: "snipcart__box--badge snipcart__box--badge snipcart__box--badge-highlight  snipcart__font--bold snipcart__font--secondary"
+      }, "3"), /* @__PURE__ */ import_react33.default.createElement("h1", {
+        className: "snipcart-payment__header snipcart__font--subtitle"
+      }, "Payment"))), /* @__PURE__ */ import_react33.default.createElement("div", {
+        className: "snipcart-loading-overlay snipcart-payment__loading"
+      }, /* @__PURE__ */ import_react33.default.createElement("div", {
+        className: "snipcart-loading-overlay__content"
+      }, /* @__PURE__ */ import_react33.default.createElement("div", {
+        className: "snipcart-loading-overlay snipcart-payment-methods-list__container"
+      }, /* @__PURE__ */ import_react33.default.createElement("div", {
+        className: "snipcart-loading-overlay__content"
+      }, /* @__PURE__ */ import_react33.default.createElement("ul", {
+        className: "snipcart-payment-methods-list snipcart__font--secondary snipcart__font--bold"
+      }, /* @__PURE__ */ import_react33.default.createElement("li", {
+        className: "snipcart-payment-methods-list-item"
+      }, /* @__PURE__ */ import_react33.default.createElement("button", {
+        type: "button",
+        title: "Checkout with PayPal",
+        className: "snipcart-payment-methods-list-item__button",
+        onClick: () => pay()
+      }, /* @__PURE__ */ import_react33.default.createElement("span", {
+        className: "snipcart-payment-methods-list-item__label"
+      }, "Checkout with ", /* @__PURE__ */ import_react33.default.createElement(Paypal, null)), /* @__PURE__ */ import_react33.default.createElement("span", {
+        className: "snipcart-payment-methods-list-item__arrow"
+      }, /* @__PURE__ */ import_react33.default.createElement(ArrowRight, null))))))))));
+    }
+  }
+
+  // ns-hugo:/github/workspace/website/assets/components/checkout/Summary.jsx
+  var import_react35 = __toModule(require_react());
+
+  // ns-hugo:/github/workspace/website/assets/components/checkout/Footer.jsx
+  var import_react34 = __toModule(require_react());
+  function Footer2({}) {
+    return /* @__PURE__ */ import_react34.default.createElement("footer", {
+      className: "snipcart-cart-summary__footer"
+    }, /* @__PURE__ */ import_react34.default.createElement("div", {
+      className: "snipcart-featured-payment-methods snipcart-featured-payment-methods--no-background"
+    }, /* @__PURE__ */ import_react34.default.createElement("h3", {
+      className: "snipcart__font--secondary snipcart__font--bold  snipcart-featured-payment-methods__title"
+    }, /* @__PURE__ */ import_react34.default.createElement("a", {
+      href: "/privacy-policy/",
+      target: "_self",
+      rel: "nofollow noopener",
+      className: "snipcart-featured-payment-methods__link"
+    }, /* @__PURE__ */ import_react34.default.createElement(Lock, null), "Secured by OneStopPinballShop")), /* @__PURE__ */ import_react34.default.createElement("ul", {
+      className: "snipcart-featured-payment-methods__list"
+    }, /* @__PURE__ */ import_react34.default.createElement("li", {
+      className: "snipcart-featured-payment-methods__list-item"
+    }, /* @__PURE__ */ import_react34.default.createElement(Visa, null)), /* @__PURE__ */ import_react34.default.createElement("li", {
+      className: "snipcart-featured-payment-methods__list-item"
+    }, /* @__PURE__ */ import_react34.default.createElement(Mastercard, null)), /* @__PURE__ */ import_react34.default.createElement("li", {
+      className: "snipcart-featured-payment-methods__list-item"
+    }, /* @__PURE__ */ import_react34.default.createElement(Paypal, null)))));
+  }
+
+  // ns-hugo:/github/workspace/website/assets/components/checkout/Summary.jsx
+  function Summary({
+    products,
+    shippingMethod,
+    calculateTotalPrice
+  }) {
+    function renderProduct(item) {
+      return /* @__PURE__ */ import_react35.default.createElement("li", {
+        key: item.productId,
+        className: "snipcart-cart-summary-item"
+      }, /* @__PURE__ */ import_react35.default.createElement("span", {
+        className: "snipcart-cart-summary-item__name snipcart__font--slim"
+      }, item.name), /* @__PURE__ */ import_react35.default.createElement("span", {
+        className: "snipcart-cart-summary-item__quantity snipcart__font--slim"
+      }, item.quantity), /* @__PURE__ */ import_react35.default.createElement("span", {
+        className: "snipcart-cart-summary-item__price snipcart__font--slim"
+      }, round(item.quantity * item.price)));
+    }
+    return /* @__PURE__ */ import_react35.default.createElement("div", {
+      className: "snipcart-cart-summary"
+    }, /* @__PURE__ */ import_react35.default.createElement("section", {
+      className: "snipcart-cart-summary__content"
+    }, /* @__PURE__ */ import_react35.default.createElement("div", {
+      className: "snipcart-cart-summary__actions snipcart__box--header"
+    }, /* @__PURE__ */ import_react35.default.createElement("h1", {
+      className: "snipcart-cart-summary__title snipcart__font--subtitle"
+    }, "Order summary"), /* @__PURE__ */ import_react35.default.createElement(y3, {
+      to: "/",
+      className: "snipcart__actions--link"
+    }, "Edit")), /* @__PURE__ */ import_react35.default.createElement("ul", {
+      className: "snipcart-cart-summary-items-list snipcart-scrollbar snipcart-cart-summary__items"
+    }, /* @__PURE__ */ import_react35.default.createElement("section", {
+      id: "products"
+    }, products.map(renderProduct))), /* @__PURE__ */ import_react35.default.createElement("hr", {
+      className: "snipcart-cart-summary__separator"
+    }), /* @__PURE__ */ import_react35.default.createElement("div", {
+      className: "snipcart-loading-overlay"
+    }, /* @__PURE__ */ import_react35.default.createElement("div", {
+      className: "snipcart-loading-overlay__content"
+    }, /* @__PURE__ */ import_react35.default.createElement("div", {
+      className: "snipcart-cart-summary__totals"
+    }, /* @__PURE__ */ import_react35.default.createElement("div", {
+      className: "snipcart-cart-summary-fees"
+    }, /* @__PURE__ */ import_react35.default.createElement("div", {
+      className: "snipcart-cart-summary-fees"
+    }, /* @__PURE__ */ import_react35.default.createElement("div", {
+      className: "snipcart-cart-summary-fees__item snipcart__font--slim"
+    }, /* @__PURE__ */ import_react35.default.createElement("span", {
+      className: "snipcart-cart-summary-fees__title"
+    }, "Subtotal"), /* @__PURE__ */ import_react35.default.createElement("span", {
+      className: "snipcart-cart-summary-fees__amount"
+    }, "\u20AC", round(calculateTotalPrice()))), /* @__PURE__ */ import_react35.default.createElement("div", {
+      className: "snipcart-cart-summary-fees__item snipcart__font--slim"
+    }, /* @__PURE__ */ import_react35.default.createElement("span", {
+      className: "snipcart-cart-summary-fees__title"
+    }, "Shipping"), /* @__PURE__ */ import_react35.default.createElement("span", {
+      className: "snipcart-cart-summary-fees__amount"
+    }, "\u20AC", round(shippingRate(shippingMethod)))), /* @__PURE__ */ import_react35.default.createElement("div", {
+      className: "snipcart-cart-summary-fees__item snipcart-cart-summary-fees__total snipcart__font--bold snipcart__font--secondary"
+    }, /* @__PURE__ */ import_react35.default.createElement("span", {
+      className: "snipcart-cart-summary-fees__title snipcart-cart-summary-fees__title--highlight snipcart__font--large"
+    }, "Total"), /* @__PURE__ */ import_react35.default.createElement("span", {
+      className: "snipcart-cart-summary-fees__amount snipcart-cart-summary-fees__amount--highlight snipcart__font--large"
+    }, "\u20AC", round(calculateTotalPrice(true)))))))))), /* @__PURE__ */ import_react35.default.createElement(Footer2, null));
+  }
+
+  // ns-hugo:/github/workspace/website/assets/services/getDimensions.js
+  var import_react36 = __toModule(require_react());
+  function getWindowDimensions() {
+    const {innerWidth: width, innerHeight: height} = window;
+    return {
+      width,
+      height
     };
+  }
+  function getDimensions() {
+    const [windowDimensions, setWindowDimensions] = (0, import_react36.useState)(getWindowDimensions());
+    (0, import_react36.useEffect)(() => {
+      function handleResize() {
+        setWindowDimensions(getWindowDimensions());
+      }
+      window.addEventListener("resize", handleResize);
+      return () => window.removeEventListener("resize", handleResize);
+    }, []);
+    return windowDimensions;
+  }
+
+  // ns-hugo:/github/workspace/website/assets/components/checkout/Checkout.jsx
+  function Checkout({
+    cart,
+    setCart,
+    products,
+    calculateTotalPrice,
+    billingAddress,
+    setBillingAddress,
+    shippingAddress,
+    setShippingAddress,
+    baseUrl,
+    customerNr,
+    saveData
+  }) {
+    function initialState() {
+      var finalAddress = cart.useDifferentShippingAddress == "on" ? shippingAddress : billingAddress;
+      if (!finalAddress || finalAddress.errors) {
+        return SHIPPINGSTATUS.ADDRESS;
+      } else if (cart.shippingMethod === "not set") {
+        return SHIPPINGSTATUS.SHIPPING;
+      } else {
+        return SHIPPINGSTATUS.COMPLETED;
+      }
+    }
+    const [billingStatus, setBillingStatus] = (0, import_react37.useState)(!billingAddress || billingAddress.errors ? BILLINGSTATUS.EDIT : BILLINGSTATUS.COMPLETED);
+    const {height, width} = getDimensions();
+    const [shippingStatus, setShippingStatus] = (0, import_react37.useState)(initialState);
+    return /* @__PURE__ */ import_react37.default.createElement("div", {
+      id: "snipcart",
+      className: "snipcart"
+    }, /* @__PURE__ */ import_react37.default.createElement("div", {
+      className: "snipcart-modal__container"
+    }, /* @__PURE__ */ import_react37.default.createElement("div", {
+      className: "snipcart-layout snipcart-modal"
+    }, /* @__PURE__ */ import_react37.default.createElement(Header, {
+      numberOfItems: products?.length,
+      saveData
+    }), /* @__PURE__ */ import_react37.default.createElement("div", {
+      className: "snipcart-checkout__content snipcart-layout__content"
+    }, /* @__PURE__ */ import_react37.default.createElement("div", {
+      className: "snipcart-layout__cols"
+    }, /* @__PURE__ */ import_react37.default.createElement("div", {
+      className: "snipcart-layout__col snipcart-layout__col--large"
+    }, /* @__PURE__ */ import_react37.default.createElement(Billing, {
+      cart,
+      setCart,
+      address: billingAddress,
+      setAddress: setBillingAddress,
+      billingStatus,
+      setBillingStatus,
+      saveData
+    }), /* @__PURE__ */ import_react37.default.createElement(Shipping, {
+      cart,
+      setCart,
+      billingAddress,
+      shippingAddress,
+      setAddress: setShippingAddress,
+      billingStatus,
+      shippingStatus,
+      setShippingStatus,
+      calculateTotalPrice,
+      saveData
+    }), /* @__PURE__ */ import_react37.default.createElement(Payment, {
+      shippingStatus,
+      baseUrl,
+      customerNr
+    }), width <= 659 && /* @__PURE__ */ import_react37.default.createElement(Summary, {
+      products,
+      shippingMethod: cart.shippingMethod,
+      calculateTotalPrice
+    })), width > 659 && /* @__PURE__ */ import_react37.default.createElement("div", {
+      className: "snipcart-layout__col"
+    }, /* @__PURE__ */ import_react37.default.createElement("div", null, /* @__PURE__ */ import_react37.default.createElement(Summary, {
+      products,
+      shippingMethod: cart.shippingMethod,
+      calculateTotalPrice
+    }))))))));
+  }
+
+  // ns-hugo:/github/workspace/website/assets/services/getCustomer.js
+  var import_react38 = __toModule(require_react());
+  function getCustomer(baseUrl, customerNr) {
+    const [cart, setCart] = (0, import_react38.useState)(null);
+    const [products, setProducts] = (0, import_react38.useState)(null);
+    const [billingAddress, setBillingAddress] = (0, import_react38.useState)(null);
+    const [shippingAddress, setShippingAddress] = (0, import_react38.useState)(null);
+    const [error, setError] = (0, import_react38.useState)(null);
+    const [loading, setLoading] = (0, import_react38.useState)(true);
+    (0, import_react38.useEffect)(() => {
+      async function init() {
+        try {
+          const response = await fetch(baseUrl + "?id=" + customerNr);
+          if (response.ok) {
+            const json = await response.json();
+            setCart(json);
+            setProducts(json.products);
+            setShippingAddress(json.shippingAddress);
+            setBillingAddress(json.billingAddress);
+          } else {
+            throw response;
+          }
+        } catch (e) {
+          setError(e);
+        } finally {
+          setLoading(false);
+        }
+      }
+      init();
+    }, [customerNr]);
+    return {
+      cart,
+      setCart,
+      products,
+      setProducts,
+      billingAddress,
+      setBillingAddress,
+      shippingAddress,
+      setShippingAddress,
+      error,
+      loading
+    };
+  }
+
+  // ns-hugo:/github/workspace/website/assets/App.jsx
+  function App() {
+    const localAzure = false;
+    const cookieId = "onestoppinballshop";
+    const addProductHtmlId = "add_to_cart";
+    let baseUrl = "https://onestoppinball.azurewebsites.net/api";
+    if (localAzure) {
+      baseUrl = "http://localhost:7071/api";
+    }
+    const {
+      cart,
+      setCart,
+      products,
+      setProducts,
+      billingAddress,
+      setBillingAddress,
+      shippingAddress,
+      setShippingAddress,
+      error,
+      loading
+    } = getCustomer(baseUrl + "/Customer", getCustomerNumberFromCookie());
+    async function saveData() {
+      cart.products = products;
+      cart.billingAddress = billingAddress;
+      cart.shippingAddress = shippingAddress;
+      cart.shippingCost = shippingRate(cart.shippingMethod);
+      return fetch(baseUrl + "/Customer?id=" + getCustomerNumberFromCookie(), {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(cart)
+      });
+    }
+    function invalidateShipping() {
+      setCart((curCustomer) => {
+        return {
+          ...curCustomer,
+          shippingMethod: "not set"
+        };
+      });
+    }
+    function getCustomerNumberFromCookie() {
+      let customerId = localStorage.getItem(cookieId);
+      if (customerId) {
+        return customerId;
+      } else {
+        let newCustomerId = guid();
+        localStorage.setItem(cookieId, newCustomerId);
+        return newCustomerId;
+      }
+    }
+    function calculateTotalPrice(includeShipping) {
+      let total = 0;
+      products.forEach((element) => {
+        total += element.price * element.quantity;
+      });
+      if (includeShipping) {
+        total += shippingRate(cart.shippingMethod);
+      }
+      return total;
+    }
+    function getCustomFields(article) {
+      var result = [];
+      if (article.dataset.itemCustom1Name) {
+        var x4 = {
+          name: article.dataset.itemCustom1Name,
+          value: "",
+          required: article.dataset.itemCustom1Required
+        };
+        result.push(x4);
+      }
+      if (article.dataset.itemCustom2Name) {
+        var x4 = {
+          name: article.dataset.itemCustom2Name,
+          value: "",
+          required: article.dataset.itemCustom2Required
+        };
+        result.push(x4);
+      }
+      return result;
+    }
+    function addToChart() {
+      const article = document.querySelector("#" + addProductHtmlId);
+      if (article) {
+        setProducts((items) => {
+          return [
+            ...items,
+            {
+              productId: guid(),
+              image: article.dataset.itemImage,
+              name: article.dataset.itemName,
+              price: article.dataset.itemPrice,
+              properties: getCustomFields(article),
+              quantity: 1
+            }
+          ];
+        });
+        saveData();
+      }
+    }
+    if (loading)
+      return /* @__PURE__ */ import_react39.default.createElement(Spinner, null);
+    if (error)
+      throw error;
+    document.querySelector("#" + addProductHtmlId)?.addEventListener("click", addToChart);
+    return /* @__PURE__ */ import_react39.default.createElement("div", {
+      id: "myCart",
+      className: "myCart",
+      className: "modal fade",
+      role: "dialog",
+      "data-backdrop": "false"
+    }, /* @__PURE__ */ import_react39.default.createElement(E2, null, /* @__PURE__ */ import_react39.default.createElement(D2, {
+      path: "/",
+      element: /* @__PURE__ */ import_react39.default.createElement(Products, {
+        products,
+        setProducts,
+        calculateTotalPrice,
+        invalidateShipping,
+        saveData
+      })
+    }), /* @__PURE__ */ import_react39.default.createElement(D2, {
+      path: "/checkout"
+    }, /* @__PURE__ */ import_react39.default.createElement(Checkout, {
+      cart,
+      setCart,
+      products,
+      calculateTotalPrice,
+      billingAddress,
+      setBillingAddress,
+      shippingAddress,
+      setShippingAddress,
+      baseUrl,
+      customerNr: getCustomerNumberFromCookie(),
+      saveData
+    }))));
+  }
+
+  // ns-hugo:/github/workspace/website/assets/ErrorBoundary.jsx
+  var import_react40 = __toModule(require_react());
+  var ErrorBoundary = class extends import_react40.default.Component {
+    constructor(props) {
+      super(props);
+      this.state = {hasError: false};
+    }
+    static getDerivedStateFromError(error) {
+      return {hasError: true};
+    }
     render() {
-      return /* @__PURE__ */ import_react9.default.createElement("div", {
-        className: "myCart"
-      }, /* @__PURE__ */ import_react9.default.createElement(cart_default, null));
+      if (this.state.hasError) {
+        console.log("Error");
+        return /* @__PURE__ */ import_react40.default.createElement("h1", null, "Something went wrong.");
+      }
+      return this.props.children;
     }
   };
-  var App_default = App;
+  var ErrorBoundary_default = ErrorBoundary;
 
   // <stdin>
-  import_react_dom.default.render(/* @__PURE__ */ import_react10.default.createElement(App_default, null), document.getElementById("react"));
+  import_react_dom.default.render(/* @__PURE__ */ import_react41.default.createElement(ErrorBoundary_default, null, /* @__PURE__ */ import_react41.default.createElement(x3, null, /* @__PURE__ */ import_react41.default.createElement(App, null)), ","), document.getElementById("reactCartApp"));
 })();
 /*
 object-assign
@@ -19730,6 +22728,14 @@ object-assign
  */
 /** @license React v0.19.1
  * scheduler.development.js
+ *
+ * Copyright (c) Facebook, Inc. and its affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+/** @license React v16.13.1
+ * react-is.development.js
  *
  * Copyright (c) Facebook, Inc. and its affiliates.
  *

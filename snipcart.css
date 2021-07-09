@@ -987,7 +987,7 @@
   padding: 8px 0;
 }
 .snipcart-item-line__image {
-  width: auto;
+  width: 64px;
   max-height: 100%;
 }
 @media (min-width: 1024px) {
@@ -2329,8 +2329,7 @@
   width: 100%;
   padding: 16px;
   padding-right: 50px;
-  background: url(/assets/icons/select-cursor.svg)
-    no-repeat right 22px center;
+  /* background: url(/assets/icons/select-cursor.svg) no-repeat right 22px center; */
   background-color: #fdfefe;
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -2510,7 +2509,7 @@
   border: none;
 }
 .snipcart-form-radio:checked + label:after {
-  content: url(/assets/icons/checkmark.svg);
+  /* content: url(/assets/icons/checkmark.svg); */
   background-repeat: no-repeat;
   background-position: 50%;
   z-index: 99;
