@@ -18,6 +18,7 @@
 <meta property="og:description" content="One Stop Pinball Shop">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://onestoppinballshop.com/categories/">
+<script src=/index.min.js defer></script>
 </head><body id=body>
 <header class="sticky-top bg-white">
 <div class=container>
@@ -44,7 +45,7 @@
 <select class=lang-list id=select-language onchange="location=this.value"><option id=nl value=https://onestoppinballshop.com/nl/categories/>Dutch</option><option id=en value=https://onestoppinballshop.com/categories/ selected>English
 </option></select>
 </div>
-<button class="cart snipcart-checkout" data-toggle=modal data-target=#myCart>
+<button class="cart snipcart-checkout" data-toggle=modal data-target=#myCart onclick="window.location.href='/#/cart'">
 <i class=tf-ion-android-cart></i>
 <span class="badge badge-primary snipcart-items-count"></span>
 <span class=snipcart-total-price></span>
@@ -140,7 +141,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 <script src=https://onestoppinballshop.com/plugins/jquery/jquery.js></script>
 <script src=https://onestoppinballshop.com/plugins/bootstrap/bootstrap.min.js></script>
 <script src=https://onestoppinballshop.com/plugins/slick/slick.min.js></script>
-<script src=https://cdn.snipcart.com/themes/v3.0.31/default/snipcart.js></script>
 <script src=https://onestoppinballshop.com/js/script.js></script>
+<div id=reactCartApp></div>
 </body>
 </html>
