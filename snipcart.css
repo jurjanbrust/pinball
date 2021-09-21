@@ -663,7 +663,7 @@
   height: 80px;
   width: 100%;
   background-color: #fdfefe;
-  border: 1px solid #f0f5f6;
+  border: 1px solid #cccccc;
   padding: 8px;
 }
 .snipcart-item-custom-fields {
@@ -1086,7 +1086,7 @@
   padding-right: 8px;
   background-color: #fdfefe;
   justify-content: space-between;
-  border: 1px solid #f0f5f6;
+  border: 1px solid #cccccc;
   width: 50%;
   max-width: 160px;
 }
@@ -2414,7 +2414,7 @@
   background-color: #fdfefe;
   line-height: normal;
   height: 52px;
-  border: 1px solid #f0f5f6;
+  border: 1px solid #cccccc;
   position: relative;
   width: 100%;
   display: flex;
