@@ -1,1 +1,1 @@
-ffmpeg -i promotion2.mp4 -r 15 -aspect 5:1 -strict -2 promotion2.gif
+ffmpeg -i RB2.mp4 -r 15 -aspect 5:1 -strict -2 RB2.gif
