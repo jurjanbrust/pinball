@@ -1,0 +1,1 @@
+ffmpeg -i promotion5.mp4 -r 60 -aspect 5:1 -strict -2 promotion5.gif

@@ -1,1 +1,1 @@
-ffmpeg -t 3 -i promotion2.mp4 -vf "fps=10,split[s0][s1];[s0]palettegen[p];[s1][p]paletteuse" -loop 0 promotion2.gif
+ffmpeg -t 3 -i promotion5.mp4 -vf "fps=10,split[s0][s1];[s0]palettegen[p];[s1][p]paletteuse" -loop 0 promotion5.gif
