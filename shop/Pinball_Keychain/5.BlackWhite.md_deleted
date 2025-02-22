@@ -1,0 +1,45 @@
+---
+weight: 5
+title: Black white with fixed 'pinball' text
+draft: false
+
+images:
+  - "images/renders/Pinball/BW1.png"
+  - "images/renders/Pinball/BW2.png"
+  - "images/renders/Pinball/BW3.png"
+
+# meta description
+description: "Pinball keychain with up to three characters"
+
+# product Price
+price: "7.95"
+priceBefore: "9.95"
+
+# product variation
+#initials: [""]
+
+# categories
+categories: ["Pinball"]
+
+# colors
+colors: ["black", "white"]
+
+# sizes
+sizes: ["Default"]
+
+# weight
+productWeight: "10 G"
+
+# dimentions
+dimensions: "10 x 10 x 15 cm"
+
+# materials
+materials: "Polylactic acid and metal"
+---
+
+Keychain with 'pinball' text. Use it for the key on your coin door or as a functional key for daily use.
+Reduced price!
+
+#### Product Features
+
+- Keyring included
