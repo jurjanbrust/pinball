@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="400" height="300">
+  <!-- Background gradient -->
+  <defs>
+    <linearGradient id="modsBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#667eea;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#764ba2;stop-opacity:1" />
+    </linearGradient>
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="400" height="300" fill="url(#modsBg)"/>
+  
+  <!-- Decorative elements -->
+  <circle cx="70" cy="70" r="70" fill="rgba(255,255,255,0.15)"/>
+  <circle cx="330" cy="230" r="90" fill="rgba(255,255,255,0.15)"/>
+  
+  <!-- Tools and gears representing mods -->
+  <g transform="translate(200, 120)" filter="url(#shadow)">
+    <!-- Large gear -->
+    <g transform="translate(-40, -30)">
+      <circle cx="0" cy="0" r="35" fill="#fff" opacity="0.95"/>
+      <circle cx="0" cy="0" r="25" fill="#2d3748" opacity="0.8"/>
+      <circle cx="0" cy="0" r="10" fill="#fff" opacity="0.9"/>
+      <!-- Gear teeth -->
+      <rect x="-5" y="-40" width="10" height="10" fill="#fff" opacity="0.95"/>
+      <rect x="-5" y="30" width="10" height="10" fill="#fff" opacity="0.95"/>
+      <rect x="-40" y="-5" width="10" height="10" fill="#fff" opacity="0.95"/>
+      <rect x="30" y="-5" width="10" height="10" fill="#fff" opacity="0.95"/>
+      <rect x="-30" y="-30" width="10" height="10" fill="#fff" opacity="0.95" transform="rotate(45)"/>
+      <rect x="20" y="-30" width="10" height="10" fill="#fff" opacity="0.95" transform="rotate(-45)"/>
+      <rect x="-30" y="20" width="10" height="10" fill="#fff" opacity="0.95" transform="rotate(-45)"/>
+      <rect x="20" y="20" width="10" height="10" fill="#fff" opacity="0.95" transform="rotate(45)"/>
+    </g>
+    
+    <!-- Small gear -->
+    <g transform="translate(25, 0)">
+      <circle cx="0" cy="0" r="22" fill="#fff" opacity="0.95"/>
+      <circle cx="0" cy="0" r="15" fill="#2d3748" opacity="0.8"/>
+      <circle cx="0" cy="0" r="6" fill="#fff" opacity="0.9"/>
+      <!-- Gear teeth -->
+      <rect x="-4" y="-25" width="8" height="7" fill="#fff" opacity="0.95"/>
+      <rect x="-4" y="18" width="8" height="7" fill="#fff" opacity="0.95"/>
+      <rect x="-25" y="-4" width="7" height="8" fill="#fff" opacity="0.95"/>
+      <rect x="18" y="-4" width="7" height="8" fill="#fff" opacity="0.95"/>
+    </g>
+    
+    <!-- Wrench -->
+    <g transform="translate(-20, 40) rotate(-25)">
+      <rect x="-3" y="0" width="6" height="50" rx="2" fill="#fff" opacity="0.95"/>
+      <ellipse cx="0" cy="-5" rx="8" ry="10" fill="none" stroke="#fff" stroke-width="5" opacity="0.95"/>
+    </g>
+    
+    <!-- Screwdriver -->
+    <g transform="translate(40, 30) rotate(30)">
+      <rect x="-2" y="0" width="4" height="45" fill="#ffd700" opacity="0.95"/>
+      <polygon points="-3,45 3,45 0,52" fill="#a0aec0" opacity="0.95"/>
+      <rect x="-3" y="-8" width="6" height="8" fill="#e53e3e" opacity="0.95"/>
+    </g>
+  </g>
+  
+  <!-- Text -->
+  <text x="200" y="245" font-family="Arial, sans-serif" font-size="36" font-weight="bold" fill="#fff" text-anchor="middle">MODS</text>
+  <text x="200" y="270" font-family="Arial, sans-serif" font-size="16" fill="rgba(255,255,255,0.9)" text-anchor="middle">Custom Modifications</text>
+</svg>
