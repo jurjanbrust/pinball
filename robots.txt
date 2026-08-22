@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+Disallow: /admin/
+Disallow: /search/
+
+Sitemap: https://onestoppinballshop.com/sitemap.xml
